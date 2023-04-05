@@ -17,6 +17,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("move_forwards") and $movetimer.is_stopped():
 		moving
 		$movetimer.start()
+		$AudioStreamPlayer.play()
 		#separate method: get_parent().get_node("movetimer").start()
 		#original movement: 
 		self.position += (Vector3.FORWARD * 1).rotated(Vector3.UP, self.rotation.y)

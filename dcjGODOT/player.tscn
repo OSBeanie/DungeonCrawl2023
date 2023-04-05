@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs02kpdmm011i"]
+[gd_scene load_steps=3 format=3 uid="uid://bs02kpdmm011i"]
 
 [ext_resource type="Script" path="res://movementdemo.gd" id="1_wadoq"]
 [ext_resource type="AudioStream" uid="uid://blavojvfa3afc" path="res://Footstep.mp3" id="2_ixjqw"]
-[ext_resource type="Script" path="res://footstepaudio.gd" id="3_hn35u"]
 
 [node name="Camera3D" type="Camera3D"]
 fov = 80.5
@@ -19,7 +18,6 @@ omni_attenuation = 0.31864
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ixjqw")
-script = ExtResource("3_hn35u")
 
 [node name="movetimer" type="Timer" parent="."]
 wait_time = 0.2

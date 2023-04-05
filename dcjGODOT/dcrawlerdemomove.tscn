@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dfetcma5pjr5g"]
 
-[ext_resource type="Script" path="res://movementdemo.gd" id="1_lbep8"]
+[ext_resource type="PackedScene" uid="uid://bs02kpdmm011i" path="res://player.tscn" id="1_kam2j"]
 [ext_resource type="PackedScene" uid="uid://b4s2ocrq8qnve" path="res://Amazing1.glb" id="2_4gdx7"]
 [ext_resource type="Texture2D" uid="uid://b20tablone5hh" path="res://HUDBorder1.png" id="3_fi475"]
 [ext_resource type="Texture2D" uid="uid://cdprmn3jtpvhx" path="res://RobotNormalL1.png" id="4_hksf5"]
@@ -47,18 +47,7 @@ animations = [{
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-fov = 80.5
-script = ExtResource("1_lbep8")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00465184, 0.627403, 0.00303042)
-light_energy = 0.637
-light_indirect_energy = 0.0
-light_size = 10.0
-light_specular = 0.338
-omni_range = 2.949
-omni_attenuation = 0.31864
+[node name="Camera3D" parent="." instance=ExtResource("1_kam2j")]
 
 [node name="Amazing1" parent="." instance=ExtResource("2_4gdx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)

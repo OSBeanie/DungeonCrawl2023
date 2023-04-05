@@ -20,5 +20,5 @@ omni_attenuation = 0.31864
 stream = ExtResource("2_ixjqw")
 
 [node name="movetimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.6
 one_shot = true

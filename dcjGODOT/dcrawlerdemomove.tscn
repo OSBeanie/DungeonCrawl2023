@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfetcma5pjr5g"]
+[gd_scene load_steps=16 format=3 uid="uid://dfetcma5pjr5g"]
 
 [ext_resource type="PackedScene" uid="uid://bs02kpdmm011i" path="res://player.tscn" id="1_kam2j"]
 [ext_resource type="PackedScene" uid="uid://b4s2ocrq8qnve" path="res://Amazing1.glb" id="2_4gdx7"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bpk17nwvycy2d" path="res://Health1.png" id="11_mae5x"]
 [ext_resource type="Texture2D" uid="uid://ddajl757q5dgw" path="res://Reloading1.png" id="12_cwmk6"]
 [ext_resource type="Texture2D" uid="uid://3d4dnnr0a2c5" path="res://Border.png" id="13_3wjan"]
+[ext_resource type="Script" path="res://DesignNotes.gd" id="14_8apfw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xpf3r"]
 animations = [{
@@ -99,3 +100,6 @@ position = Vector2(548, 68)
 rotation = 3.14159
 scale = Vector2(3, 3)
 texture = ExtResource("13_3wjan")
+
+[node name="DesignNotes" type="Node" parent="."]
+script = ExtResource("14_8apfw")

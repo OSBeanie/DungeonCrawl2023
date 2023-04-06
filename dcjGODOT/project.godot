@@ -15,6 +15,10 @@ run/main_scene="res://dcrawlerdemomove.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [input]
 
 move_forwards={

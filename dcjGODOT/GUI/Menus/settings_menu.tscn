@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5yhut4nruo5f"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Theme" uid="uid://b2qjqoq6sqjr7" path="res://GUI/Themes/main_menu_theme.tres" id="1_iv2te"]
 [ext_resource type="Script" path="res://GUI/Menus/settings_menu.gd" id="2_bcwyl"]
-[ext_resource type="PackedScene" uid="uid://c4aujqdr84ff7" path="res://GUI/Menus/start_game_button.tscn" id="2_xydjm"]
+[ext_resource type="PackedScene" uid="uid://c4aujqdr84ff7" path="res://GUI/Menus/scene_change_button.tscn" id="2_xydjm"]
 [ext_resource type="PackedScene" uid="uid://bcx00dln6asq0" path="res://GUI/Menus/campaign_text_crawl.tscn" id="3_6f3i0"]
 
 [node name="SettingsMenu" type="Control"]

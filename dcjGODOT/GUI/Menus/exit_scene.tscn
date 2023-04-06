@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://uxemwsvsjl15"]
+[gd_scene load_steps=5 format=3 uid="uid://npbkavew4ytr"]
 
-[ext_resource type="PackedScene" uid="uid://bcx00dln6asq0" path="res://GUI/Menus/campaign_text_crawl.tscn" id="1_72skj"]
+[ext_resource type="PackedScene" path="res://GUI/Menus/campaign_text_crawl.tscn" id="1_72skj"]
 [ext_resource type="Script" path="res://GUI/Menus/exit_scene.gd" id="2_kc2uf"]
-[ext_resource type="PackedScene" uid="uid://c4aujqdr84ff7" path="res://GUI/Menus/start_game_button.tscn" id="3_nyt1l"]
+[ext_resource type="PackedScene" path="res://GUI/Menus/scene_change_button.tscn" id="3_nyt1l"]
+[ext_resource type="PackedScene" uid="uid://dqslhmr5rmvy2" path="res://GUI/Menus/quit_button.tscn" id="4_qiec4"]
 
 [node name="ExitScene" instance=ExtResource("1_72skj")]
 script = ExtResource("2_kc2uf")
@@ -48,8 +49,5 @@ layout_mode = 2
 text = "Credits
 "
 
-[node name="QuitButton" type="Button" parent="VBoxContainer/HBoxContainer2" index="2"]
+[node name="QuitButton" parent="VBoxContainer/HBoxContainer2" index="2" instance=ExtResource("4_qiec4")]
 layout_mode = 2
-text = "Quit"
-
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]

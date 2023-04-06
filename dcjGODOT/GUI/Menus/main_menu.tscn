@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgmuad5v61p6c"]
+[gd_scene load_steps=13 format=3 uid="uid://2uxqbfau7e4b"]
 
 [ext_resource type="Theme" uid="uid://b2qjqoq6sqjr7" path="res://GUI/Themes/main_menu_theme.tres" id="1_i55a5"]
 [ext_resource type="Script" path="res://GUI/Menus/main_menu.gd" id="2_fomf0"]
 [ext_resource type="Texture2D" uid="uid://cv0g1j4opjcfa" path="res://GUI/HUD/RobotHappyR1.png" id="2_ynk0e"]
-[ext_resource type="PackedScene" uid="uid://c4aujqdr84ff7" path="res://GUI/Menus/start_game_button.tscn" id="3_gc5bx"]
+[ext_resource type="PackedScene" path="res://GUI/Menus/scene_change_button.tscn" id="3_gc5bx"]
 [ext_resource type="FontFile" uid="uid://coys74p33u4c4" path="res://GUI/Fonts/Rowdies-Bold.ttf" id="3_mu73j"]
 [ext_resource type="PackedScene" uid="uid://cxmfur8buqvu1" path="res://Levels/Level01_Maze.tscn" id="4_66srr"]
 [ext_resource type="AudioStream" uid="uid://d1j1lh2sgbu2k" path="res://music/Music_Basic.mp3" id="4_77si5"]
-[ext_resource type="PackedScene" uid="uid://bcx00dln6asq0" path="res://GUI/Menus/campaign_text_crawl.tscn" id="4_yfu2a"]
-[ext_resource type="PackedScene" uid="uid://b5yhut4nruo5f" path="res://GUI/Menus/settings_menu.tscn" id="9_botgk"]
+[ext_resource type="PackedScene" path="res://GUI/Menus/campaign_text_crawl.tscn" id="4_yfu2a"]
+[ext_resource type="PackedScene" path="res://GUI/Menus/settings_menu.tscn" id="9_botgk"]
 [ext_resource type="PackedScene" uid="uid://b7fsctc3sgvtd" path="res://GUI/self_terminating_audio.tscn" id="9_vrqr0"]
 [ext_resource type="AudioStream" uid="uid://vjhgwlv5om44" path="res://sfx/Hum_short.wav" id="10_5f7hb"]
+[ext_resource type="PackedScene" uid="uid://bfroj42v7vpv2" path="res://GUI/Menus/credits.tscn" id="10_m8sth"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -47,6 +48,8 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.1
 theme_override_fonts/font = ExtResource("3_mu73j")
 theme_override_font_sizes/font_size = 48
 text = "Seraph in the SIANN Den"
@@ -68,14 +71,14 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.75
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 75
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 75
+theme_override_constants/separation = 50
 alignment = 1
 
 [node name="StartCampaignButton" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_gc5bx")]
@@ -94,6 +97,12 @@ next_scene_packed = ExtResource("4_66srr")
 layout_mode = 2
 text = "Settings"
 next_scene_packed = ExtResource("9_botgk")
+
+[node name="SceneChangeButton" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_gc5bx")]
+layout_mode = 2
+text = "Credits
+"
+next_scene_packed = ExtResource("10_m8sth")
 
 [node name="HoverNoise" parent="." instance=ExtResource("9_vrqr0")]
 stream = ExtResource("10_5f7hb")

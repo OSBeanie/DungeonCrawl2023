@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4aujqdr84ff7"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://GUI/Menus/start_game_button.gd" id="1_onj6b"]
+[ext_resource type="Script" path="res://GUI/Menus/scene_change_button.gd" id="1_onj6b"]
 [ext_resource type="PackedScene" uid="uid://b7fsctc3sgvtd" path="res://GUI/self_terminating_audio.tscn" id="2_6sv4g"]
 [ext_resource type="AudioStream" uid="uid://bm6rdou367olj" path="res://sfx/Robot_Noise.mp3" id="3_bltvl"]
 
-[node name="StartGameButton" type="Button"]
+[node name="SceneChangeButton" type="Button"]
 text = "Start Game
 "
 script = ExtResource("1_onj6b")

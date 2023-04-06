@@ -21,3 +21,5 @@ func change_scene_to_file(newScenePath : String):
 		var next_scene = ResourceLoader.load(newScenePath)
 		change_scene_to_packed(next_scene)
 
+func quit():
+	get_tree().quit()

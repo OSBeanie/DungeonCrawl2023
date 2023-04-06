@@ -11,3 +11,7 @@ var player_stats = {
 	
 }
 
+var user_prefs = {
+	"move_instantly":false,
+}
+

@@ -38,4 +38,5 @@ shape = SubResource("BoxShape3D_7qdrt")
 
 [node name="HUD" parent="." instance=ExtResource("3_sirlu")]
 
+[connection signal="timeout" from="movetimer" to="." method="_on_movetimer_timeout"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

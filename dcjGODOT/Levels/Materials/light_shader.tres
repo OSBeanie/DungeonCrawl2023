@@ -1,0 +1,29 @@
+[gd_resource type="VisualShader" load_steps=2 format=3 uid="uid://ci711oiokrhtk"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_t4jst"]
+output_port_for_preview = 0
+parameter_name = "Emission"
+default_value_enabled = true
+default_value = Color(0, 1, 1, 1)
+
+[resource]
+code = "shader_type spatial;
+uniform vec4 Emission : source_color = vec4(0.000000, 1.000000, 1.000000, 1.000000);
+
+
+
+void fragment() {
+// ColorParameter:3
+	vec4 n_out3p0 = Emission;
+
+
+// Output:0
+	EMISSION = vec3(n_out3p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-215.102, 194.256)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorParameter_t4jst")
+nodes/fragment/3/position = Vector2(-400, 540)
+nodes/fragment/connections = PackedInt32Array(3, 0, 0, 5)

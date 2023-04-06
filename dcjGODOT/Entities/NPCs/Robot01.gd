@@ -26,3 +26,7 @@ func _on_player_started_moving():
 
 func _on_player_finished_moving():
 	shoot()
+
+func die():
+	# play some animation or whatever.
+	queue_free()

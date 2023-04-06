@@ -19,10 +19,15 @@ func _on_rewind_dialog_button_pressed():
 
 	
 func _unhandled_input(event):
-	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_right"):
-		_on_advance_dialog_button_pressed()
-	elif Input.is_action_just_pressed("ui_left"):
+	var fwd_actions = ["ui_accept", "ui_right", "ui_cancel"]
+	var already_captured : bool = false
+	for actionName in fwd_actions:
+		if Input.is_action_just_pressed(actionName) and !already_captured:
+			already_captured = true
+			_on_advance_dialog_button_pressed()
+	if !already_captured and Input.is_action_just_pressed("ui_left"):
 		_on_rewind_dialog_button_pressed()
+
 
 func _on_advance_dialog_button_pressed():
 

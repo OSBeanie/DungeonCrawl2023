@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://b2qjqoq6sqjr7" path="res://GUI/Themes/main_menu_theme.tres" id="1_i55a5"]
 [ext_resource type="Texture2D" uid="uid://cv0g1j4opjcfa" path="res://GUI/HUD/RobotHappyR1.png" id="2_ynk0e"]
 [ext_resource type="PackedScene" uid="uid://c4aujqdr84ff7" path="res://GUI/Menus/start_game_button.tscn" id="3_gc5bx"]
-[ext_resource type="PackedScene" path="res://Levels/Level01_Maze.tscn" id="4_66srr"]
+[ext_resource type="PackedScene" uid="uid://cxmfur8buqvu1" path="res://Levels/Level01_Maze.tscn" id="4_66srr"]
 [ext_resource type="AudioStream" uid="uid://d1j1lh2sgbu2k" path="res://music/Music_Basic.mp3" id="4_77si5"]
 [ext_resource type="PackedScene" uid="uid://bcx00dln6asq0" path="res://GUI/Menus/campaign_text_crawl.tscn" id="4_yfu2a"]
 

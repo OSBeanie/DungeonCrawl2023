@@ -23,3 +23,6 @@ func reveal_all_text():
 	full_reveal = true
 	visible_ratio = 1.0
 
+func reset():
+	full_reveal = false
+	visible_ratio = 0.0

@@ -47,3 +47,9 @@ func _on_advance_dialog_button_pressed():
 
 
 	
+
+
+func _on_tab_container_tab_changed(tab):
+	var textbox = tab_container.get_child(tab)
+	if textbox.has_method("reset"):
+		textbox.reset()

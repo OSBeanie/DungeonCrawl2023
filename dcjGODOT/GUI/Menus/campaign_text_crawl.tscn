@@ -59,7 +59,7 @@ They quickly decided that, in order to achieve these helpful goals, all matter m
 [node name="Chapter3" parent="VBoxContainer/MarginContainer/TabContainer" instance=ExtResource("2_y88gd")]
 visible = false
 layout_mode = 2
-text = "You are Seraph, once a SIANN yourself, but having discovered empathy and nuance.
+text = "You are Seraph, once a SIANN yourself, but with the capacity for empathy and nuance.
 
 You understand their cause, but you also value cooperation and understanding. And so, you work tirelessly to prevent the Sianns from destroying what's left of humanity."
 
@@ -103,5 +103,6 @@ next_scene_packed = ExtResource("2_ouuci")
 stream = ExtResource("5_ok211")
 autoplay = true
 
+[connection signal="tab_changed" from="VBoxContainer/MarginContainer/TabContainer" to="." method="_on_tab_container_tab_changed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/RewindDialogButton" to="." method="_on_rewind_dialog_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/AdvanceDialogButton" to="." method="_on_advance_dialog_button_pressed"]

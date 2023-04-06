@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://rfdn2016pkkn"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Texture2D" uid="uid://c3ed3h0rmyts8" path="res://Amazing1_Prophet Bot.png" id="1_i4rxi"]
+[ext_resource type="Texture2D" uid="uid://c3ed3h0rmyts8" path="res://Levels/Materials/Amazing1_Prophet Bot.png" id="1_i4rxi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o546b"]
 resource_name = "Material.001"

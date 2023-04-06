@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="dcrawler movedemo"
-run/main_scene="res://dcrawlerdemomove.tscn"
+run/main_scene="res://GUI/Menus/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://Global.gd"
+StageManager="*res://StageManager.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [input]
 
@@ -46,6 +51,8 @@ turn_right={
 3d_physics/layer_2="npcs"
 3d_physics/layer_3="walls"
 3d_physics/layer_4="projectiles"
+3d_physics/layer_5="trigger_volumes"
+3d_physics/layer_6="pickables"
 
 [rendering]
 

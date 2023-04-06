@@ -177,4 +177,5 @@ target_position = Vector3(2.08165e-12, 2.08165e-12, 5)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.0576824, 0, 0, 0, 0.0197133, 0.121092, 0, -1.00208, 0.00238217, -0.00618362, -0.596039, 2.74245)
+visible = false
 texture = SubResource("NoiseTexture2D_kmti0")

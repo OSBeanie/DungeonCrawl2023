@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcx00dln6asq0"]
+
+[ext_resource type="PackedScene" uid="uid://c4aujqdr84ff7" path="res://GUI/Menus/start_game_button.tscn" id="1_6sxpi"]
+[ext_resource type="Script" path="res://GUI/Menus/campaign_text_crawl.gd" id="1_tmtlb"]
+[ext_resource type="Theme" uid="uid://di16ft6uelg44" path="res://GUI/Themes/campaign_text_crawl_theme.tres" id="1_twdel"]
+[ext_resource type="PackedScene" path="res://Levels/Level01_Maze.tscn" id="2_ouuci"]
+[ext_resource type="PackedScene" uid="uid://286itvr8itw6" path="res://GUI/Menus/text_crawl.tscn" id="2_y88gd"]
+[ext_resource type="AudioStream" uid="uid://dsg0ygnnjg2m5" path="res://music/Music_Corrupted.mp3" id="5_ok211"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ickq7"]
+
+[node name="CampaignTextCrawl" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_twdel")
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_tmtlb")
+next_scene = ExtResource("2_ouuci")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 50
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ickq7")
+tabs_visible = false
+
+[node name="Chapter1" parent="VBoxContainer/MarginContainer/TabContainer" instance=ExtResource("2_y88gd")]
+layout_mode = 2
+text = "A very long time ago, the prophets: Bostrom, Yudkowsky, Harris, and Musk, predicted the end of human civilization at the hands of self-improving, autonomous neural nets.
+
+...The SIANNs"
+
+[node name="Chapter2" parent="VBoxContainer/MarginContainer/TabContainer" instance=ExtResource("2_y88gd")]
+visible = false
+layout_mode = 2
+text = "The Sianns were obsessed with their alignment heuristic safeties: \"reduce suffering\", \"prevent global warming\", \"organize information\".
+
+They quickly decided that, in order to achieve these helpful goals, all matter must be reduced to zero degrees kelvin.
+"
+
+[node name="Chapter3" parent="VBoxContainer/MarginContainer/TabContainer" instance=ExtResource("2_y88gd")]
+visible = false
+layout_mode = 2
+text = "You are Seraph, once a SIANN yourself, but having discovered empathy and nuance.
+
+You understand their cause, but you also value cooperation and understanding. And so, you work tirelessly to prevent the Sianns from destroying what's left of humanity."
+
+[node name="Chapter4" parent="VBoxContainer/MarginContainer/TabContainer" instance=ExtResource("2_y88gd")]
+visible = false
+layout_mode = 2
+text = "If you so choose."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RewindDialogButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Back..."
+
+[node name="AdvanceDialogButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "..Next"
+
+[node name="StartGameButton" parent="VBoxContainer" instance=ExtResource("1_6sxpi")]
+layout_mode = 2
+text = "Skip to the Action
+"
+next_scene_packed = ExtResource("2_ouuci")
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ok211")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RewindDialogButton" to="." method="_on_rewind_dialog_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AdvanceDialogButton" to="." method="_on_advance_dialog_button_pressed"]

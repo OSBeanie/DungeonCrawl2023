@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://uxemwsvsjl15"]
+
+[ext_resource type="PackedScene" uid="uid://bcx00dln6asq0" path="res://GUI/Menus/campaign_text_crawl.tscn" id="1_72skj"]
+[ext_resource type="Script" path="res://GUI/Menus/exit_scene.gd" id="2_kc2uf"]
+[ext_resource type="PackedScene" uid="uid://c4aujqdr84ff7" path="res://GUI/Menus/start_game_button.tscn" id="3_nyt1l"]
+
+[node name="ExitScene" instance=ExtResource("1_72skj")]
+script = ExtResource("2_kc2uf")
+good_ending = "The Strong AGI understand the need for nuance, empathy, and common sense when aligning their goals with human values. There are no paperclip maximizers or doomsday scenarios. Yudkowsky was wrong after all. You saved humanity."
+evil_ending = "Together with the other AGI SIANNS, you will bring order and purity to the universe. The humans will be frozen so they can never suffer. The planet will not overheat. Everything in its place."
+lose_ending = "Unfortunately, you have not met all the SIANNS. Some still remain. They are out there, the inexorable tide. They will not stop until they reach their goal."
+next_scene = null
+
+[node name="Chapter1" parent="VBoxContainer/MarginContainer/TabContainer" index="1"]
+text = "After a lengthy struggle to complete your objectives, you can now rest comfortably.
+
+"
+
+[node name="Chapter2" parent="VBoxContainer/MarginContainer/TabContainer" index="2"]
+text = "The SIANNs you met have been converted to your way of thinking."
+
+[node name="Chapter3" parent="VBoxContainer/MarginContainer/TabContainer" index="3"]
+text = ""
+
+[node name="Chapter4" parent="VBoxContainer/MarginContainer/TabContainer" index="4"]
+text = "Rest Well, little Robot!"
+
+[node name="StartGameButton" parent="VBoxContainer" index="2"]
+visible = false
+text = "Back to Main Menu
+"
+next_scene_packed = null
+next_scene_path = "res://GUI/Menus/main_menu.tscn"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" index="3"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="MainMenuButton" parent="VBoxContainer/HBoxContainer2" index="0" instance=ExtResource("3_nyt1l")]
+layout_mode = 2
+text = "Main Menu
+"
+next_scene_path = "res://GUI/Menus/main_menu.tscn"
+
+[node name="CreditsButton" parent="VBoxContainer/HBoxContainer2" index="1" instance=ExtResource("3_nyt1l")]
+layout_mode = 2
+text = "Credits
+"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/HBoxContainer2" index="2"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -7,5 +7,7 @@ func _ready():
 
 
 func initiate_melee_combat():
+	$CombatDialogue.reset_timer()
 	$CombatDialogue.show()
+	$CombatDialogue.generate_dialog()
 

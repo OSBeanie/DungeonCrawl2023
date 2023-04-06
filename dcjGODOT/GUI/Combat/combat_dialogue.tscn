@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://crayrdncdixhq"]
+[gd_scene load_steps=10 format=3 uid="uid://crayrdncdixhq"]
 
+[ext_resource type="Theme" uid="uid://2btvphyhed35" path="res://GUI/Themes/combat_dialog_theme.tres" id="1_asnrn"]
 [ext_resource type="Script" path="res://GUI/Combat/combat_dialogue.gd" id="1_v7133"]
 [ext_resource type="Texture2D" uid="uid://bd64qdsj2uvph" path="res://GUI/HUD/RobotAngryR2.png" id="2_xn5wr"]
 [ext_resource type="Texture2D" uid="uid://c4xs8etnctw4b" path="res://GUI/HUD/RobotNormalUD1.png" id="3_2n4d5"]
@@ -16,64 +17,86 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_asnrn")
 script = ExtResource("1_v7133")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="EnemyZone" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="EnemyZone" type="HBoxContainer" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 35
 alignment = 1
 
-[node name="EnemyIcon" type="TextureRect" parent="CenterContainer/VBoxContainer/EnemyZone"]
+[node name="EnemyIcon" type="TextureRect" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/EnemyZone"]
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("2_xn5wr")
+expand_mode = 3
+stretch_mode = 5
 
-[node name="EnemyText" type="Label" parent="CenterContainer/VBoxContainer/EnemyZone"]
+[node name="EnemyText" type="Label" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/EnemyZone"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
 text = "Freeze"
+horizontal_alignment = 1
 
-[node name="ResponseTimerLabel" type="Label" parent="CenterContainer/VBoxContainer/EnemyZone"]
+[node name="ResponseTimerLabel" type="Label" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/EnemyZone"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "20.00"
 
-[node name="ResponseTimer" type="Timer" parent="CenterContainer/VBoxContainer/EnemyZone/ResponseTimerLabel"]
+[node name="ResponseTimer" type="Timer" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/EnemyZone/ResponseTimerLabel"]
 unique_name_in_owner = true
-wait_time = 3.0
+wait_time = 20.0
 one_shot = true
 
-[node name="PlayerZone" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="PlayerZone" type="HBoxContainer" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="PlayerIcon" type="TextureRect" parent="CenterContainer/VBoxContainer/PlayerZone"]
+[node name="PlayerIcon" type="TextureRect" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone"]
 layout_mode = 2
 texture = ExtResource("3_2n4d5")
+expand_mode = 3
+stretch_mode = 5
 
-[node name="PlayerResponseOptions" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PlayerZone"]
+[node name="PlayerResponseOptions" type="HBoxContainer" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 75
 
-[node name="PlayerTextOption1" parent="CenterContainer/VBoxContainer/PlayerZone/PlayerResponseOptions" instance=ExtResource("4_15vee")]
+[node name="PlayerTextOption1" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone/PlayerResponseOptions" instance=ExtResource("4_15vee")]
 layout_mode = 2
 
-[node name="PlayerTextOption2" parent="CenterContainer/VBoxContainer/PlayerZone/PlayerResponseOptions" instance=ExtResource("4_15vee")]
+[node name="PlayerTextOption2" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone/PlayerResponseOptions" instance=ExtResource("4_15vee")]
 layout_mode = 2
 
-[node name="PlayerTextOption3" parent="CenterContainer/VBoxContainer/PlayerZone/PlayerResponseOptions" instance=ExtResource("4_15vee")]
+[node name="PlayerTextOption3" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone/PlayerResponseOptions" instance=ExtResource("4_15vee")]
 layout_mode = 2
 
 [node name="RobotNoise" parent="." instance=ExtResource("5_c2s0v")]
@@ -87,4 +110,4 @@ volume_db = -12.0
 [node name="HappyNoise" parent="." instance=ExtResource("5_c2s0v")]
 stream = ExtResource("8_6ik7f")
 
-[connection signal="timeout" from="CenterContainer/VBoxContainer/EnemyZone/ResponseTimerLabel/ResponseTimer" to="." method="_on_response_timer_timeout"]
+[connection signal="timeout" from="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/EnemyZone/ResponseTimerLabel/ResponseTimer" to="." method="_on_response_timer_timeout"]

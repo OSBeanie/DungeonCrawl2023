@@ -14,6 +14,9 @@ and the player takes damage after each exchange.
 
 extends Control
 
+@export var response_duration = 20.0
+
+
 # might need to refine this list to make it more transparent and fair.
 # antonym, synonym, tangentially related concept
 
@@ -173,4 +176,7 @@ func _on_response_chosen(responseString):
 func _on_response_timer_timeout():
 	$HurtNoise.start()
 	
-
+func reset_timer():
+	%ResponseTimer.stop()
+	%ResponseTimer.set_wait_time(response_duration)
+	

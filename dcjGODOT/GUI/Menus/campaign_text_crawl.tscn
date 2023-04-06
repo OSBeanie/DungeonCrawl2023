@@ -68,17 +68,24 @@ visible = false
 layout_mode = 2
 text = "If you so choose."
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
 alignment = 1
 
-[node name="RewindDialogButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="RewindDialogButton" type="Button" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Back..."
 
-[node name="AdvanceDialogButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="AdvanceDialogButton" type="Button" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -86,6 +93,8 @@ text = "..Next"
 
 [node name="StartGameButton" parent="VBoxContainer" instance=ExtResource("1_6sxpi")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Skip to the Action
 "
 next_scene_packed = ExtResource("2_ouuci")
@@ -94,5 +103,5 @@ next_scene_packed = ExtResource("2_ouuci")
 stream = ExtResource("5_ok211")
 autoplay = true
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/RewindDialogButton" to="." method="_on_rewind_dialog_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/AdvanceDialogButton" to="." method="_on_advance_dialog_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/RewindDialogButton" to="." method="_on_rewind_dialog_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/AdvanceDialogButton" to="." method="_on_advance_dialog_button_pressed"]

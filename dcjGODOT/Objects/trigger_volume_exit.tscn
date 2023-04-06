@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://eld686ck202n"]
+
+[ext_resource type="Script" path="res://Objects/trigger_volume_exit.gd" id="1_5y5sm"]
+[ext_resource type="Shader" uid="uid://d0cx07vmu0mol" path="res://Levels/Materials/translucent_shader.tres" id="1_bobll"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwy5h"]
+render_priority = 0
+shader = ExtResource("1_bobll")
+shader_parameter/ColorParameter = Color(1, 1, 0.333333, 0.317647)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xwj5r"]
+material = SubResource("ShaderMaterial_qwy5h")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8xi5q"]
+
+[node name="TriggerVolumeExit" type="Area3D"]
+script = ExtResource("1_5y5sm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xwj5r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8xi5q")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

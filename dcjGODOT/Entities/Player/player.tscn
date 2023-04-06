@@ -26,9 +26,17 @@ stream = ExtResource("2_oiv0q")
 wait_time = 0.6
 one_shot = true
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, -2)
+[node name="forwardRayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -2)
 collision_mask = 6
+debug_shape_custom_color = Color(0.72549, 0, 1, 1)
+debug_shape_thickness = 5
+
+[node name="backwardRayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(2.08165e-12, 2.08165e-12, 2)
+collision_mask = 6
+debug_shape_custom_color = Color(0.87451, 0.309804, 0, 1)
+debug_shape_thickness = 5
 
 [node name="HitBox" type="Area3D" parent="."]
 collision_mask = 10

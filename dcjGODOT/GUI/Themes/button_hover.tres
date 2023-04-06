@@ -1,6 +1,10 @@
 [gd_resource type="StyleBoxFlat" format=3 uid="uid://dxb8cjjcp4igo"]
 
 [resource]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
 bg_color = Color(0.556863, 0.372549, 0.976471, 1)
 skew = Vector2(0.33, 2.08165e-12)
 border_width_left = 2
@@ -13,10 +17,6 @@ corner_radius_top_left = 4
 corner_radius_top_right = 2
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 2
-expand_margin_left = 16.0
-expand_margin_top = 8.0
-expand_margin_right = 16.0
-expand_margin_bottom = 8.0
 shadow_color = Color(0.733333, 0.313726, 0.733333, 0.6)
 shadow_size = 12
 shadow_offset = Vector2(2.08165e-12, 2.08165e-12)

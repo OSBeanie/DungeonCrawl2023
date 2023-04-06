@@ -25,7 +25,7 @@ func _unhandled_input(_event):
 	if in_melee_combat: # no moving until combat is resolved
 		return
 		
-	var actions_to_queue = ["turn_left", "turn_right", "move_forwards"]
+	var actions_to_queue = ["turn_left", "turn_right", "move_forwards", "move_backwards"]
 	for actionName in actions_to_queue:
 		if Input.is_action_just_pressed(actionName):
 			action_queue.push_back(actionName)
@@ -54,12 +54,17 @@ func take_action(action_name):
 	
 	if action_name in ["turn_left", "turn_right"]:
 		change_direction(action_name)
-	elif action_name in ["move_forwards", "move_backwards"]:
-		if !$RayCast3D.is_colliding():
+	elif action_name == "move_forwards":
+		if !$forwardRayCast3D.is_colliding():
 			move(action_name)
-		elif "robot" in $RayCast3D.get_collider().name.to_lower():
+		elif "robot" in $forwardRayCast3D.get_collider().name.to_lower():
 			#$movetimer.start()
 			initiate_melee_combat()
+	elif action_name == "move_backwards":
+		# don't initiate combat unless you're facing the enemy
+		# but you walls and robots still block you
+		if !$backwardRayCast3D.is_colliding():
+			move(action_name)
 
 
 func move(action_name):

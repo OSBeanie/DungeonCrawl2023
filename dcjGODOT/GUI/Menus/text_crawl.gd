@@ -11,7 +11,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if not full_reveal:
 		if Time.get_ticks_msec() > last_reveal_time + msec_between_characters:
 			last_reveal_time = Time.get_ticks_msec()

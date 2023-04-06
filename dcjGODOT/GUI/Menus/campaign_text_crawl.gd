@@ -8,17 +8,13 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_rewind_dialog_button_pressed():
 	if tab_container.current_tab > 0:
 		tab_container.current_tab -= 1
 
 	
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	var fwd_actions = ["ui_accept", "ui_right", "ui_cancel"]
 	var already_captured : bool = false
 	for actionName in fwd_actions:

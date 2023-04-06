@@ -99,7 +99,7 @@ func initiate_melee_combat():
 	$HUD.initiate_melee_combat()
 
 func _on_melee_combat_resolved():
-	var NPC = $RayCast3D.get_collider()
+	var NPC = $forwardRayCast3D.get_collider()
 
 	if "robot" in NPC.name.to_lower() and NPC.has_method("die"):
 		NPC.die()

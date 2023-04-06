@@ -16,7 +16,7 @@ func _process(delta):
 		else:
 			direction = 3
 	self.rotation_degrees.y = (direction * 90)
-	if Input.is_action_just_pressed("move_forwards") and $movetimer.is_stopped():
+	if Input.is_action_just_pressed("move_forwards") and $movetimer.is_stopped() and !$RayCast3D.is_colliding():
 		moving
 		$movetimer.start()
 		$AudioStreamPlayer.play()

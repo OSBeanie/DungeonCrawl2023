@@ -36,6 +36,13 @@ turn_right={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="player"
+3d_physics/layer_2="npcs"
+3d_physics/layer_3="walls"
+3d_physics/layer_4="projectiles"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

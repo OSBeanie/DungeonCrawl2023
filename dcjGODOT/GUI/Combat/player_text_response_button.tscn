@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg6k8t5yt02gr"]
+
+[ext_resource type="Script" path="res://GUI/Combat/player_text_response_button.gd" id="1_oggwu"]
+
+[node name="PlayerTextOption1" type="Button"]
+theme_override_font_sizes/font_size = 26
+text = "1. Thaw"
+script = ExtResource("1_oggwu")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhlkbw5b7dm5g"]
+
+[ext_resource type="Script" path="res://Entities/Projectiles/Bullet.gd" id="1_iwb88"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vmyb7"]
+
+[sub_resource type="Gradient" id="Gradient_amf8p"]
+offsets = PackedFloat32Array(0.468504, 0.582677)
+colors = PackedColorArray(0.626921, 0.2266, 0.98723, 1, 1.28359e-06, 0.668941, 0.71048, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h34xn"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5hlcb"]
+seamless = true
+color_ramp = SubResource("Gradient_amf8p")
+noise = SubResource("FastNoiseLite_h34xn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmn87"]
+emission_enabled = true
+emission = Color(0.666667, 0.717647, 0.537255, 1)
+emission_energy_multiplier = 0.25
+emission_texture = SubResource("NoiseTexture2D_5hlcb")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5etnv"]
+material = SubResource("StandardMaterial3D_qmn87")
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_iwb88")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_vmyb7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.92044e-08, 0.66812, 0, -0.66812, -2.92044e-08, 0, 0, 0, 0.66812, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_5etnv")
+skeleton = NodePath("../Area3D")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crayrdncdixhq"]
+[gd_scene load_steps=16 format=3 uid="uid://crayrdncdixhq"]
 
 [ext_resource type="Theme" uid="uid://2btvphyhed35" path="res://GUI/Themes/combat_dialog_theme.tres" id="1_asnrn"]
 [ext_resource type="Script" path="res://GUI/Combat/combat_dialogue.gd" id="1_v7133"]
@@ -9,6 +9,30 @@
 [ext_resource type="AudioStream" uid="uid://bm6rdou367olj" path="res://sfx/Robot_Noise.mp3" id="6_5ap31"]
 [ext_resource type="AudioStream" uid="uid://bw0plu0uo8p75" path="res://sfx/Player_Hurt.mp3" id="7_6rg8u"]
 [ext_resource type="AudioStream" uid="uid://bt0ftlh10ixng" path="res://sfx/Item_Pickup.mp3" id="8_6ik7f"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ny5fa"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_58hie"]
+events = [SubResource("InputEventKey_ny5fa")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_8hqu3"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_flgk7"]
+events = [SubResource("InputEventKey_8hqu3")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_jqljf"]
+device = -1
+keycode = 51
+unicode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_1gvbp"]
+events = [SubResource("InputEventKey_jqljf")]
 
 [node name="CombatDialogue" type="Control"]
 layout_mode = 3
@@ -92,12 +116,15 @@ theme_override_constants/separation = 75
 
 [node name="PlayerTextOption1" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone/PlayerResponseOptions" instance=ExtResource("4_15vee")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_58hie")
 
 [node name="PlayerTextOption2" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone/PlayerResponseOptions" instance=ExtResource("4_15vee")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_flgk7")
 
 [node name="PlayerTextOption3" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone/PlayerResponseOptions" instance=ExtResource("4_15vee")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_1gvbp")
 
 [node name="RobotNoise" parent="." instance=ExtResource("5_c2s0v")]
 stream = ExtResource("6_5ap31")

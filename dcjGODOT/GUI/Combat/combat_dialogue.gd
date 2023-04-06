@@ -126,6 +126,7 @@ var dialogue_options = {
 
 var current_question : String
 
+
 signal combat_resolved
 
 
@@ -136,7 +137,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	%ResponseTimerLabel.text = str(%ResponseTimer.time_left).pad_decimals(2)
+	%ResponseTimerLabel.text = str(%ResponseTimer.time_left).pad_decimals(1)
 
 func generate_dialog():
 	if not combat_resolved.is_connected(Global.player._on_melee_combat_resolved):
@@ -149,7 +150,8 @@ func generate_dialog():
 	shuffled_responses.shuffle()
 	
 	for button in %PlayerResponseOptions.get_children():
-		button.text = shuffled_responses.pop_back()
+		button.text = str(button.get_index() + 1) + ". " + shuffled_responses.pop_back()
+		
 		if not button.response_chosen.is_connected(self._on_response_chosen):
 			button.response_chosen.connect(self._on_response_chosen)
 	
@@ -157,6 +159,8 @@ func generate_dialog():
 	%ResponseTimer.start()
 
 func _on_response_chosen(responseString):
+	# need to strip off the first 3 characters first.
+	responseString = responseString.right(-3)
 	var response_index = dialogue_options[current_question].find(responseString)
 	print(responseString + " = " + response_types.keys()[response_index])
 	if response_index == response_types.SERAPH:

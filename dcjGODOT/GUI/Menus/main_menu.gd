@@ -6,7 +6,8 @@ var robot_textures = {
 	"hover":"res://GUI/HUD/RobotHappyR2.png",
 }
 
-
+func _ready():
+	$VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/StartCampaignButton.grab_focus()
 
 
 func _on_button_mouse_entered():

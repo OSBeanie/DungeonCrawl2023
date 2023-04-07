@@ -387,6 +387,18 @@ requires_persuasion = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -4)
 requires_persuasion = false
 
+[node name="OldSpriteRobot6" parent="NPCs" instance=ExtResource("9_kalnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38)
+requires_persuasion = false
+
+[node name="OldSpriteRobot4" parent="NPCs" instance=ExtResource("9_kalnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -24)
+requires_persuasion = false
+
+[node name="OldSpriteRobot5" parent="NPCs" instance=ExtResource("9_kalnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -4)
+requires_persuasion = false
+
 [node name="TriggerVolumes" type="Node3D" parent="."]
 
 [node name="TriggerVolumeStairs" parent="TriggerVolumes" instance=ExtResource("7_wjohk")]

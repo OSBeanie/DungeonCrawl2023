@@ -120,8 +120,17 @@ script = ExtResource("5_x2ig0")
 
 [node name="NPCs" type="Node3D" parent="."]
 
-[node name="Prophetbot" parent="NPCs" instance=ExtResource("6_nptwp")]
-transform = Transform3D(0.324733, 0.22083, -0.0356088, -2.35031e-08, -0.0627724, -0.389288, -0.223683, 0.320592, -0.0516952, 1.63598, 0.468297, -12.0933)
+[node name="ProphetRobot" parent="NPCs" instance=ExtResource("6_nptwp")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 0, 0, -12)
+
+[node name="ProphetRobot2" parent="NPCs" instance=ExtResource("6_nptwp")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 12, 0, -34)
+
+[node name="ProphetRobot3" parent="NPCs" instance=ExtResource("6_nptwp")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 30, 0, -24)
+
+[node name="ProphetRobot4" parent="NPCs" instance=ExtResource("6_nptwp")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 32, 0, -10)
 
 [node name="Robot" parent="NPCs" instance=ExtResource("7_ctgii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.08165e-12, -10)
@@ -149,9 +158,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2.08165e-12, -14)
 
 [node name="OldSpriteRobot" parent="NPCs" instance=ExtResource("8_xttgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
+requires_persuasion = false
 
 [node name="OldSpriteRobot2" parent="NPCs" instance=ExtResource("8_xttgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -4)
+requires_persuasion = false
+
+[node name="OldSpriteRobot3" parent="NPCs" instance=ExtResource("8_xttgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -6)
+requires_persuasion = false
+
+[node name="OldSpriteRobot4" parent="NPCs" instance=ExtResource("8_xttgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -30)
+requires_persuasion = false
 
 [node name="RosieRobot01" parent="NPCs" instance=ExtResource("9_ydisw")]
 transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, 36, 0, -30)

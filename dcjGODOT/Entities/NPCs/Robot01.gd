@@ -22,8 +22,8 @@ func face_player():
 
 func shoot():
 	if Global.player != null:
-		print(self.name + " is shooting.")
-
+		#print(self.name + " is shooting.")
+		pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

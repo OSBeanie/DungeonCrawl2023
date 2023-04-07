@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://1khcq774i2ev"]
+
+[ext_resource type="Script" path="res://GUI/Menus/settings.gd" id="1_1hwrc"]
+[ext_resource type="PackedScene" uid="uid://518ovckolr5k" path="res://GUI/Menus/volume_slider.tscn" id="1_ny56s"]
+
+[node name="Settings" type="VBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -71.5
+offset_right = 134.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("1_1hwrc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Instantaneous Movement"
+
+[node name="MoveInstantlyButton" type="CheckButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VolumeMaster" parent="." instance=ExtResource("1_ny56s")]
+layout_mode = 2
+size_flags_horizontal = 4
+bus_name = "Master"
+
+[node name="Volume2Music" parent="." instance=ExtResource("1_ny56s")]
+layout_mode = 2
+size_flags_horizontal = 4
+bus_name = "music"
+
+[node name="Volume3SFX" parent="." instance=ExtResource("1_ny56s")]
+layout_mode = 2
+size_flags_horizontal = 4
+bus_name = "sfx"
+
+[connection signal="toggled" from="HBoxContainer/MoveInstantlyButton" to="." method="_on_move_instantly_button_toggled"]

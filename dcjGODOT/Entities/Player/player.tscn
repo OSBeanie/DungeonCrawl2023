@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt2jm2p7aa1ln"]
+[gd_scene load_steps=7 format=3 uid="uid://dt2jm2p7aa1ln"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerController.gd" id="1_w1sgk"]
-[ext_resource type="AudioStream" uid="uid://blavojvfa3afc" path="res://sfx/Footstep.mp3" id="2_oiv0q"]
+[ext_resource type="PackedScene" uid="uid://b7fsctc3sgvtd" path="res://GUI/self_terminating_audio.tscn" id="3_k0kid"]
 [ext_resource type="PackedScene" uid="uid://dhkgoijv3xved" path="res://GUI/HUD/PlayerHUD.tscn" id="3_sirlu"]
+[ext_resource type="AudioStream" uid="uid://cfexcb8vboaf0" path="res://sfx/Footsteps.mp3" id="4_uxb3k"]
+[ext_resource type="AudioStream" uid="uid://blavojvfa3afc" path="res://sfx/Footstep.mp3" id="5_l1kg3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7qdrt"]
 
@@ -18,9 +20,6 @@ light_size = 10.0
 light_specular = 0.338
 omni_range = 6.0
 omni_attenuation = 0.31864
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_oiv0q")
 
 [node name="movetimer" type="Timer" parent="."]
 wait_time = 0.6
@@ -44,6 +43,14 @@ collision_mask = 10
 shape = SubResource("BoxShape3D_7qdrt")
 
 [node name="HUD" parent="." instance=ExtResource("3_sirlu")]
+
+[node name="FootstepsNoise" parent="." instance=ExtResource("3_k0kid")]
+stream = ExtResource("4_uxb3k")
+volume_db = -7.0
+
+[node name="SingleFootstepNoise" parent="." instance=ExtResource("3_k0kid")]
+stream = ExtResource("5_l1kg3")
+volume_db = -7.0
 
 [connection signal="timeout" from="movetimer" to="." method="_on_movetimer_timeout"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

@@ -379,5 +379,6 @@ environment = SubResource("Environment_utbl0")
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_88ny0")
+volume_db = -6.0
 autoplay = true
 bus = &"music"

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ta0c2un1024f"]
 
 [ext_resource type="Theme" uid="uid://b2qjqoq6sqjr7" path="res://GUI/Themes/main_menu_theme.tres" id="1_iv2te"]
-[ext_resource type="Script" path="res://GUI/Menus/settings_menu.gd" id="2_bcwyl"]
-[ext_resource type="PackedScene" path="res://GUI/Menus/scene_change_button.tscn" id="2_xydjm"]
+[ext_resource type="PackedScene" uid="uid://d25efuelumf6x" path="res://GUI/Menus/scene_change_button.tscn" id="2_xydjm"]
+[ext_resource type="PackedScene" uid="uid://1khcq774i2ev" path="res://GUI/Menus/settings.tscn" id="3_wv7k7"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -12,31 +12,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_iv2te")
-script = ExtResource("2_bcwyl")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Settings" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_wv7k7")]
 layout_mode = 2
-alignment = 1
-
-[node name="MoveInstantlyButton" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Move Instantly"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -56,6 +46,6 @@ size_flags_horizontal = 3
 text = "Start Game
 
 "
-next_scene_path = "res://GUI/Menus/text_crawl.tscn"
+next_scene_path = "res://GUI/Menus/campaign_text_crawl.tscn"
 
-[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/MoveInstantlyButton" to="." method="_on_move_instantly_button_toggled"]
+[editable path="MarginContainer/VBoxContainer/Settings"]

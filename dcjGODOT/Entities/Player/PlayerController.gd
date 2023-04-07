@@ -72,7 +72,10 @@ func move(action_name):
 	if action_name == "move_backwards":
 		move_dir = -1
 	
-	$AudioStreamPlayer.play()
+	if Global.user_prefs["move_instantly"] == true:
+		$SingleFootstepNoise.start()
+	else:
+		$FootstepsNoise.start()
 	#separate method: get_parent().get_node("movetimer").start()
 	
 	var enemies = get_tree().get_nodes_in_group("enemies")

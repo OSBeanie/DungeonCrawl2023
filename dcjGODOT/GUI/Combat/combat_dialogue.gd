@@ -16,6 +16,7 @@ extends Control
 
 @export var response_duration = 10.0
 @onready var hud = get_parent()
+@export var combat_damage : float = 5.0
 
 # might need to refine this list to make it more transparent and fair.
 # antonym, synonym, tangentially related concept
@@ -167,10 +168,10 @@ func _on_response_chosen(responseString):
 	var response_index = dialogue_options[current_question].find(responseString)
 	print(responseString + " = " + response_types.keys()[response_index])
 	if response_index == response_types.SERAPH:
-		Global.player_stats["Seraph"] += 3
+		Global.player_stats["Seraph"] += combat_damage
 		popup_text.popup("Seraph")
 	elif response_index == response_types.SIANN:
-		Global.player_stats["Siann"] += 3
+		Global.player_stats["Siann"] += combat_damage
 		popup_text.popup("Siann")
 	elif response_index == response_types.NEUTRAL:
 		# convert/kill the NPC and end the encounter.

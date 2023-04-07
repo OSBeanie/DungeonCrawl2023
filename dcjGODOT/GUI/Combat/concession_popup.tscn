@@ -25,6 +25,7 @@ offset_right = 800.0
 offset_bottom = 400.0
 
 [node name="VBox" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 150)
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
@@ -40,6 +41,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "You make a good point. I think you're right.
 Thanks"
+autowrap_mode = 2
 
 [node name="ClosePopupButton" type="Button" parent="CenterContainer/VBox"]
 layout_mode = 2

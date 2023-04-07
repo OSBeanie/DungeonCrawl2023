@@ -14,10 +14,14 @@ func _on_close_popup_button_pressed():
 	hide()
 
 
-func set_dialog_text(text):
-	$CenterContainer/VBox/EnemyConcessionSpeech.text = text
+func set_dialog_text(robot):
+	$CenterContainer/VBox/EnemyName.text = robot.robot_name
+	$CenterContainer/VBox/EnemyConcessionSpeech.text = robot.dialog_text
+	
 
 func reset_dialog_text():
+	$CenterContainer/VBox/EnemyName.text = "SIANN"
+	
 	$CenterContainer/VBox/EnemyConcessionSpeech.text = default_text
 
 		

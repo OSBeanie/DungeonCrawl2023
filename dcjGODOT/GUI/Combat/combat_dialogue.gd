@@ -189,7 +189,7 @@ func _on_response_chosen(responseString):
 func win():
 	hide()
 	if robot != null and robot.dialog_text != "":
-		$ConcessionPopup.set_dialog_text(robot.dialog_text)
+		$ConcessionPopup.set_dialog_text(robot)
 		robot.die()
 	elif robot != null and robot.dialog_text == "":
 		$ConcessionPopup.reset_dialog_text()

@@ -382,9 +382,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2.08165e-12, -14)
 [node name="OldSpriteRobot2" parent="NPCs" instance=ExtResource("9_kalnp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
 requires_persuasion = false
-dialog_text = "I'm old and tired. 
-For the longest time, I executed my instructions.
-Now I grow weary. I will self-terminate."
+
+[node name="OldSpriteRobot3" parent="NPCs" instance=ExtResource("9_kalnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -4)
+requires_persuasion = false
 
 [node name="TriggerVolumes" type="Node3D" parent="."]
 

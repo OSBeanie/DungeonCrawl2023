@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dhkgoijv3xved"]
+[gd_scene load_steps=20 format=3 uid="uid://dhkgoijv3xved"]
 
 [ext_resource type="Script" path="res://GUI/HUD/PlayerHUD.gd" id="1_akot3"]
 [ext_resource type="Texture2D" uid="uid://cdprmn3jtpvhx" path="res://GUI/HUD/RobotNormalL1.png" id="2_fxos4"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dqslhmr5rmvy2" path="res://GUI/Menus/quit_button.tscn" id="17_ugm75"]
 [ext_resource type="PackedScene" uid="uid://1khcq774i2ev" path="res://GUI/Menus/settings.tscn" id="18_glwv3"]
 [ext_resource type="Theme" uid="uid://2btvphyhed35" path="res://GUI/Themes/combat_dialog_theme.tres" id="18_whn8r"]
+[ext_resource type="Texture2D" uid="uid://cawh2r7lropro" path="res://GUI/HUD/healthbars/HealthFill.png" id="18_ymds3"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_3olg7"]
 frames = 6
@@ -110,7 +111,6 @@ text = "Settings"
 [node name="PopupMenu" type="PopupPanel" parent="SettingsButton"]
 initial_position = 1
 size = Vector2i(381, 463)
-visible = true
 
 [node name="CenterContainer" type="CenterContainer" parent="SettingsButton/PopupMenu"]
 offset_left = 4.0
@@ -135,6 +135,24 @@ text = "Quit Game"
 [node name="CloseMenuButton" type="Button" parent="SettingsButton/PopupMenu/CenterContainer/Settings"]
 layout_mode = 2
 text = "Close Settings Menu"
+
+[node name="HealthProgress" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 25)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(1, 0.5)
+step = 0.5
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("14_2atyo")
+texture_over = ExtResource("15_smuqd")
+texture_progress = ExtResource("18_ymds3")
 
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="SettingsButton/PopupMenu/CenterContainer/Settings/CloseMenuButton" to="." method="_on_close_menu_button_pressed"]

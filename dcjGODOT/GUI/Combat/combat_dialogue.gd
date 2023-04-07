@@ -14,9 +14,10 @@ and the player takes damage after each exchange.
 
 extends Control
 
-@export var response_duration = 10.0
+@export var response_duration = 5.0
 @onready var hud = get_parent()
 @export var combat_damage : float = 5.0
+@export var hit_damage : float = 10.0
 
 # might need to refine this list to make it more transparent and fair.
 # antonym, synonym, tangentially related concept
@@ -189,14 +190,28 @@ func win():
 	var timer = get_tree().create_timer(1.0)
 	await timer.timeout
 	$HappyNoise.start()
-
+	%ResponseTimer.stop()
+	%ResponseTimer.set_wait_time(response_duration)
 	combat_resolved.emit()
 	
 
 
 
 func _on_response_timer_timeout():
+	hurt_player()
+
+func hurt_player():
+	# player didn't answer fast enough. take damage
+	var popup_text = load("res://GUI/Combat/damage_popup.tscn").instantiate()
+	add_child(popup_text)
+	popup_text.popup("Health")
 	$HurtNoise.start()
+	Global.player_stats["Health"] -= hit_damage
+	hud.update()
+
+	%ResponseTimer.set_wait_time(response_duration)
+	%ResponseTimer.start()
+	
 	
 func reset_timer():
 	%ResponseTimer.stop()

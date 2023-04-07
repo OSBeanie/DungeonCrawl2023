@@ -36,6 +36,6 @@ func _on_volume_control_drag_started():
 	#$AudioStreamPlayer.play()
 
 
-func _on_volume_control_drag_ended(value_changed):
+func _on_volume_control_drag_ended(_value_changed):
 	dragging = false
 	#$AudioStreamPlayer.stop()

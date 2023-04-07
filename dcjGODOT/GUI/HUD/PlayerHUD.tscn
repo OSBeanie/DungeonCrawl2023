@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhkgoijv3xved"]
+[gd_scene load_steps=20 format=3 uid="uid://dhkgoijv3xved"]
 
 [ext_resource type="Texture2D" uid="uid://b20tablone5hh" path="res://GUI/HUD/HUDBorder1.png" id="1_7avms"]
 [ext_resource type="Script" path="res://GUI/HUD/PlayerHUD.gd" id="1_akot3"]
@@ -13,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://ddajl757q5dgw" path="res://GUI/HUD/Reloading1.png" id="10_xjtd3"]
 [ext_resource type="Texture2D" uid="uid://3d4dnnr0a2c5" path="res://GUI/HUD/Border.png" id="11_ylh4p"]
 [ext_resource type="PackedScene" uid="uid://crayrdncdixhq" path="res://GUI/Combat/combat_dialogue.tscn" id="12_pdvwg"]
+[ext_resource type="Texture2D" uid="uid://nyomigvbbbbp" path="res://GUI/HUD/healthbars/HealthUnder.png" id="14_2atyo"]
+[ext_resource type="Texture2D" uid="uid://b6md4t4alga4q" path="res://GUI/HUD/healthbars/HealthOver.png" id="15_smuqd"]
+[ext_resource type="Texture2D" uid="uid://dtqkr8si6ql4h" path="res://GUI/HUD/healthbars/SeraphFill.png" id="16_awhsd"]
+[ext_resource type="Texture2D" uid="uid://dp1dyedwh2imt" path="res://GUI/HUD/healthbars/SianFill.png" id="17_e5sdb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ceqhe"]
 animations = [{
@@ -45,15 +49,32 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_3olg7"]
+frames = 6
+frame_0/texture = ExtResource("2_fxos4")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("3_7xwrv")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("4_dhbhy")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("5_s6an7")
+frame_3/duration = 0.1
+frame_4/texture = ExtResource("6_3goee")
+frame_4/duration = 0.1
+frame_5/texture = ExtResource("7_wxijs")
+frame_5/duration = 0.1
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_akot3")
 
 [node name="HudBorder1" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(548, 66)
 scale = Vector2(3, 3)
 texture = ExtResource("1_7avms")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(558, 69.9998)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ceqhe")
@@ -61,21 +82,67 @@ animation = &"new_animation"
 script = ExtResource("8_f16w8")
 
 [node name="Health1" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(415, 61)
 scale = Vector2(3, 3)
 texture = ExtResource("9_yl3yj")
 
 [node name="Reloading1" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(670, 68)
 scale = Vector2(3, 3)
 texture = ExtResource("10_xjtd3")
 
-[node name="Border" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(548, 68)
-rotation = 3.14159
-scale = Vector2(3, 3)
-texture = ExtResource("11_ylh4p")
-
 [node name="CombatDialogue" parent="." instance=ExtResource("12_pdvwg")]
 visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(450, 150)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/margin_top = -32
+
+[node name="Background" type="TextureRect" parent="MarginContainer"]
+z_index = -1
+layout_mode = 2
+texture = ExtResource("11_ylh4p")
+expand_mode = 1
+flip_v = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SeraphProgress" type="TextureProgressBar" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+value = 50.0
+fill_mode = 1
+texture_under = ExtResource("14_2atyo")
+texture_over = ExtResource("15_smuqd")
+texture_progress = ExtResource("16_awhsd")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.55
+texture = SubResource("AnimatedTexture_3olg7")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="SianProgress" type="TextureProgressBar" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+value = 50.0
+texture_under = ExtResource("14_2atyo")
+texture_over = ExtResource("15_smuqd")
+texture_progress = ExtResource("17_e5sdb")

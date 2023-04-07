@@ -15,7 +15,7 @@ and the player takes damage after each exchange.
 extends Control
 
 @export var response_duration = 20.0
-
+@onready var hud = get_parent()
 
 # might need to refine this list to make it more transparent and fair.
 # antonym, synonym, tangentially related concept
@@ -159,19 +159,27 @@ func generate_dialog():
 	%ResponseTimer.start()
 
 func _on_response_chosen(responseString):
+	var popup_text = load("res://GUI/Combat/damage_popup.tscn").instantiate()
+	add_child(popup_text)
+	
 	# need to strip off the first 3 characters first.
 	responseString = responseString.right(-3)
 	var response_index = dialogue_options[current_question].find(responseString)
 	print(responseString + " = " + response_types.keys()[response_index])
 	if response_index == response_types.SERAPH:
 		Global.player_stats["Seraph"] += 1
+		popup_text.popup("Seraph")
 	elif response_index == response_types.SIANN:
 		Global.player_stats["Siann"] += 1
+		popup_text.popup("Siann")
 	elif response_index == response_types.NEUTRAL:
 		# convert/kill the NPC and end the encounter.
-		
 		win()
 		return
+	
+	if hud.has_method("update"):
+		hud.update()
+	
 	generate_dialog()
 
 func win():

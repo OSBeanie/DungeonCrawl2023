@@ -3,7 +3,7 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	update()
 
 
 func initiate_melee_combat():
@@ -11,3 +11,8 @@ func initiate_melee_combat():
 	$CombatDialogue.show()
 	$CombatDialogue.generate_dialog()
 
+func update():
+	%SeraphProgress.value = Global.player_stats["Seraph"]
+	%SianProgress.value = Global.player_stats["Siann"]
+	print("Seraph ", Global.player_stats["Seraph"])
+	print("Siann ", Global.player_stats["Siann"])

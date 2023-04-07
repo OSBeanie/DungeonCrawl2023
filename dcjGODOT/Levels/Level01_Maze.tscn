@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cxmfur8buqvu1"]
+[gd_scene load_steps=33 format=3 uid="uid://cxmfur8buqvu1"]
 
 [ext_resource type="PackedScene" uid="uid://dt2jm2p7aa1ln" path="res://Entities/Player/player.tscn" id="1_kam2j"]
 [ext_resource type="Script" path="res://Levels/Level01_Maze.gd" id="1_ky7s6"]
@@ -6,7 +6,9 @@
 [ext_resource type="MeshLibrary" uid="uid://b1whp0sw7g7bp" path="res://Levels/MeshLibrary02_floors.tres" id="3_is2sv"]
 [ext_resource type="Texture2D" uid="uid://docmno7lohqf2" path="res://Levels/Materials/Amazing1_RoboticDungeon.png" id="3_t48rj"]
 [ext_resource type="PackedScene" uid="uid://bud8au2ek1k2n" path="res://Objects/trigger_volume_stairs.tscn" id="7_wjohk"]
+[ext_resource type="PackedScene" uid="uid://bcbdpmjkdjpnt" path="res://Entities/NPCs/old_sprite_bot.tscn" id="9_kalnp"]
 [ext_resource type="AudioStream" uid="uid://d1j1lh2sgbu2k" path="res://music/Music_Basic.mp3" id="10_88ny0"]
+[ext_resource type="PackedScene" uid="uid://c65p31byu7drk" path="res://Objects/pickable.tscn" id="11_6af5s"]
 [ext_resource type="Script" path="res://DesignNotes.gd" id="14_8apfw"]
 [ext_resource type="PackedScene" uid="uid://xovgihdkj5it" path="res://Entities/NPCs/ProphetBot.tscn" id="16_kjgl7"]
 [ext_resource type="PackedScene" uid="uid://dlyqx2p43cq00" path="res://Entities/NPCs/Robot01.tscn" id="17_lknes"]
@@ -326,6 +328,15 @@ transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 2.08165e
 [node name="ProphetRobot2" parent="NPCs" instance=ExtResource("16_kjgl7")]
 transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 4, 2.08165e-12, -22)
 
+[node name="ProphetRobot3" parent="NPCs" instance=ExtResource("16_kjgl7")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 28, 2.08165e-12, -18)
+
+[node name="ProphetRobot4" parent="NPCs" instance=ExtResource("16_kjgl7")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 40, 2.08165e-12, -18)
+
+[node name="ProphetRobot5" parent="NPCs" instance=ExtResource("16_kjgl7")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 42, 2.08165e-12, -30)
+
 [node name="Robot" parent="NPCs" instance=ExtResource("17_lknes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.08165e-12, -10)
 
@@ -368,10 +379,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2.08165e-12, -2)
 [node name="Robot8" parent="NPCs" instance=ExtResource("17_lknes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2.08165e-12, -14)
 
+[node name="OldSpriteRobot2" parent="NPCs" instance=ExtResource("9_kalnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
+requires_persuasion = false
+dialog_text = "I'm old and tired. 
+For the longest time, I executed my instructions.
+Now I grow weary. I will self-terminate."
+
 [node name="TriggerVolumes" type="Node3D" parent="."]
 
 [node name="TriggerVolumeStairs" parent="TriggerVolumes" instance=ExtResource("7_wjohk")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 42, 0, -34)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 42, 0, -36)
 next_scene = "res://Levels/Level02_DataCenter.tscn"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -382,3 +400,41 @@ stream = ExtResource("10_88ny0")
 volume_db = -6.0
 autoplay = true
 bus = &"music"
+
+[node name="Collectibles" type="Node3D" parent="."]
+
+[node name="Pickable" parent="Collectibles" instance=ExtResource("11_6af5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -14)
+
+[node name="Pickable2" parent="Collectibles" instance=ExtResource("11_6af5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
+
+[node name="Pickable3" parent="Collectibles" instance=ExtResource("11_6af5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -2)
+
+[node name="Pickable4" parent="Collectibles" instance=ExtResource("11_6af5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 2)
+
+[node name="Pickable7" parent="Collectibles" instance=ExtResource("11_6af5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -36)
+
+[node name="Pickable9" parent="Collectibles" instance=ExtResource("11_6af5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -10)
+
+[node name="Pickable12" parent="Collectibles" instance=ExtResource("11_6af5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -18)
+
+[node name="Pickable10" parent="Collectibles" instance=ExtResource("11_6af5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -34)
+
+[node name="Pickable11" parent="Collectibles" instance=ExtResource("11_6af5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -38)
+
+[node name="Pickable8" parent="Collectibles" instance=ExtResource("11_6af5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -36)
+
+[node name="Pickable5" parent="Collectibles" instance=ExtResource("11_6af5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0)
+
+[node name="Pickable6" parent="Collectibles" instance=ExtResource("11_6af5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, 0)

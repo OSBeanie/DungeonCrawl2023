@@ -2,6 +2,9 @@ extends CharacterBody3D
 
 @export var track_player :bool = true
 
+@export var requires_persuasion : bool = true
+
+@export_multiline var dialog_text = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

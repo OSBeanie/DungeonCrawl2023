@@ -19,6 +19,8 @@ extends Control
 @export var combat_damage : float = 5.0
 @export var hit_damage : float = 10.0
 
+var robot
+
 # might need to refine this list to make it more transparent and fair.
 # antonym, synonym, tangentially related concept
 
@@ -167,7 +169,7 @@ func _on_response_chosen(responseString):
 	# need to strip off the first 3 characters first.
 	responseString = responseString.right(-3)
 	var response_index = dialogue_options[current_question].find(responseString)
-	print(responseString + " = " + response_types.keys()[response_index])
+	#print(responseString + " = " + response_types.keys()[response_index])
 	if response_index == response_types.SERAPH:
 		Global.player_stats["Seraph"] += combat_damage
 		popup_text.popup("Seraph")
@@ -186,13 +188,18 @@ func _on_response_chosen(responseString):
 
 func win():
 	hide()
+	if robot != null and robot.dialog_text != "":
+		$ConcessionPopup.set_dialog_text(robot.dialog_text)
+		robot.die()
+	elif robot != null and robot.dialog_text == "":
+		$ConcessionPopup.reset_dialog_text()
 	$ConcessionPopup.popup_centered_ratio(0.8)
 	var timer = get_tree().create_timer(1.0)
 	await timer.timeout
 	$HappyNoise.start()
 	%ResponseTimer.stop()
 	%ResponseTimer.set_wait_time(response_duration)
-	combat_resolved.emit()
+	combat_resolved.emit(robot)
 	
 
 

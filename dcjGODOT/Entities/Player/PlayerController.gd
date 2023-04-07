@@ -5,7 +5,7 @@ var step_distance = 1.0
 var moving = false
 var in_melee_combat : bool = false
 var action_queue : Array = []
-
+@onready var hud = $HUD
 
 signal died
 signal finished_level
@@ -58,8 +58,12 @@ func take_action(action_name):
 		if !$forwardRayCast3D.is_colliding():
 			move(action_name)
 		elif "robot" in $forwardRayCast3D.get_collider().name.to_lower():
-			#$movetimer.start()
-			initiate_melee_combat()
+			var robot = $forwardRayCast3D.get_collider()
+			if robot.get("requires_persuasion") == true:
+				initiate_melee_combat(robot)
+			else:
+				initiate_monologue(robot)
+
 	elif action_name == "move_backwards":
 		# don't initiate combat unless you're facing the enemy
 		# but you walls and robots still block you
@@ -95,20 +99,20 @@ func move(action_name):
 		tween.tween_property(self, "position", position + (2.0*dirVector), .2)
 
 
-func take_damage(damage): # for Beanie
-	# subtract from health, play a noise, camera shake, possibly die
+func take_damage(_damage): # for Beanie
+	# This is handled in hud
 	pass
 
+func initiate_monologue(robot):
+	$HUD.initiate_monologue(robot)
 
-func initiate_melee_combat():
+func initiate_melee_combat(robot):
 	in_melee_combat = true
-	$HUD.initiate_melee_combat()
+	$HUD.initiate_melee_combat(robot)
 
-func _on_melee_combat_resolved():
-	var NPC = $forwardRayCast3D.get_collider()
-
-	if "robot" in NPC.name.to_lower() and NPC.has_method("die"):
-		NPC.die()
+func _on_melee_combat_resolved(robot):
+	if is_instance_valid(robot):
+		robot.die()
 	in_melee_combat = false
 
 

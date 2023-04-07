@@ -6,12 +6,18 @@ func _ready():
 	$SettingsButton/PopupMenu.hide()
 	update()
 	
+func initiate_monologue(robot):
+	var combat = $CombatDialogue
+	combat.robot = robot
+	combat.win()
+	
 
-
-func initiate_melee_combat():
-	$CombatDialogue.reset_timer()
-	$CombatDialogue.show()
-	$CombatDialogue.generate_dialog()
+func initiate_melee_combat(robot):
+	var combat = $CombatDialogue
+	combat.robot = robot
+	combat.reset_timer()
+	combat.show()
+	combat.generate_dialog()
 
 func update():
 	var seraph = Global.player_stats["Seraph"]

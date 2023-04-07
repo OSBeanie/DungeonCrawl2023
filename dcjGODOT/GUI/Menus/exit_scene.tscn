@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://npbkavew4ytr"]
 
-[ext_resource type="PackedScene" path="res://GUI/Menus/campaign_text_crawl.tscn" id="1_72skj"]
+[ext_resource type="PackedScene" uid="uid://ma1e43e6l5ot" path="res://GUI/Menus/campaign_text_crawl.tscn" id="1_72skj"]
 [ext_resource type="Script" path="res://GUI/Menus/exit_scene.gd" id="2_kc2uf"]
 [ext_resource type="PackedScene" path="res://GUI/Menus/scene_change_button.tscn" id="3_nyt1l"]
 [ext_resource type="PackedScene" uid="uid://dqslhmr5rmvy2" path="res://GUI/Menus/quit_button.tscn" id="4_qiec4"]
@@ -48,6 +48,7 @@ next_scene_path = "res://GUI/Menus/main_menu.tscn"
 layout_mode = 2
 text = "Credits
 "
+next_scene_path = "res://GUI/Menus/credits.tscn"
 
 [node name="QuitButton" parent="VBoxContainer/HBoxContainer2" index="2" instance=ExtResource("4_qiec4")]
 layout_mode = 2

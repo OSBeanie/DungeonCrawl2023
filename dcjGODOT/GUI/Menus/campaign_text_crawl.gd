@@ -43,9 +43,28 @@ func _on_advance_dialog_button_pressed():
 
 
 	
+func hide_advance_button():
+	$VBoxContainer/MarginContainer2/HBoxContainer/AdvanceDialogButton.hide()
 
+func show_advance_button():
+	$VBoxContainer/MarginContainer2/HBoxContainer/AdvanceDialogButton.show()
+
+func hide_rewind_button():
+	$VBoxContainer/MarginContainer2/HBoxContainer/RewindDialogButton.hide()
+	
+func show_rewind_button():
+	$VBoxContainer/MarginContainer2/HBoxContainer/RewindDialogButton.show()
 
 func _on_tab_container_tab_changed(tab):
 	var textbox = tab_container.get_child(tab)
 	if textbox.has_method("reset"):
 		textbox.reset()
+	if tab == tab_container.get_child_count():
+		hide_advance_button()
+	else:
+		show_advance_button()
+	
+	if tab == 0:
+		hide_rewind_button()
+	else:
+		show_rewind_button()

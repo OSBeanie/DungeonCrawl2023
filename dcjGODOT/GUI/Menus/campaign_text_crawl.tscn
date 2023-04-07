@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://ma1e43e6l5ot"]
 
-[ext_resource type="PackedScene" uid="uid://c4aujqdr84ff7" path="res://GUI/Menus/scene_change_button.tscn" id="1_6sxpi"]
+[ext_resource type="PackedScene" path="res://GUI/Menus/scene_change_button.tscn" id="1_6sxpi"]
 [ext_resource type="Script" path="res://GUI/Menus/campaign_text_crawl.gd" id="1_tmtlb"]
 [ext_resource type="Theme" uid="uid://di16ft6uelg44" path="res://GUI/Themes/campaign_text_crawl_theme.tres" id="1_twdel"]
 [ext_resource type="PackedScene" uid="uid://cxmfur8buqvu1" path="res://Levels/Level01_Maze.tscn" id="2_ouuci"]

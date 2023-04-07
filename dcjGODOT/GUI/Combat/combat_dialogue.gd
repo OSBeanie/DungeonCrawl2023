@@ -132,8 +132,8 @@ signal combat_resolved
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	generate_dialog()
+	$ConcessionPopup.hide()
+	#generate_dialog()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -169,12 +169,21 @@ func _on_response_chosen(responseString):
 		Global.player_stats["Siann"] += 1
 	elif response_index == response_types.NEUTRAL:
 		# convert/kill the NPC and end the encounter.
-		hide()
-		combat_resolved.emit()
-		$HappyNoise.start()
 		
-
+		win()
+		return
 	generate_dialog()
+
+func win():
+	hide()
+	$ConcessionPopup.popup_centered_ratio(0.8)
+	var timer = get_tree().create_timer(3.0)
+	await timer.timeout
+	$HappyNoise.start()
+
+	combat_resolved.emit()
+	
+
 
 
 func _on_response_timer_timeout():

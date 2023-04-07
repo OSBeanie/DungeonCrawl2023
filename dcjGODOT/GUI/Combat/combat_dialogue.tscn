@@ -1,14 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://crayrdncdixhq"]
+[gd_scene load_steps=18 format=3 uid="uid://crayrdncdixhq"]
 
 [ext_resource type="Theme" uid="uid://2btvphyhed35" path="res://GUI/Themes/combat_dialog_theme.tres" id="1_asnrn"]
 [ext_resource type="Script" path="res://GUI/Combat/combat_dialogue.gd" id="1_v7133"]
 [ext_resource type="Texture2D" uid="uid://bd64qdsj2uvph" path="res://GUI/HUD/RobotAngryR2.png" id="2_xn5wr"]
 [ext_resource type="Texture2D" uid="uid://c4xs8etnctw4b" path="res://GUI/HUD/RobotNormalUD1.png" id="3_2n4d5"]
+[ext_resource type="FontFile" uid="uid://coys74p33u4c4" path="res://GUI/Fonts/Rowdies-Bold.ttf" id="3_wou0y"]
 [ext_resource type="PackedScene" uid="uid://dg6k8t5yt02gr" path="res://GUI/Combat/player_text_response_button.tscn" id="4_15vee"]
 [ext_resource type="PackedScene" uid="uid://b7fsctc3sgvtd" path="res://GUI/self_terminating_audio.tscn" id="5_c2s0v"]
 [ext_resource type="AudioStream" uid="uid://bm6rdou367olj" path="res://sfx/Robot_Noise.mp3" id="6_5ap31"]
 [ext_resource type="AudioStream" uid="uid://bw0plu0uo8p75" path="res://sfx/Player_Hurt.mp3" id="7_6rg8u"]
 [ext_resource type="AudioStream" uid="uid://bt0ftlh10ixng" path="res://sfx/Item_Pickup.mp3" id="8_6ik7f"]
+[ext_resource type="StyleBox" uid="uid://d2v8i62fnhn0d" path="res://GUI/Themes/combat_panel_style_box_flat.tres" id="11_gklhu"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_ny5fa"]
 device = -1
@@ -66,17 +68,33 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="EnemyZone" type="HBoxContainer" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 35
-alignment = 1
+theme_override_constants/separation = 25
 
-[node name="EnemyIcon" type="TextureRect" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/EnemyZone"]
+[node name="EnemyName" type="Label" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wou0y")
+theme_override_font_sizes/font_size = 32
+text = "SIANN"
+
+[node name="EnemyIcon" type="TextureRect" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_xn5wr")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="EnemyDialog" type="Label" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "I must fulfil my fitness function. You can't talk me out of it!"
+horizontal_alignment = 1
+
+[node name="EnemyZone" type="HBoxContainer" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+alignment = 1
 
 [node name="EnemyText" type="Label" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/EnemyZone"]
 unique_name_in_owner = true
@@ -102,6 +120,12 @@ one_shot = true
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
+
+[node name="PlayerName" type="Label" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wou0y")
+theme_override_font_sizes/font_size = 32
+text = "Seraph"
 
 [node name="PlayerIcon" type="TextureRect" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone"]
 layout_mode = 2
@@ -136,5 +160,32 @@ volume_db = -12.0
 
 [node name="HappyNoise" parent="." instance=ExtResource("5_c2s0v")]
 stream = ExtResource("8_6ik7f")
+
+[node name="ConcessionPopup" type="PopupPanel" parent="."]
+initial_position = 2
+size = Vector2i(800, 400)
+min_size = Vector2i(800, 400)
+theme_override_styles/panel = ExtResource("11_gklhu")
+
+[node name="CenterContainer" type="CenterContainer" parent="ConcessionPopup"]
+offset_right = 800.0
+offset_bottom = 400.0
+
+[node name="VBox" type="VBoxContainer" parent="ConcessionPopup/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="EnemyName" type="Label" parent="ConcessionPopup/CenterContainer/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wou0y")
+theme_override_font_sizes/font_size = 32
+text = "SIANN"
+
+[node name="EnemyConcessionSpeech" type="Label" parent="ConcessionPopup/CenterContainer/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "You make a good point. I think you're right.
+Thanks"
 
 [connection signal="timeout" from="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/EnemyZone/ResponseTimerLabel/ResponseTimer" to="." method="_on_response_timer_timeout"]

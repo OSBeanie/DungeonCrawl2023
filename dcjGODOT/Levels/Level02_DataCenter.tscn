@@ -11,12 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://bcbdpmjkdjpnt" path="res://Entities/NPCs/old_sprite_bot.tscn" id="8_xttgb"]
 [ext_resource type="PackedScene" uid="uid://ucfjcqaipujs" path="res://Entities/NPCs/rosie_robot_01.tscn" id="9_ydisw"]
 
-[sub_resource type="Gradient" id="Gradient_j00v7"]
+[sub_resource type="Gradient" id="Gradient_c77ml"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.398833, 0.762646)
 colors = PackedColorArray(0.23906, 0.43761, 0.780465, 1, 0.13977, 0.0888653, 0.226832, 1, 0.611564, 0.448267, 0.664788, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ima4t"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sgt5j"]
 frequency = 0.3
 fractal_type = 0
 fractal_octaves = 1
@@ -28,22 +28,22 @@ fractal_weighted_strength = 1.0
 width = 1024
 height = 1024
 seamless = true
-color_ramp = SubResource("Gradient_j00v7")
-noise = SubResource("FastNoiseLite_ima4t")
+color_ramp = SubResource("Gradient_c77ml")
+noise = SubResource("FastNoiseLite_sgt5j")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u85vi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uyyfn"]
 albedo_color = Color(0, 0.768627, 0.588235, 1)
 albedo_texture = SubResource("NoiseTexture2D_v6uvq")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qsw5e"]
-material = SubResource("StandardMaterial3D_u85vi")
+material = SubResource("StandardMaterial3D_uyyfn")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muju4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bs0e4"]
 albedo_color = Color(0.74902, 0.537255, 0.870588, 1)
 albedo_texture = SubResource("NoiseTexture2D_v6uvq")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ffbh7"]
-material = SubResource("StandardMaterial3D_muju4")
+material = SubResource("StandardMaterial3D_bs0e4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjewu"]
 render_priority = 0

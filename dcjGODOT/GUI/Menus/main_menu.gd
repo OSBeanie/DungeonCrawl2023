@@ -18,3 +18,7 @@ func _on_button_mouse_entered():
 func _on_button_mouse_exited():
 	%RobotTexture.texture = load(robot_textures["normal"])
 
+
+
+func _on_button_focus_entered():
+	$HoverNoise.start()

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bc8tifgyg8dk6" path="res://Levels/grid_map_01.tscn" id="2_bu3lj"]
 [ext_resource type="Shader" uid="uid://ci711oiokrhtk" path="res://Levels/Materials/light_shader.tres" id="4_acjsf"]
 [ext_resource type="Script" path="res://DesignNotes.gd" id="5_x2ig0"]
-[ext_resource type="PackedScene" path="res://Entities/NPCs/ProphetBot.tscn" id="6_nptwp"]
+[ext_resource type="PackedScene" uid="uid://chfsxjdwbir7g" path="res://Entities/NPCs/ProphetBot.tscn" id="6_nptwp"]
 [ext_resource type="PackedScene" uid="uid://dlyqx2p43cq00" path="res://Entities/NPCs/Robot01.tscn" id="7_ctgii"]
 [ext_resource type="PackedScene" uid="uid://c2aad586v73vn" path="res://Entities/NPCs/fork_robot.tscn" id="7_fabim"]
 [ext_resource type="PackedScene" uid="uid://eld686ck202n" path="res://Objects/trigger_volume_exit.tscn" id="8_ra3cj"]
@@ -115,6 +115,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 
 
 [node name="TriggerVolumeExit" parent="TriggerVolumes" instance=ExtResource("8_ra3cj")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 22.9426, 0, -18.2334)
+next_scene = "res://GUI/Menus/exit_scene.tscn"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_utbl0")

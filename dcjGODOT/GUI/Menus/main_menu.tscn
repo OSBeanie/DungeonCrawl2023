@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://2uxqbfau7e4b"]
+[gd_scene load_steps=13 format=3 uid="uid://7143f14wlopi"]
 
 [ext_resource type="Theme" uid="uid://b2qjqoq6sqjr7" path="res://GUI/Themes/main_menu_theme.tres" id="1_i55a5"]
 [ext_resource type="Script" path="res://GUI/Menus/main_menu.gd" id="2_fomf0"]
 [ext_resource type="Texture2D" uid="uid://cv0g1j4opjcfa" path="res://GUI/HUD/RobotHappyR1.png" id="2_ynk0e"]
-[ext_resource type="PackedScene" path="res://GUI/Menus/scene_change_button.tscn" id="3_gc5bx"]
+[ext_resource type="PackedScene" uid="uid://d25efuelumf6x" path="res://GUI/Menus/scene_change_button.tscn" id="3_gc5bx"]
 [ext_resource type="FontFile" uid="uid://coys74p33u4c4" path="res://GUI/Fonts/Rowdies-Bold.ttf" id="3_mu73j"]
 [ext_resource type="PackedScene" uid="uid://cxmfur8buqvu1" path="res://Levels/Level01_Maze.tscn" id="4_66srr"]
 [ext_resource type="AudioStream" uid="uid://d1j1lh2sgbu2k" path="res://music/Music_Basic.mp3" id="4_77si5"]
@@ -93,12 +93,12 @@ text = "Skip to the Action
 "
 next_scene_packed = ExtResource("4_66srr")
 
-[node name="QuickPlayButton2" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_gc5bx")]
+[node name="SettingsButton" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_gc5bx")]
 layout_mode = 2
 text = "Settings"
 next_scene_packed = ExtResource("9_botgk")
 
-[node name="SceneChangeButton" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_gc5bx")]
+[node name="CreditsButton" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_gc5bx")]
 layout_mode = 2
 text = "Credits
 "
@@ -107,9 +107,15 @@ next_scene_packed = ExtResource("10_m8sth")
 [node name="HoverNoise" parent="." instance=ExtResource("9_vrqr0")]
 stream = ExtResource("10_5f7hb")
 
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/StartCampaignButton" to="." method="_on_button_focus_entered"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/StartCampaignButton" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/StartCampaignButton" to="." method="_on_button_mouse_exited"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/QuickPlayButton" to="." method="_on_button_focus_entered"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/QuickPlayButton" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/QuickPlayButton" to="." method="_on_button_mouse_exited"]
-[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/QuickPlayButton2" to="." method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/QuickPlayButton2" to="." method="_on_button_mouse_exited"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_button_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_button_mouse_exited"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_button_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_button_mouse_exited"]

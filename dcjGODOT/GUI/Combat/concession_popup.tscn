@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://optqt3gdkvld"]
+
+[ext_resource type="StyleBox" uid="uid://d2v8i62fnhn0d" path="res://GUI/Themes/combat_panel_style_box_flat.tres" id="1_ssxjk"]
+[ext_resource type="Script" path="res://GUI/Combat/concession_popup.gd" id="2_2fx8p"]
+[ext_resource type="FontFile" uid="uid://coys74p33u4c4" path="res://GUI/Fonts/Rowdies-Bold.ttf" id="2_6biv3"]
+
+[node name="ConcessionPopup" type="PopupPanel"]
+initial_position = 2
+size = Vector2i(800, 400)
+visible = true
+min_size = Vector2i(800, 400)
+theme_override_styles/panel = ExtResource("1_ssxjk")
+script = ExtResource("2_2fx8p")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 800.0
+offset_bottom = 400.0
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="EnemyName" type="Label" parent="CenterContainer/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6biv3")
+theme_override_font_sizes/font_size = 32
+text = "SIANN"
+
+[node name="EnemyConcessionSpeech" type="Label" parent="CenterContainer/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "You make a good point. I think you're right.
+Thanks"
+
+[node name="ClosePopupButton" type="Button" parent="CenterContainer/VBox"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="CenterContainer/VBox/ClosePopupButton" to="." method="_on_close_popup_button_pressed"]

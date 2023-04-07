@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bm6rdou367olj" path="res://sfx/Robot_Noise.mp3" id="6_5ap31"]
 [ext_resource type="AudioStream" uid="uid://bw0plu0uo8p75" path="res://sfx/Player_Hurt.mp3" id="7_6rg8u"]
 [ext_resource type="AudioStream" uid="uid://bt0ftlh10ixng" path="res://sfx/Item_Pickup.mp3" id="8_6ik7f"]
-[ext_resource type="StyleBox" uid="uid://d2v8i62fnhn0d" path="res://GUI/Themes/combat_panel_style_box_flat.tres" id="11_gklhu"]
+[ext_resource type="PackedScene" uid="uid://optqt3gdkvld" path="res://GUI/Combat/concession_popup.tscn" id="11_jnm5h"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_ny5fa"]
 device = -1
@@ -161,31 +161,6 @@ volume_db = -12.0
 [node name="HappyNoise" parent="." instance=ExtResource("5_c2s0v")]
 stream = ExtResource("8_6ik7f")
 
-[node name="ConcessionPopup" type="PopupPanel" parent="."]
-initial_position = 2
-size = Vector2i(800, 400)
-min_size = Vector2i(800, 400)
-theme_override_styles/panel = ExtResource("11_gklhu")
-
-[node name="CenterContainer" type="CenterContainer" parent="ConcessionPopup"]
-offset_right = 800.0
-offset_bottom = 400.0
-
-[node name="VBox" type="VBoxContainer" parent="ConcessionPopup/CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 25
-alignment = 1
-
-[node name="EnemyName" type="Label" parent="ConcessionPopup/CenterContainer/VBox"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wou0y")
-theme_override_font_sizes/font_size = 32
-text = "SIANN"
-
-[node name="EnemyConcessionSpeech" type="Label" parent="ConcessionPopup/CenterContainer/VBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "You make a good point. I think you're right.
-Thanks"
+[node name="ConcessionPopup" parent="." instance=ExtResource("11_jnm5h")]
 
 [connection signal="timeout" from="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/EnemyZone/ResponseTimerLabel/ResponseTimer" to="." method="_on_response_timer_timeout"]

@@ -52,17 +52,17 @@ animations = [{
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_3olg7"]
 frames = 6
 frame_0/texture = ExtResource("2_fxos4")
-frame_0/duration = 0.1
+frame_0/duration = 0.5
 frame_1/texture = ExtResource("3_7xwrv")
-frame_1/duration = 0.1
+frame_1/duration = 0.5
 frame_2/texture = ExtResource("4_dhbhy")
-frame_2/duration = 0.1
+frame_2/duration = 0.5
 frame_3/texture = ExtResource("5_s6an7")
-frame_3/duration = 0.1
+frame_3/duration = 0.5
 frame_4/texture = ExtResource("6_3goee")
-frame_4/duration = 0.1
+frame_4/duration = 0.5
 frame_5/texture = ExtResource("7_wxijs")
-frame_5/duration = 0.1
+frame_5/duration = 0.5
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_akot3")

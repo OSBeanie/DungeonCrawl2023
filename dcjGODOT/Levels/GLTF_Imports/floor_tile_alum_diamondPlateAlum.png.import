@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c16xt06dv1dck"
+path.s3tc="res://.godot/imported/floor_tile_alum_diamondPlateAlum.png-fbfda076344338d86c8530aa2e8d86ea.s3tc.ctex"
 path.etc2="res://.godot/imported/floor_tile_alum_diamondPlateAlum.png-fbfda076344338d86c8530aa2e8d86ea.etc2.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Levels/GLTF_Imports/floor_tile_alum_diamondPlateAlum.png"
-dest_files=["res://.godot/imported/floor_tile_alum_diamondPlateAlum.png-fbfda076344338d86c8530aa2e8d86ea.etc2.ctex"]
+dest_files=["res://.godot/imported/floor_tile_alum_diamondPlateAlum.png-fbfda076344338d86c8530aa2e8d86ea.s3tc.ctex", "res://.godot/imported/floor_tile_alum_diamondPlateAlum.png-fbfda076344338d86c8530aa2e8d86ea.etc2.ctex"]
 
 [params]
 

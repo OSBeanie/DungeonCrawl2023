@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cxmfur8buqvu1"]
+[gd_scene load_steps=31 format=3 uid="uid://cxmfur8buqvu1"]
 
 [ext_resource type="PackedScene" uid="uid://dt2jm2p7aa1ln" path="res://Entities/Player/player.tscn" id="1_kam2j"]
 [ext_resource type="Script" path="res://Levels/Level01_Maze.gd" id="1_ky7s6"]
@@ -6,6 +6,7 @@
 [ext_resource type="MeshLibrary" uid="uid://b1whp0sw7g7bp" path="res://Levels/MeshLibrary02_floors.tres" id="3_is2sv"]
 [ext_resource type="Texture2D" uid="uid://docmno7lohqf2" path="res://Levels/Materials/Amazing1_RoboticDungeon.png" id="3_t48rj"]
 [ext_resource type="PackedScene" uid="uid://bud8au2ek1k2n" path="res://Objects/trigger_volume_stairs.tscn" id="7_wjohk"]
+[ext_resource type="AudioStream" uid="uid://d1j1lh2sgbu2k" path="res://music/Music_Basic.mp3" id="10_88ny0"]
 [ext_resource type="Script" path="res://DesignNotes.gd" id="14_8apfw"]
 [ext_resource type="PackedScene" uid="uid://xovgihdkj5it" path="res://Entities/NPCs/ProphetBot.tscn" id="16_kjgl7"]
 [ext_resource type="PackedScene" uid="uid://dlyqx2p43cq00" path="res://Entities/NPCs/Robot01.tscn" id="17_lknes"]
@@ -375,3 +376,8 @@ next_scene = "res://Levels/Level02_DataCenter.tscn"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_utbl0")
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_88ny0")
+autoplay = true
+bus = &"music"

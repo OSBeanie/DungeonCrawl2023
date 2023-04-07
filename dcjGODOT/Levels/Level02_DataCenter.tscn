@@ -1,15 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://erf5h7d5cysq"]
+[gd_scene load_steps=24 format=3 uid="uid://erf5h7d5cysq"]
 
 [ext_resource type="PackedScene" uid="uid://dt2jm2p7aa1ln" path="res://Entities/Player/player.tscn" id="1_t2arl"]
 [ext_resource type="PackedScene" uid="uid://bc8tifgyg8dk6" path="res://Levels/grid_map_01.tscn" id="2_bu3lj"]
 [ext_resource type="Shader" uid="uid://ci711oiokrhtk" path="res://Levels/Materials/light_shader.tres" id="4_acjsf"]
 [ext_resource type="Script" path="res://DesignNotes.gd" id="5_x2ig0"]
-[ext_resource type="PackedScene" path="res://Entities/NPCs/ProphetBot.tscn" id="6_nptwp"]
+[ext_resource type="PackedScene" uid="uid://xovgihdkj5it" path="res://Entities/NPCs/ProphetBot.tscn" id="6_nptwp"]
 [ext_resource type="PackedScene" uid="uid://dlyqx2p43cq00" path="res://Entities/NPCs/Robot01.tscn" id="7_ctgii"]
 [ext_resource type="PackedScene" uid="uid://c2aad586v73vn" path="res://Entities/NPCs/fork_robot.tscn" id="7_fabim"]
 [ext_resource type="PackedScene" uid="uid://eld686ck202n" path="res://Objects/trigger_volume_exit.tscn" id="8_ra3cj"]
 [ext_resource type="PackedScene" uid="uid://bcbdpmjkdjpnt" path="res://Entities/NPCs/old_sprite_bot.tscn" id="8_xttgb"]
 [ext_resource type="PackedScene" uid="uid://ucfjcqaipujs" path="res://Entities/NPCs/rosie_robot_01.tscn" id="9_ydisw"]
+[ext_resource type="AudioStream" uid="uid://dsg0ygnnjg2m5" path="res://music/Music_Corrupted.mp3" id="11_oksh2"]
 
 [sub_resource type="Gradient" id="Gradient_c77ml"]
 interpolation_mode = 1
@@ -176,3 +177,7 @@ next_scene = "res://GUI/Menus/exit_scene.tscn"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_utbl0")
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_oksh2")
+autoplay = true

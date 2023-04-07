@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ma1e43e6l5ot"]
 
-[ext_resource type="PackedScene" path="res://GUI/Menus/scene_change_button.tscn" id="1_6sxpi"]
+[ext_resource type="PackedScene" uid="uid://d25efuelumf6x" path="res://GUI/Menus/scene_change_button.tscn" id="1_6sxpi"]
 [ext_resource type="Script" path="res://GUI/Menus/campaign_text_crawl.gd" id="1_tmtlb"]
 [ext_resource type="Theme" uid="uid://di16ft6uelg44" path="res://GUI/Themes/campaign_text_crawl_theme.tres" id="1_twdel"]
 [ext_resource type="PackedScene" uid="uid://cxmfur8buqvu1" path="res://Levels/Level01_Maze.tscn" id="2_ouuci"]
@@ -44,7 +44,7 @@ tabs_visible = false
 
 [node name="Chapter1" parent="VBoxContainer/MarginContainer/TabContainer" instance=ExtResource("2_y88gd")]
 layout_mode = 2
-text = "A very long time ago, the prophets: Bostrom, Yudkowsky, Harris, and Musk, predicted the end of human civilization at the hands of self-improving, autonomous neural nets.
+text = "A very long time ago, the prophets: Bostrom, Yudkowsky, and Musk predicted the end of human civilization at the hands of Self-Improving, Autonomous Neural Nets.
 
 ...The SIANNs"
 

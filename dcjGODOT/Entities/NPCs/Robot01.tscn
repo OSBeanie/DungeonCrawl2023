@@ -159,7 +159,7 @@ shadow_mesh = SubResource("ArrayMesh_3eow8")
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kmti0"]
 noise = SubResource("FastNoiseLite_3r7xh")
 
-[node name="Robot01" type="CharacterBody3D"]
+[node name="Robot01" type="CharacterBody3D" groups=["enemies"]]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_u4pyn")

@@ -148,7 +148,7 @@ shadow_mesh = SubResource("ArrayMesh_hchhd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k34w7"]
 
-[node name="ForkRobot" type="CharacterBody3D"]
+[node name="ForkRobot" type="CharacterBody3D" groups=["enemies"]]
 collision_layer = 2
 script = ExtResource("1_a4erc")
 

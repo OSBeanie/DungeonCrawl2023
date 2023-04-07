@@ -1,13 +1,49 @@
-[gd_scene load_steps=14 format=3 uid="uid://erf5h7d5cysq"]
+[gd_scene load_steps=23 format=3 uid="uid://erf5h7d5cysq"]
 
 [ext_resource type="PackedScene" uid="uid://dt2jm2p7aa1ln" path="res://Entities/Player/player.tscn" id="1_t2arl"]
 [ext_resource type="PackedScene" uid="uid://bc8tifgyg8dk6" path="res://Levels/grid_map_01.tscn" id="2_bu3lj"]
 [ext_resource type="Shader" uid="uid://ci711oiokrhtk" path="res://Levels/Materials/light_shader.tres" id="4_acjsf"]
 [ext_resource type="Script" path="res://DesignNotes.gd" id="5_x2ig0"]
-[ext_resource type="PackedScene" uid="uid://chfsxjdwbir7g" path="res://Entities/NPCs/ProphetBot.tscn" id="6_nptwp"]
+[ext_resource type="PackedScene" path="res://Entities/NPCs/ProphetBot.tscn" id="6_nptwp"]
 [ext_resource type="PackedScene" uid="uid://dlyqx2p43cq00" path="res://Entities/NPCs/Robot01.tscn" id="7_ctgii"]
 [ext_resource type="PackedScene" uid="uid://c2aad586v73vn" path="res://Entities/NPCs/fork_robot.tscn" id="7_fabim"]
 [ext_resource type="PackedScene" uid="uid://eld686ck202n" path="res://Objects/trigger_volume_exit.tscn" id="8_ra3cj"]
+[ext_resource type="PackedScene" uid="uid://bcbdpmjkdjpnt" path="res://Entities/NPCs/old_sprite_bot.tscn" id="8_xttgb"]
+[ext_resource type="PackedScene" uid="uid://ucfjcqaipujs" path="res://Entities/NPCs/rosie_robot_01.tscn" id="9_ydisw"]
+
+[sub_resource type="Gradient" id="Gradient_j00v7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.398833, 0.762646)
+colors = PackedColorArray(0.23906, 0.43761, 0.780465, 1, 0.13977, 0.0888653, 0.226832, 1, 0.611564, 0.448267, 0.664788, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ima4t"]
+frequency = 0.3
+fractal_type = 0
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+fractal_gain = 1.0
+fractal_weighted_strength = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v6uvq"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_j00v7")
+noise = SubResource("FastNoiseLite_ima4t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u85vi"]
+albedo_color = Color(0, 0.768627, 0.588235, 1)
+albedo_texture = SubResource("NoiseTexture2D_v6uvq")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qsw5e"]
+material = SubResource("StandardMaterial3D_u85vi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muju4"]
+albedo_color = Color(0.74902, 0.537255, 0.870588, 1)
+albedo_texture = SubResource("NoiseTexture2D_v6uvq")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ffbh7"]
+material = SubResource("StandardMaterial3D_muju4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjewu"]
 render_priority = 0
@@ -29,6 +65,8 @@ sky_material = SubResource("ProceduralSkyMaterial_w0y3x")
 [sub_resource type="Environment" id="Environment_utbl0"]
 background_mode = 2
 sky = SubResource("Sky_73wno")
+ambient_light_sky_contribution = 0.3
+ambient_light_energy = 0.3
 sdfgi_enabled = true
 
 [node name="Maze" type="Node3D"]
@@ -47,19 +85,29 @@ data = {
 [node name="Level01" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Level01"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34292, 1.80386, -8.91696)
-light_color = Color(1, 0, 0, 1)
-light_energy = 0.239
-light_size = 22.15
-light_specular = 9.643
+[node name="Floor" type="MeshInstance3D" parent="Level01"]
+transform = Transform3D(24, 0, 0, 0, 24, 0, 0, 0, 24, 19, -0.5, -17)
+mesh = SubResource("PlaneMesh_qsw5e")
+skeleton = NodePath("../..")
+
+[node name="Ceiling" type="MeshInstance3D" parent="Level01"]
+transform = Transform3D(24, 0, 0, 0, -24, 1.88833e-06, 0, -2.09815e-06, -21.6, 18, 1.95695, -17)
+mesh = SubResource("PlaneMesh_ffbh7")
+skeleton = NodePath("../..")
 
 [node name="CeilingLighting" type="Node3D" parent="Level01"]
 
-[node name="SimpleLightPlane" type="MeshInstance3D" parent="Level01/CeilingLighting"]
+[node name="SimpleLightBox" type="MeshInstance3D" parent="Level01/CeilingLighting"]
 transform = Transform3D(-0.3, 5.24537e-09, 0, -2.62268e-08, -0.06, 0, 0, 0, 1, 0, 2, -4)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_el76r")
 skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Level01/CeilingLighting/SimpleLightBox"]
+transform = Transform3D(-1, -3.89414e-07, 0, 3.89414e-07, -1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(1, 0.368627, 0.305882, 1)
+light_energy = 0.6
+omni_range = 4.0
 
 [node name="DesignNotes" type="Node" parent="."]
 script = ExtResource("5_x2ig0")
@@ -110,6 +158,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 
 
 [node name="ForkRobot6" parent="NPCs" instance=ExtResource("7_fabim")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, -28)
+
+[node name="OldSpriteRobot" parent="NPCs" instance=ExtResource("8_xttgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
+
+[node name="OldSpriteRobot2" parent="NPCs" instance=ExtResource("8_xttgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -4)
+
+[node name="RosieRobot01" parent="NPCs" instance=ExtResource("9_ydisw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97462, 0, -3.10528)
 
 [node name="TriggerVolumes" type="Node3D" parent="."]
 

@@ -12,11 +12,11 @@ script = ExtResource("1_w1sgk")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00465184, 0.627403, 0.00303042)
-light_energy = 0.637
+light_energy = 0.5
 light_indirect_energy = 0.0
 light_size = 10.0
 light_specular = 0.338
-omni_range = 8.0
+omni_range = 6.0
 omni_attenuation = 0.31864
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

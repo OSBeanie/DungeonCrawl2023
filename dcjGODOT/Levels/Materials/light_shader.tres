@@ -8,6 +8,8 @@ default_value = Color(0, 1, 1, 1)
 
 [resource]
 code = "shader_type spatial;
+render_mode shadows_disabled;
+
 uniform vec4 Emission : source_color = vec4(0.000000, 1.000000, 1.000000, 1.000000);
 
 
@@ -23,7 +25,8 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-215.102, 194.256)
+graph_offset = Vector2(30.72, 397.44)
+flags/shadows_disabled = true
 nodes/fragment/3/node = SubResource("VisualShaderNodeColorParameter_t4jst")
 nodes/fragment/3/position = Vector2(-400, 540)
 nodes/fragment/connections = PackedInt32Array(3, 0, 0, 5)

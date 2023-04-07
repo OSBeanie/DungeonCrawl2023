@@ -75,7 +75,10 @@ func move(action_name):
 	$AudioStreamPlayer.play()
 	#separate method: get_parent().get_node("movetimer").start()
 	
-	
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies:
+		if enemy.has_method("_on_player_finished_moving"):
+			enemy._on_player_finished_moving()
 	
 	if Global.user_prefs["move_instantly"] == true:
 		#original movement: 

@@ -1,12 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://cxmfur8buqvu1"]
+[gd_scene load_steps=30 format=3 uid="uid://cxmfur8buqvu1"]
 
 [ext_resource type="PackedScene" uid="uid://dt2jm2p7aa1ln" path="res://Entities/Player/player.tscn" id="1_kam2j"]
+[ext_resource type="Script" path="res://Levels/Level01_Maze.gd" id="1_ky7s6"]
 [ext_resource type="PackedScene" uid="uid://bc8tifgyg8dk6" path="res://Levels/grid_map_01.tscn" id="2_oj0hv"]
 [ext_resource type="MeshLibrary" uid="uid://b1whp0sw7g7bp" path="res://Levels/MeshLibrary02_floors.tres" id="3_is2sv"]
 [ext_resource type="Texture2D" uid="uid://docmno7lohqf2" path="res://Levels/Materials/Amazing1_RoboticDungeon.png" id="3_t48rj"]
 [ext_resource type="PackedScene" uid="uid://bud8au2ek1k2n" path="res://Objects/trigger_volume_stairs.tscn" id="7_wjohk"]
 [ext_resource type="Script" path="res://DesignNotes.gd" id="14_8apfw"]
-[ext_resource type="PackedScene" path="res://Entities/NPCs/ProphetBot.tscn" id="16_kjgl7"]
+[ext_resource type="PackedScene" uid="uid://xovgihdkj5it" path="res://Entities/NPCs/ProphetBot.tscn" id="16_kjgl7"]
 [ext_resource type="PackedScene" uid="uid://dlyqx2p43cq00" path="res://Entities/NPCs/Robot01.tscn" id="17_lknes"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tf4sd"]
@@ -260,6 +261,7 @@ background_energy_multiplier = 0.67
 sky = SubResource("Sky_73wno")
 
 [node name="Maze" type="Node3D"]
+script = ExtResource("1_ky7s6")
 
 [node name="PlayerCamera" parent="." instance=ExtResource("1_kam2j")]
 
@@ -307,19 +309,30 @@ skeleton = NodePath("../..")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Level01"]
 transform = Transform3D(24, 0, 0, 0, -24, 1.88833e-06, 0, -2.09815e-06, -21.6, 18, 1.95695, -17)
+visible = false
 mesh = SubResource("PlaneMesh_t32k8")
 skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
 
 [node name="DesignNotes" type="Node" parent="."]
 script = ExtResource("14_8apfw")
 
 [node name="NPCs" type="Node3D" parent="."]
 
-[node name="Prophetbot" parent="NPCs" instance=ExtResource("16_kjgl7")]
-transform = Transform3D(0.324733, 0.22083, -0.0356088, -2.35031e-08, -0.0627724, -0.389288, -0.223683, 0.320592, -0.0516952, 1.63598, 0.468297, -12.0933)
+[node name="ProphetRobot" parent="NPCs" instance=ExtResource("16_kjgl7")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 2.08165e-12, 2.08165e-12, -12)
+
+[node name="ProphetRobot2" parent="NPCs" instance=ExtResource("16_kjgl7")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 4, 2.08165e-12, -22)
 
 [node name="Robot" parent="NPCs" instance=ExtResource("17_lknes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.08165e-12, -10)
+
+[node name="Robot10" parent="NPCs" instance=ExtResource("17_lknes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2.08165e-12, -30)
+
+[node name="Robot9" parent="NPCs" instance=ExtResource("17_lknes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.08165e-12, -6)
 
 [node name="Robot2" parent="NPCs" instance=ExtResource("17_lknes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.08165e-12, -10)
@@ -330,8 +343,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.08165e-12, -18)
 [node name="Robot4" parent="NPCs" instance=ExtResource("17_lknes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.08165e-12, -18)
 
+[node name="Robot11" parent="NPCs" instance=ExtResource("17_lknes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 2.08165e-12, -30)
+
+[node name="Robot12" parent="NPCs" instance=ExtResource("17_lknes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 2.08165e-12, -36)
+
 [node name="Robot5" parent="NPCs" instance=ExtResource("17_lknes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.08165e-12, -2)
+
+[node name="Robot13" parent="NPCs" instance=ExtResource("17_lknes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.08165e-12, 0)
+
+[node name="Robot14" parent="NPCs" instance=ExtResource("17_lknes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 2.08165e-12, -6)
 
 [node name="Robot6" parent="NPCs" instance=ExtResource("17_lknes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 2.08165e-12, -2)

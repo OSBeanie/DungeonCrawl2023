@@ -14,7 +14,7 @@ and the player takes damage after each exchange.
 
 extends Control
 
-@export var response_duration = 20.0
+@export var response_duration = 10.0
 @onready var hud = get_parent()
 
 # might need to refine this list to make it more transparent and fair.
@@ -167,10 +167,10 @@ func _on_response_chosen(responseString):
 	var response_index = dialogue_options[current_question].find(responseString)
 	print(responseString + " = " + response_types.keys()[response_index])
 	if response_index == response_types.SERAPH:
-		Global.player_stats["Seraph"] += 1
+		Global.player_stats["Seraph"] += 3
 		popup_text.popup("Seraph")
 	elif response_index == response_types.SIANN:
-		Global.player_stats["Siann"] += 1
+		Global.player_stats["Siann"] += 3
 		popup_text.popup("Siann")
 	elif response_index == response_types.NEUTRAL:
 		# convert/kill the NPC and end the encounter.
@@ -185,7 +185,7 @@ func _on_response_chosen(responseString):
 func win():
 	hide()
 	$ConcessionPopup.popup_centered_ratio(0.8)
-	var timer = get_tree().create_timer(3.0)
+	var timer = get_tree().create_timer(1.0)
 	await timer.timeout
 	$HappyNoise.start()
 

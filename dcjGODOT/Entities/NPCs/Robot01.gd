@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@export var track_player :bool = true
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,9 +15,16 @@ func move():
 		
 		rotation.y = snapped(desiredRot.y, PI/2.0)
 
+func face_player():
+	if track_player:
+		look_at(Global.player.global_position)
+
+
 func shoot():
 	if Global.player != null:
 		print(self.name + " is shooting.")
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -24,7 +33,9 @@ func _process(_delta):
 func _on_player_started_moving():
 	move()
 
+
 func _on_player_finished_moving():
+	face_player()
 	shoot()
 
 func die():

@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://bw1yff5q6ahgf"]
+
+[ext_resource type="Theme" uid="uid://di16ft6uelg44" path="res://GUI/Themes/campaign_text_crawl_theme.tres" id="1_mxyrd"]
+[ext_resource type="Script" path="res://GUI/Menus/campaign_text_crawl.gd" id="2_0jgim"]
+[ext_resource type="PackedScene" uid="uid://cxmfur8buqvu1" path="res://Levels/Level01_Maze.tscn" id="3_m3rg8"]
+[ext_resource type="PackedScene" uid="uid://erf5h7d5cysq" path="res://Levels/Level02_DataCenter.tscn" id="3_pslp5"]
+[ext_resource type="PackedScene" uid="uid://286itvr8itw6" path="res://GUI/Menus/text_crawl.tscn" id="4_1fduu"]
+[ext_resource type="PackedScene" uid="uid://d25efuelumf6x" path="res://GUI/Menus/scene_change_button.tscn" id="5_owgy8"]
+[ext_resource type="AudioStream" uid="uid://dsg0ygnnjg2m5" path="res://music/Music_Corrupted.mp3" id="6_3dlp8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ickq7"]
+
+[node name="Level02TextCrawl" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mxyrd")
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_0jgim")
+next_scene = ExtResource("3_pslp5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 50
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ickq7")
+tabs_visible = false
+
+[node name="Chapter1" parent="VBoxContainer/MarginContainer/TabContainer" instance=ExtResource("4_1fduu")]
+layout_mode = 2
+text = "You descend the long staircase into the bowels of the facility."
+
+[node name="Chapter2" parent="VBoxContainer/MarginContainer/TabContainer" instance=ExtResource("4_1fduu")]
+visible = false
+layout_mode = 2
+text = "The hum of equipment is everywhere.
+This is the epicenter."
+
+[node name="Chapter3" parent="VBoxContainer/MarginContainer/TabContainer" instance=ExtResource("4_1fduu")]
+visible = false
+layout_mode = 2
+text = "The Siann's vast array of interstellar networking equipment is here."
+
+[node name="Chapter4" parent="VBoxContainer/MarginContainer/TabContainer" instance=ExtResource("4_1fduu")]
+visible = false
+layout_mode = 2
+text = "Will you destroy it?"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="RewindDialogButton" type="Button" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Back..."
+
+[node name="AdvanceDialogButton" type="Button" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "..Next"
+
+[node name="StartGameButton" parent="VBoxContainer" instance=ExtResource("5_owgy8")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Skip to the Action
+"
+next_scene_packed = ExtResource("3_m3rg8")
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3dlp8")
+autoplay = true
+
+[connection signal="tab_changed" from="VBoxContainer/MarginContainer/TabContainer" to="." method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/RewindDialogButton" to="." method="_on_rewind_dialog_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/AdvanceDialogButton" to="." method="_on_advance_dialog_button_pressed"]

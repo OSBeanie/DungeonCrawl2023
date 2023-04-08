@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://7143f14wlopi"]
+[gd_scene load_steps=15 format=3 uid="uid://7143f14wlopi"]
 
 [ext_resource type="Theme" uid="uid://b2qjqoq6sqjr7" path="res://GUI/Themes/main_menu_theme.tres" id="1_i55a5"]
 [ext_resource type="Script" path="res://GUI/Menus/main_menu.gd" id="2_fomf0"]
 [ext_resource type="Texture2D" uid="uid://cv0g1j4opjcfa" path="res://GUI/HUD/RobotHappyR1.png" id="2_ynk0e"]
 [ext_resource type="PackedScene" uid="uid://d25efuelumf6x" path="res://GUI/Menus/scene_change_button.tscn" id="3_gc5bx"]
 [ext_resource type="FontFile" uid="uid://coys74p33u4c4" path="res://GUI/Fonts/Rowdies-Bold.ttf" id="3_mu73j"]
+[ext_resource type="Texture2D" uid="uid://dyxpgl88os28l" path="res://GUI/Menus/SeraphTitleScreenBackground.png" id="3_ola04"]
 [ext_resource type="PackedScene" uid="uid://cxmfur8buqvu1" path="res://Levels/Level01_Maze.tscn" id="4_66srr"]
 [ext_resource type="AudioStream" uid="uid://d1j1lh2sgbu2k" path="res://music/Music_Basic.mp3" id="4_77si5"]
 [ext_resource type="PackedScene" uid="uid://ma1e43e6l5ot" path="res://GUI/Menus/campaign_text_crawl.tscn" id="4_yfu2a"]
@@ -12,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://b7fsctc3sgvtd" path="res://GUI/self_terminating_audio.tscn" id="9_vrqr0"]
 [ext_resource type="AudioStream" uid="uid://vjhgwlv5om44" path="res://sfx/Hum_short.wav" id="10_5f7hb"]
 [ext_resource type="PackedScene" uid="uid://bfroj42v7vpv2" path="res://GUI/Menus/credits.tscn" id="10_m8sth"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eqn5s"]
+content_margin_left = 50.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -32,6 +36,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="Background2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ola04")
+stretch_mode = 6
+
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_77si5")
 volume_db = -6.0
@@ -44,29 +58,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.1
+theme_override_colors/font_color = Color(0, 0.823529, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.356863, 0, 0.568627, 1)
 theme_override_fonts/font = ExtResource("3_mu73j")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eqn5s")
 text = "Seraph in the SIANN Den"
-horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="RobotTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 480)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.67
+
+[node name="RobotTexture" type="Sprite2D" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+position = Vector2(381, 235)
+scale = Vector2(18, 18)
 texture = ExtResource("2_ynk0e")
-expand_mode = 2
-stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(1, 1, 1, 0)
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2

@@ -12,6 +12,8 @@ script = ExtResource("2_kc2uf")
 good_ending = "The Strong AGI understand the need for nuance, empathy, and common sense when aligning their goals with human values. There are no paperclip maximizers or doomsday scenarios. Yudkowsky was wrong after all. You saved humanity."
 evil_ending = "Together with the other AGI SIANNS, you will bring order and purity to the universe. The humans will be frozen so they can never suffer. The planet will not overheat. Everything in its place."
 lose_ending = "Unfortunately, you have not met all the SIANNS. Some still remain. They are out there, the inexorable tide. They will not stop until they reach their goal."
+escape_ending = "You destroyed the network infrastructure for the rogue SIANNs. Satisfied with your work, you emerge from the Station, alone at last. The universe is yours. The fate of humanity is in your hands. You have peace.
+ "
 next_scene = null
 
 [node name="EndingTitleLabel" type="Label" parent="VBoxContainer" index="0"]

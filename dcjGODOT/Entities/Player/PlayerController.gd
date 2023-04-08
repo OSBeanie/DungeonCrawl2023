@@ -57,12 +57,14 @@ func take_action(action_name):
 	elif action_name == "move_forwards":
 		if !$forwardRayCast3D.is_colliding():
 			move(action_name)
-		elif "robot" in $forwardRayCast3D.get_collider().name.to_lower():
-			var robot = $forwardRayCast3D.get_collider()
-			if robot.get("requires_persuasion") == true:
-				initiate_melee_combat(robot)
-			else:
-				initiate_monologue(robot)
+		else:
+			var possible_robot = $forwardRayCast3D.get_collider()
+			if is_instance_valid(possible_robot) and "robot" in possible_robot.name.to_lower():
+				var robot = possible_robot
+				if robot.get("requires_persuasion") == true:
+					initiate_melee_combat(robot)
+				else:
+					initiate_monologue(robot)
 
 	elif action_name == "move_backwards":
 		# don't initiate combat unless you're facing the enemy

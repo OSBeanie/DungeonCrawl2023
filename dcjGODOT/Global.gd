@@ -3,6 +3,8 @@ extends Node
 var player
 var current_level
 
+var exit_found : bool = false
+
 var player_stats = {
 	"Seraph" : 0,
 	"Siann" : 0,

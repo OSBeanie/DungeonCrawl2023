@@ -8,17 +8,13 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_rewind_dialog_button_pressed():
 	if tab_container.current_tab > 0:
 		tab_container.current_tab -= 1
 
 	
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	var fwd_actions = ["ui_accept", "ui_right", "ui_cancel"]
 	var already_captured : bool = false
 	for actionName in fwd_actions:
@@ -47,3 +43,28 @@ func _on_advance_dialog_button_pressed():
 
 
 	
+func hide_advance_button():
+	$VBoxContainer/MarginContainer2/HBoxContainer/AdvanceDialogButton.hide()
+
+func show_advance_button():
+	$VBoxContainer/MarginContainer2/HBoxContainer/AdvanceDialogButton.show()
+
+func hide_rewind_button():
+	$VBoxContainer/MarginContainer2/HBoxContainer/RewindDialogButton.hide()
+	
+func show_rewind_button():
+	$VBoxContainer/MarginContainer2/HBoxContainer/RewindDialogButton.show()
+
+func _on_tab_container_tab_changed(tab):
+	var textbox = tab_container.get_child(tab)
+	if textbox.has_method("reset"):
+		textbox.reset()
+	if tab == tab_container.get_child_count():
+		hide_advance_button()
+	else:
+		show_advance_button()
+	
+	if tab == 0:
+		hide_rewind_button()
+	else:
+		show_rewind_button()

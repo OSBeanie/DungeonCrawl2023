@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhkgoijv3xved"]
+[gd_scene load_steps=21 format=3 uid="uid://dhkgoijv3xved"]
 
-[ext_resource type="Texture2D" uid="uid://b20tablone5hh" path="res://GUI/HUD/HUDBorder1.png" id="1_7avms"]
 [ext_resource type="Script" path="res://GUI/HUD/PlayerHUD.gd" id="1_akot3"]
 [ext_resource type="Texture2D" uid="uid://cdprmn3jtpvhx" path="res://GUI/HUD/RobotNormalL1.png" id="2_fxos4"]
 [ext_resource type="Texture2D" uid="uid://cbcoolg562bfi" path="res://GUI/HUD/RobotNormalL2.png" id="3_7xwrv"]
@@ -8,74 +7,155 @@
 [ext_resource type="Texture2D" uid="uid://cas04xdq70l2x" path="res://GUI/HUD/RobotNormalR2.png" id="5_s6an7"]
 [ext_resource type="Texture2D" uid="uid://c4xs8etnctw4b" path="res://GUI/HUD/RobotNormalUD1.png" id="6_3goee"]
 [ext_resource type="Texture2D" uid="uid://bh7p4u4grrug4" path="res://GUI/HUD/RobotNormalUD2.png" id="7_wxijs"]
-[ext_resource type="Script" path="res://robobot.gd" id="8_f16w8"]
-[ext_resource type="Texture2D" uid="uid://bpk17nwvycy2d" path="res://GUI/HUD/Health1.png" id="9_yl3yj"]
-[ext_resource type="Texture2D" uid="uid://ddajl757q5dgw" path="res://GUI/HUD/Reloading1.png" id="10_xjtd3"]
 [ext_resource type="Texture2D" uid="uid://3d4dnnr0a2c5" path="res://GUI/HUD/Border.png" id="11_ylh4p"]
 [ext_resource type="PackedScene" uid="uid://crayrdncdixhq" path="res://GUI/Combat/combat_dialogue.tscn" id="12_pdvwg"]
+[ext_resource type="Texture2D" uid="uid://nyomigvbbbbp" path="res://GUI/HUD/healthbars/HealthUnder.png" id="14_2atyo"]
+[ext_resource type="Texture2D" uid="uid://b6md4t4alga4q" path="res://GUI/HUD/healthbars/HealthOver.png" id="15_smuqd"]
+[ext_resource type="Texture2D" uid="uid://dtqkr8si6ql4h" path="res://GUI/HUD/healthbars/SeraphFill.png" id="16_awhsd"]
+[ext_resource type="PackedScene" uid="uid://d25efuelumf6x" path="res://GUI/Menus/scene_change_button.tscn" id="16_yaeyu"]
+[ext_resource type="Texture2D" uid="uid://dp1dyedwh2imt" path="res://GUI/HUD/healthbars/SianFill.png" id="17_e5sdb"]
+[ext_resource type="PackedScene" uid="uid://dqslhmr5rmvy2" path="res://GUI/Menus/quit_button.tscn" id="17_ugm75"]
+[ext_resource type="PackedScene" uid="uid://1khcq774i2ev" path="res://GUI/Menus/settings.tscn" id="18_glwv3"]
+[ext_resource type="Theme" uid="uid://2btvphyhed35" path="res://GUI/Themes/combat_dialog_theme.tres" id="18_whn8r"]
+[ext_resource type="Texture2D" uid="uid://cawh2r7lropro" path="res://GUI/HUD/healthbars/HealthFill.png" id="18_ymds3"]
+[ext_resource type="PackedScene" uid="uid://pi1nany4murr" path="res://GUI/HUD/compass.tscn" id="19_trcpy"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ceqhe"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_fxos4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_7xwrv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_dhbhy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_s6an7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_3goee")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_wxijs")
-}],
-"loop": true,
-"name": &"new_animation",
-"speed": 2.0
-}]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_3olg7"]
+frames = 6
+frame_0/texture = ExtResource("2_fxos4")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("3_7xwrv")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("4_dhbhy")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("5_s6an7")
+frame_3/duration = 0.5
+frame_4/texture = ExtResource("6_3goee")
+frame_4/duration = 0.5
+frame_5/texture = ExtResource("7_wxijs")
+frame_5/duration = 0.5
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_akot3")
 
-[node name="HudBorder1" type="Sprite2D" parent="."]
-position = Vector2(548, 66)
-scale = Vector2(3, 3)
-texture = ExtResource("1_7avms")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(558, 69.9998)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_ceqhe")
-animation = &"new_animation"
-script = ExtResource("8_f16w8")
-
-[node name="Health1" type="Sprite2D" parent="."]
-position = Vector2(415, 61)
-scale = Vector2(3, 3)
-texture = ExtResource("9_yl3yj")
-
-[node name="Reloading1" type="Sprite2D" parent="."]
-position = Vector2(670, 68)
-scale = Vector2(3, 3)
-texture = ExtResource("10_xjtd3")
-
-[node name="Border" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(548, 68)
-rotation = 3.14159
-scale = Vector2(3, 3)
-texture = ExtResource("11_ylh4p")
-
 [node name="CombatDialogue" parent="." instance=ExtResource("12_pdvwg")]
 visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(450, 150)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/margin_top = -32
+
+[node name="Background" type="TextureRect" parent="MarginContainer"]
+z_index = -1
+layout_mode = 2
+texture = ExtResource("11_ylh4p")
+expand_mode = 1
+flip_v = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(800, 2.08165e-12)
+layout_mode = 2
+alignment = 1
+
+[node name="SeraphProgress" type="TextureProgressBar" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 35)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+step = 0.5
+value = 50.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = ExtResource("14_2atyo")
+texture_over = ExtResource("15_smuqd")
+texture_progress = ExtResource("16_awhsd")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.55
+texture = SubResource("AnimatedTexture_3olg7")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="SianProgress" type="TextureProgressBar" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 35)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+step = 0.5
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("14_2atyo")
+texture_over = ExtResource("15_smuqd")
+texture_progress = ExtResource("17_e5sdb")
+
+[node name="SettingsButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+theme = ExtResource("18_whn8r")
+text = "Settings"
+
+[node name="PopupMenu" type="PopupPanel" parent="SettingsButton"]
+initial_position = 1
+size = Vector2i(381, 463)
+
+[node name="CenterContainer" type="CenterContainer" parent="SettingsButton/PopupMenu"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 377.0
+offset_bottom = 459.0
+
+[node name="Settings" parent="SettingsButton/PopupMenu/CenterContainer" instance=ExtResource("18_glwv3")]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="SceneChangeButton" parent="SettingsButton/PopupMenu/CenterContainer/Settings" instance=ExtResource("16_yaeyu")]
+layout_mode = 2
+text = "Return to Main Menu
+"
+next_scene_path = "res://GUI/Menus/main_menu.tscn"
+
+[node name="QuitButton" parent="SettingsButton/PopupMenu/CenterContainer/Settings" instance=ExtResource("17_ugm75")]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="CloseMenuButton" type="Button" parent="SettingsButton/PopupMenu/CenterContainer/Settings"]
+layout_mode = 2
+text = "Close Settings Menu"
+
+[node name="HealthProgress" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 25)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(1, 0.5)
+step = 0.5
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("14_2atyo")
+texture_over = ExtResource("15_smuqd")
+texture_progress = ExtResource("18_ymds3")
+
+[node name="CombassLabel" parent="." instance=ExtResource("19_trcpy")]
+
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="SettingsButton/PopupMenu/CenterContainer/Settings/CloseMenuButton" to="." method="_on_close_menu_button_pressed"]

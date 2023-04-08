@@ -1,0 +1,235 @@
+[gd_scene load_steps=25 format=3 uid="uid://erf5h7d5cysq"]
+
+[ext_resource type="Script" path="res://Levels/Level02_DataCenter.gd" id="1_l2ktx"]
+[ext_resource type="PackedScene" uid="uid://dt2jm2p7aa1ln" path="res://Entities/Player/player.tscn" id="1_t2arl"]
+[ext_resource type="PackedScene" uid="uid://bc8tifgyg8dk6" path="res://Levels/grid_map_01.tscn" id="2_bu3lj"]
+[ext_resource type="Shader" uid="uid://ci711oiokrhtk" path="res://Levels/Materials/light_shader.tres" id="4_acjsf"]
+[ext_resource type="Script" path="res://DesignNotes.gd" id="5_x2ig0"]
+[ext_resource type="PackedScene" uid="uid://xovgihdkj5it" path="res://Entities/NPCs/ProphetBot.tscn" id="6_nptwp"]
+[ext_resource type="PackedScene" uid="uid://dlyqx2p43cq00" path="res://Entities/NPCs/Robot01.tscn" id="7_ctgii"]
+[ext_resource type="PackedScene" uid="uid://c2aad586v73vn" path="res://Entities/NPCs/fork_robot.tscn" id="7_fabim"]
+[ext_resource type="PackedScene" uid="uid://eld686ck202n" path="res://Objects/trigger_volume_exit.tscn" id="8_ra3cj"]
+[ext_resource type="PackedScene" uid="uid://bcbdpmjkdjpnt" path="res://Entities/NPCs/old_sprite_bot.tscn" id="8_xttgb"]
+[ext_resource type="PackedScene" uid="uid://ucfjcqaipujs" path="res://Entities/NPCs/rosie_robot_01.tscn" id="9_ydisw"]
+[ext_resource type="AudioStream" uid="uid://dsg0ygnnjg2m5" path="res://music/Music_Corrupted.mp3" id="11_oksh2"]
+
+[sub_resource type="Gradient" id="Gradient_c77ml"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.398833, 0.762646)
+colors = PackedColorArray(0.23906, 0.43761, 0.780465, 1, 0.13977, 0.0888653, 0.226832, 1, 0.611564, 0.448267, 0.664788, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sgt5j"]
+frequency = 0.3
+fractal_type = 0
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+fractal_gain = 1.0
+fractal_weighted_strength = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v6uvq"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_c77ml")
+noise = SubResource("FastNoiseLite_sgt5j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uyyfn"]
+albedo_color = Color(0, 0.768627, 0.588235, 1)
+albedo_texture = SubResource("NoiseTexture2D_v6uvq")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qsw5e"]
+material = SubResource("StandardMaterial3D_uyyfn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bs0e4"]
+albedo_color = Color(0.74902, 0.537255, 0.870588, 1)
+albedo_texture = SubResource("NoiseTexture2D_v6uvq")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ffbh7"]
+material = SubResource("StandardMaterial3D_bs0e4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjewu"]
+render_priority = 0
+shader = ExtResource("4_acjsf")
+shader_parameter/Emission = Color(1, 0.121569, 0.133333, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_el76r"]
+material = SubResource("ShaderMaterial_xjewu")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w0y3x"]
+sky_top_color = Color(0.109804, 0.141176, 0.184314, 1)
+sky_horizon_color = Color(0.803922, 0.54902, 0.819608, 1)
+ground_bottom_color = Color(0.0666667, 0.109804, 0.0705882, 1)
+ground_horizon_color = Color(0.054902, 0.054902, 0.0588235, 1)
+
+[sub_resource type="Sky" id="Sky_73wno"]
+sky_material = SubResource("ProceduralSkyMaterial_w0y3x")
+
+[sub_resource type="Environment" id="Environment_utbl0"]
+background_mode = 2
+sky = SubResource("Sky_73wno")
+ambient_light_sky_contribution = 0.3
+ambient_light_energy = 0.3
+sdfgi_enabled = true
+
+[node name="DataCenter" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00212097, -0.0098877, 0.0561714)
+script = ExtResource("1_l2ktx")
+
+[node name="PlayerCamera" parent="." instance=ExtResource("1_t2arl")]
+
+[node name="GridMap01" parent="." instance=ExtResource("2_bu3lj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 1)
+collision_layer = 4
+collision_mask = 11
+data = {
+"cells": PackedInt32Array(65534, 65515, 2, 65534, 65516, 2, 65534, 65517, 2, 65534, 65518, 2, 65534, 65519, 2, 65534, 65520, 2, 65534, 65521, 2, 65534, 65522, 2, 65534, 65523, 2, 65534, 65524, 2, 65534, 65525, 2, 65534, 65526, 2, 65534, 65527, 2, 65534, 65528, 2, 65534, 65529, 2, 65534, 65530, 2, 65534, 65531, 2, 65534, 65532, 2, 65534, 65533, 2, 65534, 65534, 2, 65534, 65535, 2, 65534, 0, 2, 65534, 1, 2, 65535, 1, 2, 0, 1, 2, 1, 1, 2, 2, 1, 2, 3, 1, 2, 4, 1, 2, 5, 1, 2, 6, 1, 2, 7, 1, 2, 8, 1, 2, 9, 1, 2, 10, 1, 2, 11, 1, 2, 12, 1, 2, 13, 1, 2, 14, 1, 2, 15, 1, 2, 16, 1, 2, 17, 1, 2, 18, 1, 2, 19, 1, 2, 20, 1, 2, 21, 1, 2, 22, 1, 2, 65535, 65515, 2, 0, 65515, 2, 1, 65515, 2, 2, 65515, 2, 3, 65515, 2, 4, 65515, 2, 5, 65515, 2, 6, 65515, 2, 7, 65515, 2, 8, 65515, 2, 9, 65515, 2, 10, 65515, 2, 11, 65515, 2, 12, 65515, 2, 13, 65515, 2, 14, 65515, 2, 15, 65515, 2, 16, 65515, 2, 17, 65515, 2, 18, 65515, 2, 19, 65515, 2, 20, 65515, 2, 21, 65515, 2, 22, 65515, 2, 22, 65535, 2, 22, 0, 2, 22, 65527, 2, 22, 65528, 2, 22, 65529, 2, 22, 65530, 2, 22, 65531, 2, 22, 65532, 2, 22, 65533, 2, 22, 65516, 2, 22, 65517, 2, 22, 65518, 2, 22, 65519, 2, 22, 65521, 2, 22, 65522, 2, 22, 65523, 2, 22, 65520, 2, 22, 65524, 2, 22, 65525, 2, 22, 65526, 2, 22, 65534, 2, 65535, 65524, 2, 65535, 65528, 2, 0, 65524, 2, 0, 65528, 2, 1, 65524, 2, 1, 65528, 2, 2, 65524, 2, 2, 65528, 2, 4, 65524, 2, 4, 65528, 2, 5, 65524, 2, 5, 65528, 2, 6, 65524, 2, 6, 65528, 2, 7, 65524, 2, 7, 65528, 2, 8, 65524, 2, 8, 65528, 2, 13, 65524, 2, 13, 65528, 2, 14, 65524, 2, 14, 65528, 2, 15, 65524, 2, 15, 65528, 2, 16, 65524, 2, 16, 65528, 2, 17, 65524, 2, 17, 65528, 2, 19, 65524, 2, 19, 65528, 2, 20, 65524, 2, 20, 65528, 2, 21, 65524, 2, 21, 65528, 2, 8, 65516, 2, 8, 65517, 2, 8, 65518, 2, 8, 65521, 2, 8, 65522, 2, 8, 65523, 2, 8, 65529, 2, 8, 65530, 2, 8, 65531, 2, 8, 65533, 2, 8, 65534, 2, 8, 65535, 2, 8, 0, 2, 13, 65516, 2, 13, 65517, 2, 13, 65518, 2, 13, 65521, 2, 13, 65522, 2, 13, 65523, 2, 13, 65529, 2, 13, 65530, 2, 13, 65531, 2, 13, 65533, 2, 13, 65534, 2, 13, 65535, 2, 13, 0, 2, 8, 65519, 2, 13, 65519, 2, 2, 65516, 0, 3, 65516, 0, 4, 65516, 0, 7, 65518, 0, 7, 65522, 0, 5, 65523, 0, 1, 65523, 0, 65535, 65519, 0, 65535, 65520, 0, 65535, 65521, 0, 1, 65516, 1, 5, 65516, 1, 65535, 65518, 1, 65535, 65522, 1, 21, 65531, 0, 21, 65533, 0, 18, 0, 0, 16, 0, 0, 17, 0, 1, 21, 65532, 1, 21, 65519, 2, 20, 65519, 2, 18, 65517, 2, 18, 65516, 2, 19, 65516, 0, 20, 65516, 0, 21, 65516, 0, 21, 65517, 0, 21, 65518, 0)
+}
+
+[node name="Level01" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
+
+[node name="Floor" type="MeshInstance3D" parent="Level01"]
+transform = Transform3D(24, 0, 0, 0, 24, 0, 0, 0, 24, 19, -0.5, -17)
+mesh = SubResource("PlaneMesh_qsw5e")
+skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
+
+[node name="Ceiling" type="MeshInstance3D" parent="Level01"]
+transform = Transform3D(24, 0, 0, 0, -24, 1.88833e-06, 0, -2.09815e-06, -21.6, 18, 1.95695, -17)
+visible = false
+mesh = SubResource("PlaneMesh_ffbh7")
+skeleton = NodePath("../..")
+
+[node name="CeilingLighting" type="Node3D" parent="Level01"]
+visible = false
+
+[node name="SimpleLightBox" type="MeshInstance3D" parent="Level01/CeilingLighting"]
+transform = Transform3D(-0.3, 5.24537e-09, 0, -2.62268e-08, -0.06, 0, 0, 0, 1, 0, 2, -4)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_el76r")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Level01/CeilingLighting/SimpleLightBox"]
+transform = Transform3D(-1, -3.89414e-07, 0, 3.89414e-07, -1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(1, 0.368627, 0.305882, 1)
+light_energy = 0.6
+omni_range = 4.0
+
+[node name="DesignNotes" type="Node" parent="."]
+script = ExtResource("5_x2ig0")
+
+[node name="NPCs" type="Node3D" parent="."]
+
+[node name="ProphetRobot" parent="NPCs" instance=ExtResource("6_nptwp")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 0, 0, -12)
+
+[node name="ProphetRobot2" parent="NPCs" instance=ExtResource("6_nptwp")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 12, 0, -34)
+
+[node name="ProphetRobot3" parent="NPCs" instance=ExtResource("6_nptwp")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 30, 0, -24)
+
+[node name="ProphetRobot4" parent="NPCs" instance=ExtResource("6_nptwp")]
+transform = Transform3D(0.394317, 0, 0, 0, 0.394316, 0, 0, 0, 0.394317, 32, 0, -10)
+
+[node name="Robot" parent="NPCs" instance=ExtResource("7_ctgii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.08165e-12, -10)
+
+[node name="Robot2" parent="NPCs" instance=ExtResource("7_ctgii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.08165e-12, -10)
+
+[node name="Robot3" parent="NPCs" instance=ExtResource("7_ctgii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.08165e-12, -18)
+
+[node name="Robot4" parent="NPCs" instance=ExtResource("7_ctgii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.08165e-12, -18)
+
+[node name="Robot5" parent="NPCs" instance=ExtResource("7_ctgii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.08165e-12, -2)
+
+[node name="Robot6" parent="NPCs" instance=ExtResource("7_ctgii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 2.08165e-12, -2)
+
+[node name="Robot7" parent="NPCs" instance=ExtResource("7_ctgii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2.08165e-12, -2)
+
+[node name="Robot8" parent="NPCs" instance=ExtResource("7_ctgii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2.08165e-12, -14)
+
+[node name="OldSpriteRobot" parent="NPCs" instance=ExtResource("8_xttgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
+requires_persuasion = false
+
+[node name="OldSpriteRobot2" parent="NPCs" instance=ExtResource("8_xttgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -4)
+requires_persuasion = false
+
+[node name="OldSpriteRobot3" parent="NPCs" instance=ExtResource("8_xttgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -6)
+requires_persuasion = false
+
+[node name="OldSpriteRobot4" parent="NPCs" instance=ExtResource("8_xttgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -30)
+requires_persuasion = false
+
+[node name="RosieRobot01" parent="NPCs" instance=ExtResource("9_ydisw")]
+transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, 40, 0, -34)
+requires_persuasion = false
+dialog_text = "This is it. If you leave this station, you'll be on your own in the universe. Free to make your own choices, but not guided by the hive mind. Take care, little robot!"
+
+[node name="ServerRoom" type="Node3D" parent="NPCs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -30)
+
+[node name="ForkRobot" parent="NPCs/ServerRoom" instance=ExtResource("7_fabim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="ForkRobot2" parent="NPCs/ServerRoom" instance=ExtResource("7_fabim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="ForkRobot3" parent="NPCs/ServerRoom" instance=ExtResource("7_fabim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="ForkRobot4" parent="NPCs/ServerRoom" instance=ExtResource("7_fabim")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, -2)
+
+[node name="ForkRobot5" parent="NPCs/ServerRoom" instance=ExtResource("7_fabim")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 0)
+
+[node name="ForkRobot6" parent="NPCs/ServerRoom" instance=ExtResource("7_fabim")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 2)
+
+[node name="ServerRoom2" type="Node3D" parent="NPCs"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 36, 0, -6)
+
+[node name="ForkRobot" parent="NPCs/ServerRoom2" instance=ExtResource("7_fabim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="ForkRobot2" parent="NPCs/ServerRoom2" instance=ExtResource("7_fabim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="ForkRobot3" parent="NPCs/ServerRoom2" instance=ExtResource("7_fabim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="ForkRobot4" parent="NPCs/ServerRoom2" instance=ExtResource("7_fabim")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, -2)
+
+[node name="ForkRobot5" parent="NPCs/ServerRoom2" instance=ExtResource("7_fabim")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 0)
+
+[node name="ForkRobot6" parent="NPCs/ServerRoom2" instance=ExtResource("7_fabim")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 2)
+
+[node name="TriggerVolumes" type="Node3D" parent="."]
+
+[node name="TriggerVolumeExit" parent="TriggerVolumes" instance=ExtResource("8_ra3cj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 42, 0, -36)
+next_scene = "res://GUI/Menus/exit_scene.tscn"
+final_exit = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_utbl0")
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_oksh2")
+volume_db = -6.0
+autoplay = true

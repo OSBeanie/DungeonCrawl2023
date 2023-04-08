@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=14 format=3 uid="uid://xovgihdkj5it"]
 
+[ext_resource type="Script" path="res://Entities/NPCs/Robot01.gd" id="1_0eb51"]
 [ext_resource type="Texture2D" uid="uid://c3ed3h0rmyts8" path="res://Levels/Materials/Amazing1_Prophet Bot.png" id="1_i4rxi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o546b"]
@@ -98,17 +99,63 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wud1s")
 
-[node name="Prophetbot" type="MeshInstance3D"]
-transform = Transform3D(0.324733, 0.22083, -0.0356088, -2.35031e-08, -0.0627724, -0.389288, -0.223683, 0.320592, -0.0516952, -2.36402, 0.468297, -11.0933)
+[sub_resource type="BoxShape3D" id="BoxShape3D_twxye"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="Animation" id="Animation_y35tg"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prophetbot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.41092, 0.0795855, -3.14159), Vector3(1.41092, -0.705813, -3.14159), Vector3(1.41092, 0.0795855, -3.14159), Vector3(1.41092, 0.603184, -3.14159), Vector3(1.41092, 0.0795855, -3.14159)]
+}
+
+[sub_resource type="Animation" id="Animation_j577v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prophetbot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.41092, 0.0795855, -3.14159)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cc01a"]
+_data = {
+"RESET": SubResource("Animation_j577v"),
+"idle": SubResource("Animation_y35tg")
+}
+
+[node name="ProphetRobot" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_0eb51")
+
+[node name="Prophetbot" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.996835, -0.0784873, 0.012656, -6.19918e-08, -0.159192, -0.987247, 0.0795011, -0.984123, 0.158688, 2.08165e-12, 0.468, 2.08165e-12)
 mesh = SubResource("ArrayMesh_1gyaw")
 skeleton = NodePath("")
 
-[node name="ProphetRail" type="MeshInstance3D" parent="."]
+[node name="ProphetRail" type="MeshInstance3D" parent="Prophetbot"]
 transform = Transform3D(0.144052, 0.00225072, -0.0987396, 0.0987149, -0.00885573, 0.143814, -0.00315315, -0.17442, -0.00857598, 0.117002, -0.149269, -0.660674)
 mesh = SubResource("ArrayMesh_kj8e2")
 skeleton = NodePath("")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="SpotLight3D" type="SpotLight3D" parent="Prophetbot"]
 transform = Transform3D(-0.248197, -0.968248, 0.0299078, -0.215249, 0.0250216, -0.976239, 0.944492, -0.248737, -0.214625, 0.0323582, -0.13859, -0.149456)
 light_color = Color(0, 0.666667, 1, 1)
 light_energy = 6.553
@@ -118,3 +165,12 @@ light_size = 17.924
 light_specular = 3.271
 spot_range = 5.86517
 spot_angle = 19.6369
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_twxye")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_cc01a")
+}

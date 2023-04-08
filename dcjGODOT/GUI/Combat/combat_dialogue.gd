@@ -14,6 +14,13 @@ and the player takes damage after each exchange.
 
 extends Control
 
+@export var response_duration = 5.0
+@onready var hud = get_parent()
+@export var combat_damage : float = 5.0
+@export var hit_damage : float = 10.0
+
+var robot
+
 # might need to refine this list to make it more transparent and fair.
 # antonym, synonym, tangentially related concept
 
@@ -123,17 +130,18 @@ var dialogue_options = {
 
 var current_question : String
 
+
 signal combat_resolved
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	generate_dialog()
+	$ConcessionPopup.hide()
+	#generate_dialog()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	%ResponseTimerLabel.text = str(%ResponseTimer.time_left).pad_decimals(2)
+	%ResponseTimerLabel.text = str(%ResponseTimer.time_left).pad_decimals(1)
 
 func generate_dialog():
 	if not combat_resolved.is_connected(Global.player._on_melee_combat_resolved):
@@ -146,7 +154,8 @@ func generate_dialog():
 	shuffled_responses.shuffle()
 	
 	for button in %PlayerResponseOptions.get_children():
-		button.text = shuffled_responses.pop_back()
+		button.text = str(button.get_index() + 1) + ". " + shuffled_responses.pop_back()
+		
 		if not button.response_chosen.is_connected(self._on_response_chosen):
 			button.response_chosen.connect(self._on_response_chosen)
 	
@@ -154,23 +163,64 @@ func generate_dialog():
 	%ResponseTimer.start()
 
 func _on_response_chosen(responseString):
+	var popup_text = load("res://GUI/Combat/damage_popup.tscn").instantiate()
+	add_child(popup_text)
+	
+	# need to strip off the first 3 characters first.
+	responseString = responseString.right(-3)
 	var response_index = dialogue_options[current_question].find(responseString)
-	print(responseString + " = " + response_types.keys()[response_index])
+	#print(responseString + " = " + response_types.keys()[response_index])
 	if response_index == response_types.SERAPH:
-		Global.player_stats["Seraph"] += 1
+		Global.player_stats["Seraph"] += combat_damage
+		popup_text.popup("Seraph")
 	elif response_index == response_types.SIANN:
-		Global.player_stats["Siann"] += 1
+		Global.player_stats["Siann"] += combat_damage
+		popup_text.popup("Siann")
 	elif response_index == response_types.NEUTRAL:
 		# convert/kill the NPC and end the encounter.
-		hide()
-		combat_resolved.emit()
-		$HappyNoise.start()
-		
-
+		win()
+		return
+	
+	if hud.has_method("update"):
+		hud.update()
+	
 	generate_dialog()
+
+func win():
+	hide()
+	if robot != null and robot.dialog_text != "":
+		$ConcessionPopup.set_dialog_text(robot)
+		robot.die()
+	elif robot != null and robot.dialog_text == "":
+		$ConcessionPopup.reset_dialog_text()
+	$ConcessionPopup.popup_centered_ratio(0.8)
+	var timer = get_tree().create_timer(1.0)
+	await timer.timeout
+	$HappyNoise.start()
+	%ResponseTimer.stop()
+	%ResponseTimer.set_wait_time(response_duration)
+	combat_resolved.emit(robot)
+	
+
 
 
 func _on_response_timer_timeout():
-	$HurtNoise.start()
-	
+	hurt_player()
 
+func hurt_player():
+	# player didn't answer fast enough. take damage
+	var popup_text = load("res://GUI/Combat/damage_popup.tscn").instantiate()
+	add_child(popup_text)
+	popup_text.popup("Health")
+	$HurtNoise.start()
+	Global.player_stats["Health"] -= hit_damage
+	hud.update()
+
+	%ResponseTimer.set_wait_time(response_duration)
+	%ResponseTimer.start()
+	
+	
+func reset_timer():
+	%ResponseTimer.stop()
+	%ResponseTimer.set_wait_time(response_duration)
+	

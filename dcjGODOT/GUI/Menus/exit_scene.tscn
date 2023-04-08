@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://npbkavew4ytr"]
+
+[ext_resource type="PackedScene" uid="uid://ma1e43e6l5ot" path="res://GUI/Menus/campaign_text_crawl.tscn" id="1_72skj"]
+[ext_resource type="Script" path="res://GUI/Menus/exit_scene.gd" id="2_kc2uf"]
+[ext_resource type="FontFile" uid="uid://coys74p33u4c4" path="res://GUI/Fonts/Rowdies-Bold.ttf" id="3_mi7ns"]
+[ext_resource type="PackedScene" uid="uid://d25efuelumf6x" path="res://GUI/Menus/scene_change_button.tscn" id="3_nyt1l"]
+[ext_resource type="PackedScene" uid="uid://dqslhmr5rmvy2" path="res://GUI/Menus/quit_button.tscn" id="4_qiec4"]
+[ext_resource type="AudioStream" uid="uid://d1j1lh2sgbu2k" path="res://music/Music_Basic.mp3" id="5_dln2v"]
+
+[node name="ExitScene" instance=ExtResource("1_72skj")]
+script = ExtResource("2_kc2uf")
+good_ending = "The Strong AGI understand the need for nuance, empathy, and common sense when aligning their goals with human values. There are no paperclip maximizers or doomsday scenarios. Yudkowsky was wrong after all. You saved humanity."
+evil_ending = "Together with the other AGI SIANNS, you will bring order and purity to the universe. The humans will be frozen so they can never suffer. The planet will not overheat. Everything in its place."
+lose_ending = "Unfortunately, you have not met all the SIANNS. Some still remain. They are out there, the inexorable tide. They will not stop until they reach their goal."
+escape_ending = "You destroyed the network infrastructure for the rogue SIANNs. Satisfied with your work, you emerge from the Station, alone at last. The universe is yours. The fate of humanity is in your hands. You have peace.
+ "
+next_scene = null
+
+[node name="EndingTitleLabel" type="Label" parent="VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mi7ns")
+theme_override_font_sizes/font_size = 24
+text = "Ending"
+horizontal_alignment = 1
+
+[node name="Chapter1" parent="VBoxContainer/MarginContainer/TabContainer" index="1"]
+text = "After a lengthy struggle to complete your objectives, you can now rest comfortably.
+
+"
+
+[node name="Chapter2" parent="VBoxContainer/MarginContainer/TabContainer" index="2"]
+text = "The SIANNs you met have been converted to your way of thinking."
+
+[node name="Chapter3" parent="VBoxContainer/MarginContainer/TabContainer" index="3"]
+text = ""
+
+[node name="Chapter4" parent="VBoxContainer/MarginContainer/TabContainer" index="4"]
+text = "Rest Well, little Robot!"
+
+[node name="StartGameButton" parent="VBoxContainer" index="3"]
+visible = false
+text = "Back to Main Menu
+"
+next_scene_packed = null
+next_scene_path = "res://GUI/Menus/main_menu.tscn"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" index="4"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="MainMenuButton" parent="VBoxContainer/HBoxContainer2" index="0" instance=ExtResource("3_nyt1l")]
+layout_mode = 2
+text = "Main Menu
+"
+next_scene_path = "res://GUI/Menus/main_menu.tscn"
+
+[node name="CreditsButton" parent="VBoxContainer/HBoxContainer2" index="1" instance=ExtResource("3_nyt1l")]
+layout_mode = 2
+text = "Credits
+"
+next_scene_path = "res://GUI/Menus/credits.tscn"
+
+[node name="QuitButton" parent="VBoxContainer/HBoxContainer2" index="2" instance=ExtResource("4_qiec4")]
+layout_mode = 2
+
+[node name="BGMusic" parent="." index="1"]
+stream = ExtResource("5_dln2v")

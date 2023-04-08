@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcbdpmjkdjpnt"]
+
+[ext_resource type="Script" path="res://Entities/NPCs/Robot01.gd" id="1_5pbge"]
+[ext_resource type="Texture2D" uid="uid://bh1luxac1p4vb" path="res://Entities/NPCs/2dsprites/OldRobot.png" id="2_dup8a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vhl5m"]
+
+[node name="OldSpriteRobot" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 2
+script = ExtResource("1_5pbge")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.025
+billboard = 1
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("2_dup8a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_vhl5m")

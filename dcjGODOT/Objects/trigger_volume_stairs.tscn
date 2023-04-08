@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://bud8au2ek1k2n"]
+
+[ext_resource type="Script" path="res://Objects/trigger_volume_exit.gd" id="1_fp53a"]
+[ext_resource type="Shader" uid="uid://d0cx07vmu0mol" path="res://Levels/Materials/translucent_shader.tres" id="2_kau0f"]
+[ext_resource type="Material" uid="uid://dw4iogemd4sw6" path="res://Levels/Materials/PurpleWallMaterial.tres" id="3_a1ypj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwy5h"]
+render_priority = 0
+shader = ExtResource("2_kau0f")
+shader_parameter/ColorParameter = Color(1, 1, 0.333333, 0.317647)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xwj5r"]
+material = SubResource("ShaderMaterial_qwy5h")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8xi5q"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nukjd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lrs2l"]
+noise = SubResource("FastNoiseLite_nukjd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hc4r6"]
+albedo_color = Color(0.741176, 0.745098, 0.568627, 1)
+albedo_texture = SubResource("NoiseTexture2D_lrs2l")
+metallic = 0.67
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u6t0j"]
+material = SubResource("StandardMaterial3D_hc4r6")
+
+[sub_resource type="TorusMesh" id="TorusMesh_hudlh"]
+material = ExtResource("3_a1ypj")
+outer_radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dx017"]
+disable_ambient_light = true
+albedo_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
+emission_enabled = true
+emission = Color(0.0352941, 0.0352941, 0.0352941, 1)
+emission_operator = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8gc53"]
+material = SubResource("StandardMaterial3D_dx017")
+
+[node name="TriggerVolumeExit" type="Area3D"]
+script = ExtResource("1_fp53a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xwj5r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8xi5q")
+
+[node name="LadderDown" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85344e-05, -0.000785276, 0.000235081)
+metadata/_edit_group_ = true
+
+[node name="Cylinder" type="MeshInstance3D" parent="LadderDown"]
+transform = Transform3D(0.135, 0, 0, 0, 0.45, 0, 0, 0, 0.135, -0.230007, 0, 0)
+mesh = SubResource("CylinderMesh_u6t0j")
+skeleton = NodePath("../..")
+
+[node name="Rung1" type="MeshInstance3D" parent="LadderDown"]
+transform = Transform3D(-4.20881e-09, 0.306849, 0, -0.0962863, -1.34128e-08, 0, 0, 0, 0.0962863, 0.0378255, 0, 0)
+mesh = SubResource("CylinderMesh_u6t0j")
+skeleton = NodePath("../..")
+
+[node name="Rung2" type="MeshInstance3D" parent="LadderDown"]
+transform = Transform3D(-4.20881e-09, 0.306849, 0, -0.0962863, -1.34128e-08, 0, 0, 0, 0.0962863, 0.0378255, 0.2499, 0)
+mesh = SubResource("CylinderMesh_u6t0j")
+skeleton = NodePath("../..")
+
+[node name="Rung3" type="MeshInstance3D" parent="LadderDown"]
+transform = Transform3D(-4.20881e-09, 0.306849, 0, -0.0962863, -1.34128e-08, 0, 0, 0, 0.0962863, 0.0378255, -0.248901, 0)
+mesh = SubResource("CylinderMesh_u6t0j")
+skeleton = NodePath("../..")
+
+[node name="Cylinder2" type="MeshInstance3D" parent="LadderDown"]
+transform = Transform3D(0.135, 0, 0, 0, 0.45, 0, 0, 0, 0.135, 0.306213, 0, 0)
+mesh = SubResource("CylinderMesh_u6t0j")
+skeleton = NodePath("../..")
+
+[node name="Ring" type="MeshInstance3D" parent="LadderDown"]
+transform = Transform3D(0.750549, 0, 0, 0, 0.338466, 0, 0, 0, 0.750549, 0.0300685, -0.420461, 0)
+mesh = SubResource("TorusMesh_hudlh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LadderDown"]
+transform = Transform3D(0.672683, 0, 0, 0, 0.0106813, 0, 0, 0, 0.672683, 0.00656015, -0.428416, 0)
+mesh = SubResource("CylinderMesh_8gc53")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

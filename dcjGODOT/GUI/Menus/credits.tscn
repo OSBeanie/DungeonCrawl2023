@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfroj42v7vpv2"]
+
+[ext_resource type="Theme" uid="uid://v1lt1ytwuk4e" path="res://GUI/Themes/credits_theme.tres" id="1_l833a"]
+[ext_resource type="Texture2D" uid="uid://6gwbkwe0yqhp" path="res://GUI/HUD/RobotHappyL1.png" id="2_gcv1a"]
+[ext_resource type="Texture2D" uid="uid://dktfcws6l34ph" path="res://GUI/HUD/RobotHappyL2.png" id="3_o5aq0"]
+[ext_resource type="Texture2D" uid="uid://cv0g1j4opjcfa" path="res://GUI/HUD/RobotHappyR1.png" id="4_4wd1r"]
+[ext_resource type="Texture2D" uid="uid://s5go2p7amx2m" path="res://GUI/HUD/RobotHappyR2.png" id="5_t1cgu"]
+[ext_resource type="PackedScene" path="res://GUI/Menus/scene_change_button.tscn" id="6_lby2r"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_xoj3f"]
+frames = 4
+frame_0/texture = ExtResource("2_gcv1a")
+frame_1/texture = ExtResource("3_o5aq0")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_4wd1r")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_t1cgu")
+frame_3/duration = 1.0
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_l833a")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.537255, 1, 1, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CreditsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "Beanie
+Booleons
+Bread
+June
+Ligetie
+Plexsoup"
+vertical_alignment = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+texture = SubResource("AnimatedTexture_xoj3f")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" parent="MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("6_lby2r")]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Main Menu
+"
+next_scene_path = "res://GUI/Menus/main_menu.tscn"

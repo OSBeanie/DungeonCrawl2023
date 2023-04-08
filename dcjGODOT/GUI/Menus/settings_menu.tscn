@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://ta0c2un1024f"]
+
+[ext_resource type="Theme" uid="uid://b2qjqoq6sqjr7" path="res://GUI/Themes/main_menu_theme.tres" id="1_iv2te"]
+[ext_resource type="PackedScene" uid="uid://d25efuelumf6x" path="res://GUI/Menus/scene_change_button.tscn" id="2_xydjm"]
+[ext_resource type="PackedScene" uid="uid://1khcq774i2ev" path="res://GUI/Menus/settings.tscn" id="3_wv7k7"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_iv2te")
+
+[node name="MarginContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Settings" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_wv7k7")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="BackToMainMenuButton" parent="MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_xydjm")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back To Main Menu
+
+"
+next_scene_path = "res://GUI/Menus/main_menu.tscn"
+
+[node name="StartGameButton2" parent="MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_xydjm")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Start Game
+
+"
+next_scene_path = "res://GUI/Menus/campaign_text_crawl.tscn"
+
+[editable path="MarginContainer/VBoxContainer/Settings"]

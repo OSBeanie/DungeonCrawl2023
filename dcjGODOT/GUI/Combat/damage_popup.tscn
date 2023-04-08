@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu0vyw73nv2js"]
+
+[ext_resource type="Script" path="res://GUI/Combat/damage_popup.gd" id="1_h0plb"]
+[ext_resource type="FontFile" uid="uid://coys74p33u4c4" path="res://GUI/Fonts/Rowdies-Bold.ttf" id="2_yqnmu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jo2bc"]
+bg_color = Color(0.341176, 0.623529, 0.866667, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv7ol"]
+bg_color = Color(0.882353, 0.392157, 0.733333, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0m4c"]
+bg_color = Color(0.698039, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="DamagePopup" type="Node2D"]
+z_index = 10
+position = Vector2(578, 225)
+script = ExtResource("1_h0plb")
+
+[node name="SeraphPanel" type="PanelContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(175, 75)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jo2bc")
+
+[node name="Seraph" type="Label" parent="SeraphPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqnmu")
+theme_override_font_sizes/font_size = 32
+text = "Empathy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SiannPanel" type="PanelContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(175, 75)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fv7ol")
+
+[node name="Siann" type="Label" parent="SiannPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqnmu")
+theme_override_font_sizes/font_size = 32
+text = "Control"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthPanel" type="PanelContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(175, 75)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p0m4c")
+
+[node name="Hurt" type="Label" parent="HealthPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqnmu")
+theme_override_font_sizes/font_size = 32
+text = "Purpose"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

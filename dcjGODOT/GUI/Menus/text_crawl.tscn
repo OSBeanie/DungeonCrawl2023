@@ -5,4 +5,6 @@
 [node name="TextCrawl" type="RichTextLabel"]
 text = "ipsum lorem dolor"
 scroll_following = true
+visible_characters = 0
+visible_ratio = 0.0
 script = ExtResource("1_44eaf")

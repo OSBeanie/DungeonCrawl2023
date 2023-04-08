@@ -45,6 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_asnrn")
 script = ExtResource("1_v7133")
+combat_damage = 10.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

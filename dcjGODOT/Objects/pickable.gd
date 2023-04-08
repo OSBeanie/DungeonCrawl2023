@@ -1,6 +1,7 @@
 extends Area3D
 
 @export var stat = "Health"
+@export var pickup_value = 10
 
 var picked : bool = false
 
@@ -30,7 +31,7 @@ func pickup(pickerUpper):
 	tween.tween_property(self, "position", position + vector_to_player, 0.3)
 	
 	if stat == "Health":
-		Global.player_stats["Health"] += 5
+		Global.player_stats["Health"] += pickup_value
 		Global.player.hud.update()
 		
 	$AnimationPlayer.play("pickup")

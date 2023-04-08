@@ -89,7 +89,7 @@ func move(action_name):
 	
 	if Global.user_prefs["move_instantly"] == true:
 		#original movement: 
-		self.position += (Vector3.FORWARD * step_distance * 2).rotated(Vector3.UP, self.rotation.y)
+		self.position += (Vector3.FORWARD * move_dir * step_distance * 2).rotated(Vector3.UP, self.rotation.y)
 	else:
 		var tween = self.create_tween()
 		var dirVector = -self.get_camera_transform().basis.z * step_distance * move_dir

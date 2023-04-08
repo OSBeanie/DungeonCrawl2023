@@ -41,7 +41,7 @@ func end_game():
 
 func _on_settings_button_pressed():
 	$SettingsButton/PopupMenu.popup_centered_ratio(0.5)
-
+	$SettingsButton/PopupMenu/CenterContainer/Settings/CloseMenuButton.grab_focus()
 
 func _on_close_menu_button_pressed():
 	$SettingsButton/PopupMenu.hide()

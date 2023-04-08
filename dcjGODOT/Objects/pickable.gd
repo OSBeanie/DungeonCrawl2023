@@ -15,7 +15,7 @@ func _ready():
 
 func _on_area_entered(area):
 	if !picked and area.is_in_group("player"):
-		print("Pickup detected by : ", area.name)
+		#print("Pickup detected by : ", area.name)
 		pickup(area)
 
 func pickup(pickerUpper):

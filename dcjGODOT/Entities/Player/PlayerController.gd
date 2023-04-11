@@ -120,7 +120,14 @@ func move(action_name):
 		self.position += dirVector
 	else:
 		var tween = self.create_tween()
-		tween.tween_property(self, "position", position + (dirVector), .15)
+		tween.set_ease(Tween.EASE_OUT)
+		#tween.set_trans(Tween.TRANS_CUBIC)
+		
+		tween.tween_property(self, "position", position + (dirVector*0.75)+Vector3(0,0.1,0), 0.15)
+		tween.tween_property(self, "position", position + (dirVector), 0.1)
+#		tween.parallel().tween_property(self, "rotation", Vector3(-0.03,0,0), 0.1).as_relative()
+#		tween.tween_property(self, "rotation", Vector3(0,0,0), 0.1).from_current().as_relative()
+#
 
 
 func take_damage(_damage): # for Beanie

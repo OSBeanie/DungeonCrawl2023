@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt2jm2p7aa1ln"]
+[gd_scene load_steps=8 format=3 uid="uid://dt2jm2p7aa1ln"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerController.gd" id="1_w1sgk"]
 [ext_resource type="PackedScene" uid="uid://b7fsctc3sgvtd" path="res://GUI/self_terminating_audio.tscn" id="3_k0kid"]
@@ -8,11 +8,14 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7qdrt"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_louk1"]
+
 [node name="Player" type="Node3D"]
 script = ExtResource("1_w1sgk")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.994327, 0.106368, 0, -0.106368, 0.994327, 0, 0.313398, 0.488699)
+cull_mask = 1048573
 fov = 60.0
 
 [node name="Raycasts" type="Node3D" parent="."]
@@ -54,6 +57,7 @@ shape = SubResource("BoxShape3D_7qdrt")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00465184, 0.627403, 0.00303042)
+visible = false
 light_energy = 0.3
 light_indirect_energy = 0.0
 light_size = 10.0
@@ -72,10 +76,19 @@ volume_db = -7.0
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.436595)
 light_color = Color(0.756863, 0.890196, 0.890196, 1)
-light_energy = 2.5
+light_energy = 6.0
 light_volumetric_fog_energy = 0.0
 spot_range = 8.0
 spot_angle = 43.4657
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.58244, 0, 0, 0, 0.58244, 0, 0, 0, 0.58244, 0, 0, 0)
+layers = 2
+mesh = SubResource("CapsuleMesh_louk1")
+
+[node name="OverheadCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)
+cull_mask = 1048571
 
 [connection signal="timeout" from="movetimer" to="." method="_on_movetimer_timeout"]
 [connection signal="area_entered" from="HitBox" to="Camera3D" method="_on_hit_box_area_entered"]

@@ -36,6 +36,11 @@ func _unhandled_input(_event):
 			else:
 				action_queue.push_back(actionName)
 
+	if Input.is_action_just_pressed("switch_camera"):
+		if !$OverheadCam.current:
+			$OverheadCam.current = true
+		else:
+			$Camera3D.current = true
 
 func change_direction(action_name):
 	if action_name == "turn_left":

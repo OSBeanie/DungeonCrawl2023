@@ -9,6 +9,7 @@ size = Vector3(0.5, 0.1, 1)
 
 [node name="CeilingLight" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 2.08165e-12)
+layers = 4
 cast_shadow = 0
 mesh = SubResource("BoxMesh_lr4wo")
 script = ExtResource("2_e7jny")

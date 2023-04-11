@@ -136,6 +136,7 @@ text = "Settings"
 [node name="PopupMenu" type="PopupPanel" parent="SettingsButton"]
 initial_position = 1
 size = Vector2i(381, 463)
+visible = true
 
 [node name="CenterContainer" type="CenterContainer" parent="SettingsButton/PopupMenu"]
 offset_left = 4.0
@@ -147,7 +148,7 @@ offset_bottom = 459.0
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="SceneChangeButton" parent="SettingsButton/PopupMenu/CenterContainer/Settings" instance=ExtResource("16_yaeyu")]
+[node name="ReturnToMainButton" parent="SettingsButton/PopupMenu/CenterContainer/Settings" instance=ExtResource("16_yaeyu")]
 layout_mode = 2
 text = "Return to Main Menu
 "

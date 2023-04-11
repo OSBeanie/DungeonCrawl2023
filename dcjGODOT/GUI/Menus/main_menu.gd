@@ -7,6 +7,7 @@ var robot_textures = {
 }
 
 func _ready():
+	Global.reset_stats()
 	$VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/StartCampaignButton.grab_focus()
 
 

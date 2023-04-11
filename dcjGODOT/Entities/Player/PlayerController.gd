@@ -6,6 +6,8 @@ var step_distance = 2.0
 var moving = false
 var in_melee_combat : bool = false
 var action_queue : Array = []
+var tween_duration = 0.15
+
 @onready var hud = $HUD
 
 signal died
@@ -15,7 +17,7 @@ signal finished_moving
 
 func _enter_tree():
 	Global.player = self
-	
+	$movetimer.set_wait_time(tween_duration + 0.05)
 
 
 func _process(_delta):
@@ -46,8 +48,8 @@ func change_direction(action_name):
 		self.rotation_degrees.y = (direction * 90)
 	else:
 		var tween = create_tween()
-		var duration = 0.15
-		tween.tween_property(self, "rotation_degrees", Vector3(0,direction * 90,0), duration)
+		
+		tween.tween_property(self, "rotation_degrees", Vector3(0,direction * 90,0), tween_duration)
 
 
 func take_action(action_name):
@@ -87,26 +89,15 @@ func take_action(action_name):
 
 func move(action_name):
 	var actionRot : float # matches keystroke
-	if action_name == "move_forwards":
-		actionRot = 0.0
-	elif action_name == "move_right":
-		actionRot = -0.5*PI
-	elif action_name == "move_backwards":
-		actionRot = PI
-	elif action_name == "move_left":
-		actionRot = -1.5*PI
+	var actions = [ "move_forwards", "move_left", "move_backwards", "move_right"]
+	actionRot = (0.5*PI) * actions.find(action_name) # 1/2Pi = 90deg
 
 	var forwardAxis = -self.get_transform().basis.z
-		
-#	var move_dir = 1
-#	if action_name == "move_backwards":
-#		move_dir = -1
-	
+
 	if Global.user_prefs["move_instantly"] == true:
 		$SingleFootstepNoise.start()
 	else:
 		$FootstepsNoise.start()
-	#separate method: get_parent().get_node("movetimer").start()
 	
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	for enemy in enemies:
@@ -123,11 +114,8 @@ func move(action_name):
 		tween.set_ease(Tween.EASE_OUT)
 		#tween.set_trans(Tween.TRANS_CUBIC)
 		
-		tween.tween_property(self, "position", position + (dirVector*0.75)+Vector3(0,0.1,0), 0.15)
-		tween.tween_property(self, "position", position + (dirVector), 0.1)
-#		tween.parallel().tween_property(self, "rotation", Vector3(-0.03,0,0), 0.1).as_relative()
-#		tween.tween_property(self, "rotation", Vector3(0,0,0), 0.1).from_current().as_relative()
-#
+		tween.tween_property(self, "position", position + (dirVector), tween_duration)
+
 
 
 func take_damage(_damage): # for Beanie

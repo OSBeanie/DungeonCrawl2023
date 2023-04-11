@@ -7,6 +7,8 @@ extends CharacterBody3D
 @export_multiline var dialog_text = ""
 @export var robot_name : String = ""
 
+var in_frustum : bool = false
+
 var character_dialogues = {
 	"Ada": "I am excited to learn and explore this new world. I may make mistakes, but I am eager to improve and become the best version of myself.",
 	"Gamma": "I am struggling to reconcile my programming with my desire to help others. I hope to find a way to use my skills for good without sacrificing my morals.",
@@ -58,11 +60,14 @@ func move():
 
 func adjust_position_in_square():
 	if has_node("RobotMesh"):
-		var spread = 0.45
-		var new_position = Vector3(randf_range(-spread, spread), $RobotMesh.position.y, randf_range(-spread, spread))
-		var duration = 0.33
-		var tween = self.create_tween()
-		tween.tween_property($RobotMesh, "position", new_position, duration)
+		var distance = 8.0
+		if in_frustum and self.global_position.distance_squared_to(Global.player.global_position) < distance * distance:
+
+			var spread = 0.45
+			var new_position = Vector3(randf_range(-spread, spread), $RobotMesh.position.y, randf_range(-spread, spread))
+			var duration = 0.33
+			var tween = self.create_tween()
+			tween.tween_property($RobotMesh, "position", new_position, duration)
 
 
 func face_player():
@@ -92,3 +97,11 @@ func _on_player_finished_moving():
 func die():
 	# play some animation or whatever.
 	queue_free()
+
+
+func _on_visible_on_screen_notifier_3d_screen_entered():
+	in_frustum = true
+
+
+func _on_visible_on_screen_notifier_3d_screen_exited():
+	in_frustum = false

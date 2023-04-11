@@ -54,7 +54,7 @@ shape = SubResource("BoxShape3D_7qdrt")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00465184, 0.627403, 0.00303042)
-light_energy = 0.1
+light_energy = 0.3
 light_indirect_energy = 0.0
 light_size = 10.0
 light_specular = 0.338
@@ -75,7 +75,7 @@ light_color = Color(0.756863, 0.890196, 0.890196, 1)
 light_energy = 2.5
 light_volumetric_fog_energy = 0.0
 spot_range = 8.0
-spot_angle = 28.5878
+spot_angle = 43.4657
 
 [connection signal="timeout" from="movetimer" to="." method="_on_movetimer_timeout"]
 [connection signal="area_entered" from="HitBox" to="Camera3D" method="_on_hit_box_area_entered"]

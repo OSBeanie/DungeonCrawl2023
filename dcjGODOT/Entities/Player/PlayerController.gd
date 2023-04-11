@@ -1,6 +1,7 @@
 extends Node3D
 var direction = 0
-var step_distance = 1.0
+var directions = ["N", "W", "S", "E"]
+var step_distance = 2.0
 
 var moving = false
 var in_melee_combat : bool = false
@@ -25,7 +26,7 @@ func _unhandled_input(_event):
 	if in_melee_combat: # no moving until combat is resolved
 		return
 		
-	var actions_to_queue = ["turn_left", "turn_right", "move_forwards", "move_backwards"]
+	var actions_to_queue = ["turn_left", "turn_right", "move_forwards", "move_backwards", "move_left", "move_right"]
 	for actionName in actions_to_queue:
 		if Input.is_action_just_pressed(actionName):
 			if action_queue.size() == 0 and $movetimer.is_stopped():
@@ -50,16 +51,23 @@ func change_direction(action_name):
 
 
 func take_action(action_name):
+	var raycasts = {
+		"move_forwards":$Raycasts/forwardRayCast3D,
+		"move_backwards":$Raycasts/backwardRayCast3D,
+		"move_left":$Raycasts/LeftRayCast3D2,
+		"move_right":$Raycasts/RightRayCast3D3,
+	}
+	
 	if Global.user_prefs["move_instantly"] == false:
 		$movetimer.start()
 	
 	if action_name in ["turn_left", "turn_right"]:
 		change_direction(action_name)
 	elif action_name == "move_forwards":
-		if !$forwardRayCast3D.is_colliding():
+		if !raycasts[action_name].is_colliding():
 			move(action_name)
 		else:
-			var possible_robot = $forwardRayCast3D.get_collider()
+			var possible_robot = raycasts[action_name].get_collider()
 			if is_instance_valid(possible_robot) and "robot" in possible_robot.name.to_lower():
 				var robot = possible_robot
 				if robot.get("requires_persuasion") == true:
@@ -67,17 +75,32 @@ func take_action(action_name):
 				else:
 					initiate_monologue(robot)
 
-	elif action_name == "move_backwards":
+	elif action_name in ["move_backwards", "move_left", "move_right"]:
 		# don't initiate combat unless you're facing the enemy
 		# but you walls and robots still block you
-		if !$backwardRayCast3D.is_colliding():
+		if !raycasts[action_name].is_colliding():
 			move(action_name)
+		else:
+			print(action_name , " is colliding with ", raycasts[action_name].get_collider().name)
+			
 
 
 func move(action_name):
-	var move_dir = 1
-	if action_name == "move_backwards":
-		move_dir = -1
+	var actionRot : float # matches keystroke
+	if action_name == "move_forwards":
+		actionRot = 0.0
+	elif action_name == "move_right":
+		actionRot = -0.5*PI
+	elif action_name == "move_backwards":
+		actionRot = PI
+	elif action_name == "move_left":
+		actionRot = -1.5*PI
+
+	var forwardAxis = -self.get_transform().basis.z
+		
+#	var move_dir = 1
+#	if action_name == "move_backwards":
+#		move_dir = -1
 	
 	if Global.user_prefs["move_instantly"] == true:
 		$SingleFootstepNoise.start()
@@ -89,17 +112,15 @@ func move(action_name):
 	for enemy in enemies:
 		if enemy.has_method("_on_player_finished_moving"):
 			enemy._on_player_finished_moving()
+
+	var dirVector = (forwardAxis * step_distance).rotated(Vector3.UP, actionRot)
 	
 	if Global.user_prefs["move_instantly"] == true:
 		#original movement: 
-		self.position += (Vector3.FORWARD * move_dir * step_distance * 2).rotated(Vector3.UP, self.rotation.y)
+		self.position += dirVector
 	else:
 		var tween = self.create_tween()
-		var dirVector = -self.get_transform().basis.z * step_distance * move_dir
-		
-#		tween.tween_property(self, "position", position + dirVector, .2)
-#		tween.tween_interval(.1)
-		tween.tween_property(self, "position", position + (2.0*dirVector), .15)
+		tween.tween_property(self, "position", position + (dirVector), .15)
 
 
 func take_damage(_damage): # for Beanie

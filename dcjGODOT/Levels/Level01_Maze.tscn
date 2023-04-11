@@ -318,18 +318,43 @@ skeleton = NodePath("")
 [node name="CeilingLighting" type="Node3D" parent="Level01"]
 
 [node name="CeilingLight" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
-light_color = Color(0.188235, 0.231373, 0.470588, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -6)
+light_color = Color(1, 0, 0, 1)
+
+[node name="CeilingLight9" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -6)
+light_color = Color(1, 0, 0, 1)
 
 [node name="CeilingLight2" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -13)
 light_color = Color(1, 0, 0, 1)
 
 [node name="CeilingLight3" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -30)
 light_color = Color(1, 0, 0, 1)
 
+[node name="CeilingLight10" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -30)
+light_color = Color(1, 0, 0, 1)
+
 [node name="CeilingLight4" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 2, -2)
+light_color = Color(0, 0, 1, 1)
+
+[node name="CeilingLight6" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2, -36)
+light_color = Color(0, 0, 1, 1)
+
+[node name="CeilingLight7" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 2, -22)
+light_color = Color(0, 0, 1, 1)
+
+[node name="CeilingLight8" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 2, -22)
+light_color = Color(0, 0, 1, 1)
+
+[node name="CeilingLight5" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2, 0)
 light_color = Color(0, 0, 1, 1)
 
 [node name="Floor" type="MeshInstance3D" parent="Level01"]

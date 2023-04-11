@@ -15,20 +15,34 @@ script = ExtResource("1_w1sgk")
 transform = Transform3D(1, 0, 0, 0, 0.998476, 0.0551942, 0, -0.0551942, 0.998476, 0, 0.253398, -0.220122)
 fov = 60.0
 
-[node name="movetimer" type="Timer" parent="."]
-wait_time = 0.15
-one_shot = true
+[node name="Raycasts" type="Node3D" parent="."]
 
-[node name="forwardRayCast3D" type="RayCast3D" parent="."]
+[node name="forwardRayCast3D" type="RayCast3D" parent="Raycasts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.177799, 0)
 target_position = Vector3(2.08165e-12, 2.08165e-12, -2)
 collision_mask = 6
 debug_shape_custom_color = Color(0.72549, 0, 1, 1)
 
-[node name="backwardRayCast3D" type="RayCast3D" parent="."]
+[node name="LeftRayCast3D2" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.177799, 0)
+target_position = Vector3(-2, 2.08165e-12, 2.08165e-12)
+collision_mask = 6
+debug_shape_custom_color = Color(0.72549, 0, 1, 1)
+
+[node name="RightRayCast3D3" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.177799, 0)
+target_position = Vector3(2, 2.08165e-12, 2.08165e-12)
+collision_mask = 6
+debug_shape_custom_color = Color(0.72549, 0, 1, 1)
+
+[node name="backwardRayCast3D" type="RayCast3D" parent="Raycasts"]
 target_position = Vector3(2.08165e-12, 2.08165e-12, 2)
 collision_mask = 6
 debug_shape_custom_color = Color(0.87451, 0.309804, 0, 1)
+
+[node name="movetimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
 
 [node name="HitBox" type="Area3D" parent="." groups=["player"]]
 collision_mask = 10

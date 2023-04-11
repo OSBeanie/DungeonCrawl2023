@@ -102,29 +102,12 @@ shadow_mesh = SubResource("ArrayMesh_wud1s")
 [sub_resource type="BoxShape3D" id="BoxShape3D_twxye"]
 size = Vector3(2, 2, 2)
 
-[sub_resource type="Animation" id="Animation_y35tg"]
-resource_name = "idle"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Prophetbot:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(1.41092, 0.0795855, -3.14159), Vector3(1.41092, -0.705813, -3.14159), Vector3(1.41092, 0.0795855, -3.14159), Vector3(1.41092, 0.603184, -3.14159), Vector3(1.41092, 0.0795855, -3.14159)]
-}
-
 [sub_resource type="Animation" id="Animation_j577v"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Prophetbot:rotation")
+tracks/0/path = NodePath("RobotMesh:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -132,6 +115,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(1.41092, 0.0795855, -3.14159)]
+}
+
+[sub_resource type="Animation" id="Animation_y35tg"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RobotMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.41092, 0.0795855, -3.14159), Vector3(1.41092, -0.705813, -3.14159), Vector3(1.41092, 0.0795855, -3.14159), Vector3(1.41092, 0.603184, -3.14159), Vector3(1.41092, 0.0795855, -3.14159)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cc01a"]
@@ -145,17 +145,17 @@ collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_0eb51")
 
-[node name="Prophetbot" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.996835, -0.0784873, 0.012656, -6.19918e-08, -0.159192, -0.987247, 0.0795011, -0.984123, 0.158688, 2.08165e-12, 0.468, 2.08165e-12)
+[node name="RobotMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.996835, -0.0784851, 0.0126563, -4.03591e-07, -0.159196, -0.987246, 0.079499, -0.984122, 0.158692, 2.08165e-12, 0.468, 2.08165e-12)
 mesh = SubResource("ArrayMesh_1gyaw")
 skeleton = NodePath("")
 
-[node name="ProphetRail" type="MeshInstance3D" parent="Prophetbot"]
+[node name="ProphetRail" type="MeshInstance3D" parent="RobotMesh"]
 transform = Transform3D(0.144052, 0.00225072, -0.0987396, 0.0987149, -0.00885573, 0.143814, -0.00315315, -0.17442, -0.00857598, 0.117002, -0.149269, -0.660674)
 mesh = SubResource("ArrayMesh_kj8e2")
 skeleton = NodePath("")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Prophetbot"]
+[node name="SpotLight3D" type="SpotLight3D" parent="RobotMesh"]
 transform = Transform3D(-0.248197, -0.968248, 0.0299078, -0.215249, 0.0250216, -0.976239, 0.944492, -0.248737, -0.214625, 0.0323582, -0.13859, -0.149456)
 light_color = Color(0, 0.666667, 1, 1)
 light_energy = 6.553

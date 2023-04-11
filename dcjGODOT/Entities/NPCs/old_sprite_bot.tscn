@@ -9,7 +9,7 @@
 collision_layer = 2
 script = ExtResource("1_5pbge")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="RobotMesh" type="Sprite3D" parent="."]
 pixel_size = 0.025
 billboard = 1
 alpha_cut = 2

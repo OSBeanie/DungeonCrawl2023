@@ -32,7 +32,7 @@ blend_shape_mode = 0
 script = ExtResource("1_w1sgk")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.220122)
+transform = Transform3D(1, 0, 0, 0, 0.998476, 0.0551942, 0, -0.0551942, 0.998476, 0, 0.253398, -0.220122)
 fov = 60.0
 
 [node name="movetimer" type="Timer" parent="."]

@@ -57,11 +57,12 @@ func move():
 		rotation.y = snapped(desiredRot.y, PI/2.0)
 
 func adjust_position_in_square():
-	var spread = 0.45
-	var new_position = Vector3(randf_range(-spread, spread), 0.2, randf_range(-spread, spread))
-	var duration = 0.33
-	var tween = self.create_tween()
-	tween.tween_property($RobotMesh, "position", new_position, duration)
+	if has_node("RobotMesh"):
+		var spread = 0.45
+		var new_position = Vector3(randf_range(-spread, spread), $RobotMesh.position.y, randf_range(-spread, spread))
+		var duration = 0.33
+		var tween = self.create_tween()
+		tween.tween_property($RobotMesh, "position", new_position, duration)
 
 
 func face_player():

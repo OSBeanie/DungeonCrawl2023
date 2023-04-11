@@ -146,7 +146,7 @@ collision_mask = 13
 script = ExtResource("1_0eb51")
 
 [node name="RobotMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.996835, -0.0784851, 0.0126563, -4.03591e-07, -0.159196, -0.987246, 0.079499, -0.984122, 0.158692, 2.08165e-12, 0.468, 2.08165e-12)
+transform = Transform3D(-0.996835, -0.0784851, 0.0126563, -4.03591e-07, -0.159196, -0.987246, 0.079499, -0.984122, 0.158692, 2.08165e-12, 1.4998, 2.08165e-12)
 mesh = SubResource("ArrayMesh_1gyaw")
 skeleton = NodePath("")
 

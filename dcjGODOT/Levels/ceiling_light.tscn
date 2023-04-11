@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsmbqavi7y0fh"]
+
+[ext_resource type="Material" uid="uid://kbhd70lug45g" path="res://Levels/Materials/red_emission.tres" id="1_pp6j7"]
+[ext_resource type="Script" path="res://Levels/ceiling_light.gd" id="2_e7jny"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lr4wo"]
+material = ExtResource("1_pp6j7")
+size = Vector3(0.5, 0.1, 1)
+
+[node name="CeilingLight" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -6)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_lr4wo")
+script = ExtResource("2_e7jny")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.316805, 0)
+light_color = Color(0.772549, 0, 0, 1)
+light_size = 5.0
+shadow_enabled = true
+omni_range = 12.0

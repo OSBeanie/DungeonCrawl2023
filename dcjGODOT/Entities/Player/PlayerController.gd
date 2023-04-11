@@ -1,4 +1,4 @@
-extends Camera3D
+extends Node3D
 var direction = 0
 var step_distance = 1.0
 
@@ -28,9 +28,10 @@ func _unhandled_input(_event):
 	var actions_to_queue = ["turn_left", "turn_right", "move_forwards", "move_backwards"]
 	for actionName in actions_to_queue:
 		if Input.is_action_just_pressed(actionName):
-			action_queue.push_back(actionName)
-			if $movetimer.is_stopped(): # execute action immediately
-				take_action(action_queue.pop_front())
+			if action_queue.size() == 0 and $movetimer.is_stopped():
+				take_action(actionName)
+			else:
+				action_queue.push_back(actionName)
 
 
 func change_direction(action_name):
@@ -44,7 +45,7 @@ func change_direction(action_name):
 		self.rotation_degrees.y = (direction * 90)
 	else:
 		var tween = create_tween()
-		var duration = 0.3
+		var duration = 0.15
 		tween.tween_property(self, "rotation_degrees", Vector3(0,direction * 90,0), duration)
 
 
@@ -94,11 +95,11 @@ func move(action_name):
 		self.position += (Vector3.FORWARD * move_dir * step_distance * 2).rotated(Vector3.UP, self.rotation.y)
 	else:
 		var tween = self.create_tween()
-		var dirVector = -self.get_camera_transform().basis.z * step_distance * move_dir
+		var dirVector = -self.get_transform().basis.z * step_distance * move_dir
 		
-		tween.tween_property(self, "position", position + dirVector, .2)
-		tween.tween_interval(.1)
-		tween.tween_property(self, "position", position + (2.0*dirVector), .2)
+#		tween.tween_property(self, "position", position + dirVector, .2)
+#		tween.tween_interval(.1)
+		tween.tween_property(self, "position", position + (2.0*dirVector), .15)
 
 
 func take_damage(_damage): # for Beanie

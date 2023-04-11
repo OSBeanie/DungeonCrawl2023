@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://cxmfur8buqvu1"]
+[gd_scene load_steps=34 format=3 uid="uid://cxmfur8buqvu1"]
 
 [ext_resource type="PackedScene" uid="uid://dt2jm2p7aa1ln" path="res://Entities/Player/player.tscn" id="1_kam2j"]
 [ext_resource type="Script" path="res://Levels/Level01_Maze.gd" id="1_ky7s6"]
 [ext_resource type="PackedScene" uid="uid://bc8tifgyg8dk6" path="res://Levels/grid_map_01.tscn" id="2_oj0hv"]
 [ext_resource type="MeshLibrary" uid="uid://b1whp0sw7g7bp" path="res://Levels/MeshLibrary02_floors.tres" id="3_is2sv"]
 [ext_resource type="Texture2D" uid="uid://docmno7lohqf2" path="res://Levels/Materials/Amazing1_RoboticDungeon.png" id="3_t48rj"]
+[ext_resource type="PackedScene" uid="uid://dsmbqavi7y0fh" path="res://Levels/ceiling_light.tscn" id="6_r25as"]
 [ext_resource type="PackedScene" uid="uid://bud8au2ek1k2n" path="res://Objects/trigger_volume_stairs.tscn" id="7_wjohk"]
 [ext_resource type="PackedScene" uid="uid://bcbdpmjkdjpnt" path="res://Entities/NPCs/old_sprite_bot.tscn" id="9_kalnp"]
 [ext_resource type="AudioStream" uid="uid://d1j1lh2sgbu2k" path="res://music/Music_Basic.mp3" id="10_88ny0"]
@@ -12,6 +13,25 @@
 [ext_resource type="Script" path="res://DesignNotes.gd" id="14_8apfw"]
 [ext_resource type="PackedScene" uid="uid://xovgihdkj5it" path="res://Entities/NPCs/ProphetBot.tscn" id="16_kjgl7"]
 [ext_resource type="PackedScene" uid="uid://dlyqx2p43cq00" path="res://Entities/NPCs/Robot01.tscn" id="17_lknes"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w0y3x"]
+sky_top_color = Color(0.976471, 0.937255, 0.972549, 1)
+sky_horizon_color = Color(0.0862745, 0.0235294, 0.0901961, 1)
+sky_energy_multiplier = 0.25
+
+[sub_resource type="Sky" id="Sky_73wno"]
+sky_material = SubResource("ProceduralSkyMaterial_w0y3x")
+
+[sub_resource type="Environment" id="Environment_utbl0"]
+background_mode = 2
+background_energy_multiplier = 0.67
+sky = SubResource("Sky_73wno")
+ambient_light_source = 1
+ambient_light_sky_contribution = 0.1
+ambient_light_energy = 0.1
+glow_enabled = true
+glow_bloom = 0.13
+volumetric_fog_albedo = Color(1, 0.678431, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tf4sd"]
 resource_name = "Floor"
@@ -252,19 +272,11 @@ albedo_texture = SubResource("NoiseTexture2D_7felk")
 [sub_resource type="PlaneMesh" id="PlaneMesh_t32k8"]
 material = SubResource("StandardMaterial3D_muju4")
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w0y3x"]
-sky_top_color = Color(0.109804, 0.141176, 0.184314, 1)
-sky_horizon_color = Color(0.803922, 0.54902, 0.819608, 1)
-
-[sub_resource type="Sky" id="Sky_73wno"]
-sky_material = SubResource("ProceduralSkyMaterial_w0y3x")
-
-[sub_resource type="Environment" id="Environment_utbl0"]
-background_energy_multiplier = 0.67
-sky = SubResource("Sky_73wno")
-
 [node name="Maze" type="Node3D"]
 script = ExtResource("1_ky7s6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_utbl0")
 
 [node name="PlayerCamera" parent="." instance=ExtResource("1_kam2j")]
 
@@ -305,6 +317,21 @@ skeleton = NodePath("")
 
 [node name="CeilingLighting" type="Node3D" parent="Level01"]
 
+[node name="CeilingLight" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
+light_color = Color(0.188235, 0.231373, 0.470588, 1)
+
+[node name="CeilingLight2" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -14)
+light_color = Color(1, 0, 0, 1)
+
+[node name="CeilingLight3" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -30)
+light_color = Color(1, 0, 0, 1)
+
+[node name="CeilingLight4" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 2, -2)
+light_color = Color(0, 0, 1, 1)
+
 [node name="Floor" type="MeshInstance3D" parent="Level01"]
 transform = Transform3D(24, 0, 0, 0, 24, 0, 0, 0, 24, 19, -0.5, -17)
 mesh = SubResource("PlaneMesh_aqqdk")
@@ -312,7 +339,6 @@ skeleton = NodePath("../..")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Level01"]
 transform = Transform3D(24, 0, 0, 0, -24, 1.88833e-06, 0, -2.09815e-06, -21.6, 18, 1.95695, -17)
-visible = false
 mesh = SubResource("PlaneMesh_t32k8")
 skeleton = NodePath("../..")
 metadata/_edit_lock_ = true
@@ -404,9 +430,6 @@ requires_persuasion = false
 [node name="TriggerVolumeStairs" parent="TriggerVolumes" instance=ExtResource("7_wjohk")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 42, 0, -36)
 next_scene = "res://GUI/Menus/level02_intro_text_crawl.tscn"
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_utbl0")
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_88ny0")

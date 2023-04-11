@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://kbhd70lug45g"]
+
+[resource]
+roughness = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.0
+disable_receive_shadows = true

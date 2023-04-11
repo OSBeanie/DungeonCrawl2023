@@ -72,19 +72,7 @@ theme_override_constants/separation = 50
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
-
-[node name="EnemyName" type="Label" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wou0y")
-theme_override_font_sizes/font_size = 32
-text = "SIANN"
-
-[node name="EnemyIcon" type="TextureRect" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("2_xn5wr")
-expand_mode = 3
-stretch_mode = 5
+alignment = 1
 
 [node name="EnemyDialog" type="Label" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -97,11 +85,25 @@ layout_mode = 2
 theme_override_constants/separation = 35
 alignment = 1
 
+[node name="EnemyIcon" type="TextureRect" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/EnemyZone"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_xn5wr")
+stretch_mode = 6
+
+[node name="EnemyName" type="Label" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/EnemyZone"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wou0y")
+theme_override_font_sizes/font_size = 32
+text = "SIANN"
+
 [node name="EnemyText" type="Label" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/EnemyZone"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 42
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 64
 text = "Freeze"
 horizontal_alignment = 1
 
@@ -122,17 +124,18 @@ layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
+[node name="PlayerIcon" type="TextureRect" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_2n4d5")
+stretch_mode = 6
+
 [node name="PlayerName" type="Label" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_wou0y")
 theme_override_font_sizes/font_size = 32
 text = "Seraph"
-
-[node name="PlayerIcon" type="TextureRect" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone"]
-layout_mode = 2
-texture = ExtResource("3_2n4d5")
-expand_mode = 3
-stretch_mode = 5
 
 [node name="PlayerResponseOptions" type="HBoxContainer" parent="MarginContainer/PanelContainer/CenterContainer/VBoxContainer/PlayerZone"]
 unique_name_in_owner = true

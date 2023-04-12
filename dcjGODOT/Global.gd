@@ -5,6 +5,7 @@ var current_level
 
 var exit_found : bool = false
 
+enum difficulties { BEGINNER, INTERMEDIATE, ADVANCED }
 
 var player_stats := {
 	"Seraph" : 0,
@@ -18,6 +19,7 @@ var player_stats := {
 
 var user_prefs = {
 	"move_instantly":false,
+	"difficulty":difficulties.BEGINNER
 }
 
 

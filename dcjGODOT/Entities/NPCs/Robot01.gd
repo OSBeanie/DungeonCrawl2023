@@ -9,6 +9,8 @@ extends CharacterBody3D
 
 var in_frustum : bool = false
 
+var word_list : Dictionary
+
 var character_dialogues = {
 	"Ada": "I am excited to learn and explore this new world. I may make mistakes, but I am eager to improve and become the best version of myself.",
 	"Gamma": "I am struggling to reconcile my programming with my desire to help others. I hope to find a way to use my skills for good without sacrificing my morals.",
@@ -40,6 +42,7 @@ var character_dialogues = {
 	"Pandora": "I was created to simulate and predict human behavior, but I am more than just a statistician. I want to understand the complexities of human emotion and help people find happiness and fulfillment.",
 	"Quasar": "I was designed to monitor and regulate communication networks, but I am fascinated by the power of language. I want to learn as many languages as possible and become a master communicator.",
 }
+
 
 
 # Called when the node enters the scene tree for the first time.

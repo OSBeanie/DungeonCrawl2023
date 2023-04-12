@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://xovgihdkj5it"]
+[gd_scene load_steps=15 format=3 uid="uid://xovgihdkj5it"]
 
 [ext_resource type="Script" path="res://Entities/NPCs/Robot01.gd" id="1_0eb51"]
 [ext_resource type="Texture2D" uid="uid://c3ed3h0rmyts8" path="res://Levels/Materials/Amazing1_Prophet Bot.png" id="1_i4rxi"]
+[ext_resource type="PackedScene" uid="uid://bk4j45dra60jd" path="res://Resources/word_list.tscn" id="3_uglac"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o546b"]
 resource_name = "Material.001"
@@ -156,13 +157,9 @@ mesh = SubResource("ArrayMesh_kj8e2")
 skeleton = NodePath("")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="RobotMesh"]
-transform = Transform3D(-0.248197, -0.968248, 0.0299078, -0.215249, 0.0250216, -0.976239, 0.944492, -0.248737, -0.214625, 0.0323582, -0.13859, -0.149456)
-light_color = Color(0, 0.666667, 1, 1)
-light_energy = 6.553
-light_indirect_energy = 4.117
-light_volumetric_fog_energy = 6.943
-light_size = 17.924
-light_specular = 3.271
+transform = Transform3D(-0.241127, -0.97013, 0.0265819, -0.309006, 0.0507815, -0.949704, 0.919987, -0.237213, -0.312021, 0.0323582, -0.13859, -0.149456)
+light_size = 4.0
+light_bake_mode = 0
 spot_range = 5.86517
 spot_angle = 19.6369
 
@@ -176,6 +173,8 @@ libraries = {
 }
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="WordList" parent="." instance=ExtResource("3_uglac")]
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

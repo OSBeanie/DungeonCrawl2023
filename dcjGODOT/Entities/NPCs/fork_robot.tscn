@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2aad586v73vn"]
+[gd_scene load_steps=11 format=3 uid="uid://c2aad586v73vn"]
 
 [ext_resource type="Script" path="res://Entities/NPCs/Robot01.gd" id="1_a4erc"]
+[ext_resource type="PackedScene" uid="uid://bk4j45dra60jd" path="res://Resources/word_list.tscn" id="2_cw8cf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vh0pb"]
 resource_name = "Purple"
@@ -164,3 +165,10 @@ shape = SubResource("BoxShape3D_k34w7")
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0201868, 0)
 target_position = Vector3(2.08165e-12, 2.08165e-12, 5)
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="WordList" parent="." instance=ExtResource("2_cw8cf")]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

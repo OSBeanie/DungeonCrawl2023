@@ -131,6 +131,9 @@ shape = SubResource("BoxShape3D_wprxt")
 
 [node name="BevelledCube" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.459434, -1.60244e-16, 1.60244e-16, 1.60244e-16, 0.459434, -1.60244e-16, -1.60244e-16, 1.60244e-16, 0.459434, -1.43469, 0.694911, 0.0401949)
+extra_cull_margin = 0.5
+gi_mode = 2
+gi_lightmap_scale = 2
 mesh = SubResource("ArrayMesh_nt8j0")
 skeleton = NodePath("")
 

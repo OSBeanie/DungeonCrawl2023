@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlyqx2p43cq00"]
+[gd_scene load_steps=13 format=3 uid="uid://dlyqx2p43cq00"]
 
 [ext_resource type="Script" path="res://Entities/NPCs/Robot01.gd" id="1_u4pyn"]
+[ext_resource type="PackedScene" uid="uid://bk4j45dra60jd" path="res://Resources/word_list.tscn" id="2_0j0jh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_woqby"]
 resource_name = "Purple"
@@ -182,6 +183,8 @@ visible = false
 texture = SubResource("NoiseTexture2D_kmti0")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="WordList" parent="." instance=ExtResource("2_0j0jh")]
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

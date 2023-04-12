@@ -5,6 +5,7 @@ extends VBoxContainer
 func _ready():
 	%MoveInstantlyButton.button_pressed = Global.user_prefs["move_instantly"]
 	%LowSpecButton.button_pressed = Global.user_prefs["low_spec"]
+	%DifficultyButton.selected = Global.user_prefs["difficulty"]
 
 func _on_move_instantly_button_toggled(button_pressed):
 	Global.user_prefs["move_instantly"] = button_pressed
@@ -20,3 +21,7 @@ func _on_low_spec_button_toggled(button_pressed):
 
 
 
+
+
+func _on_difficulty_button_item_selected(index):
+	Global.user_prefs["difficulty"] = index

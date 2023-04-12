@@ -143,32 +143,37 @@ text = "Settings"
 
 [node name="PopupMenu" type="PopupPanel" parent="SettingsButton"]
 initial_position = 1
-size = Vector2i(381, 463)
+size = Vector2i(588, 677)
 visible = true
 
 [node name="CenterContainer" type="CenterContainer" parent="SettingsButton/PopupMenu"]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 377.0
-offset_bottom = 459.0
+offset_right = 584.0
+offset_bottom = 673.0
 
 [node name="Settings" parent="SettingsButton/PopupMenu/CenterContainer" instance=ExtResource("18_glwv3")]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="ReturnToMainButton" parent="SettingsButton/PopupMenu/CenterContainer/Settings" instance=ExtResource("16_yaeyu")]
-layout_mode = 2
-text = "Return to Main Menu
-"
-next_scene_path = "res://GUI/Menus/main_menu.tscn"
-
-[node name="QuitButton" parent="SettingsButton/PopupMenu/CenterContainer/Settings" instance=ExtResource("17_ugm75")]
-layout_mode = 2
-text = "Quit Game"
-
 [node name="CloseMenuButton" type="Button" parent="SettingsButton/PopupMenu/CenterContainer/Settings"]
 layout_mode = 2
 text = "Close Settings Menu"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsButton/PopupMenu/CenterContainer/Settings"]
+layout_mode = 2
+
+[node name="QuitButton" parent="SettingsButton/PopupMenu/CenterContainer/Settings/HBoxContainer" instance=ExtResource("17_ugm75")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit Game"
+
+[node name="ReturnToMainButton" parent="SettingsButton/PopupMenu/CenterContainer/Settings/HBoxContainer" instance=ExtResource("16_yaeyu")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Return to Main Menu
+"
+next_scene_path = "res://GUI/Menus/main_menu.tscn"
 
 [node name="HealthProgress" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true

@@ -14,12 +14,14 @@ and the player takes damage after each exchange.
 
 extends Control
 
-@export var response_duration = 5.0
+@export var response_duration = 8.0
 @onready var hud = get_parent()
 @export var combat_damage : float = 5.0
 @export var hit_damage : float = 10.0
 
 var robot
+
+var difficulty_modifiers = [1.0, 1.75, 3.0]
 
 # might need to refine this list to make it more transparent and fair.
 # antonym, synonym, tangentially related concept
@@ -63,6 +65,7 @@ func generate_dialog():
 			button.response_chosen.connect(self._on_response_chosen)
 	
 	%EnemyText.text = current_question
+	%ResponseTimer.set_wait_time(response_duration / difficulty_modifiers[Global.user_prefs["difficulty"]])
 	%ResponseTimer.start()
 
 func _on_response_chosen(responseString):
@@ -75,10 +78,10 @@ func _on_response_chosen(responseString):
 	var response_index = current_dialogue[current_question].find(responseString)
 	#print(responseString + " = " + response_types.keys()[response_index])
 	if response_index == response_types.SERAPH:
-		Global.player_stats["Seraph"] += combat_damage
+		Global.player_stats["Seraph"] += combat_damage * difficulty_modifiers[Global.user_prefs["difficulty"]]
 		popup_text.popup("Seraph")
 	elif response_index == response_types.SIANN:
-		Global.player_stats["Siann"] += combat_damage
+		Global.player_stats["Siann"] += combat_damage * difficulty_modifiers[Global.user_prefs["difficulty"]]
 		popup_text.popup("Siann")
 	elif response_index == response_types.NEUTRAL:
 		# convert/kill the NPC and end the encounter.
@@ -117,7 +120,7 @@ func hurt_player():
 	add_child(popup_text)
 	popup_text.popup("Health")
 	$HurtNoise.start()
-	Global.player_stats["Health"] -= hit_damage
+	Global.player_stats["Health"] -= hit_damage  * difficulty_modifiers[Global.user_prefs["difficulty"]]
 	hud.update()
 
 	%ResponseTimer.set_wait_time(response_duration)

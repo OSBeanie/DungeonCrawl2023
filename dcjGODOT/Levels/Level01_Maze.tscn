@@ -30,8 +30,13 @@ sky = SubResource("Sky_73wno")
 ambient_light_source = 1
 ambient_light_sky_contribution = 0.1
 ambient_light_energy = 0.1
+sdfgi_use_occlusion = true
 glow_enabled = true
 glow_bloom = 0.13
+fog_light_color = Color(0.705882, 0.737255, 0.937255, 1)
+fog_density = 0.025
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.15
 volumetric_fog_albedo = Color(1, 0.678431, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tf4sd"]

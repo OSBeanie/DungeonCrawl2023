@@ -174,8 +174,8 @@ func _on_hit_box_area_entered(area):
 func relocate_to_center_of_square():
 	# This shouldn't be necessary..
 	# attempt to solve bug where player sometimes ends up out of position
-	global_position.x = floor(global_position.x)
-	global_position.y = floor(global_position.y)
+	global_position.x = snapped(global_position.x, 2.0)
+	global_position.y = snapped(global_position.y, 2.0)
 
 
 func _on_movetimer_timeout():

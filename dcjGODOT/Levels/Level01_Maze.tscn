@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cxmfur8buqvu1"]
+[gd_scene load_steps=35 format=3 uid="uid://cxmfur8buqvu1"]
 
 [ext_resource type="PackedScene" uid="uid://dt2jm2p7aa1ln" path="res://Entities/Player/player.tscn" id="1_kam2j"]
 [ext_resource type="Script" path="res://Levels/Level01_Maze.gd" id="1_ky7s6"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bcbdpmjkdjpnt" path="res://Entities/NPCs/old_sprite_bot.tscn" id="9_kalnp"]
 [ext_resource type="AudioStream" uid="uid://d1j1lh2sgbu2k" path="res://music/Music_Basic.mp3" id="10_88ny0"]
 [ext_resource type="PackedScene" uid="uid://c65p31byu7drk" path="res://Objects/pickable.tscn" id="11_6af5s"]
+[ext_resource type="PackedScene" uid="uid://3hlgjr4csluv" path="res://Entities/NPCs/MuscleBot01.tscn" id="11_c7yat"]
 [ext_resource type="Script" path="res://DesignNotes.gd" id="14_8apfw"]
 [ext_resource type="PackedScene" uid="uid://xovgihdkj5it" path="res://Entities/NPCs/ProphetBot.tscn" id="16_kjgl7"]
 [ext_resource type="PackedScene" uid="uid://dlyqx2p43cq00" path="res://Entities/NPCs/Robot01.tscn" id="17_lknes"]
@@ -449,6 +450,9 @@ requires_persuasion = false
 [node name="OldSpriteRobot5" parent="NPCs" instance=ExtResource("9_kalnp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -4)
 requires_persuasion = false
+
+[node name="Robot01" parent="NPCs" instance=ExtResource("11_c7yat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
 
 [node name="TriggerVolumes" type="Node3D" parent="."]
 

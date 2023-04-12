@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dhkgoijv3xved"]
+[gd_scene load_steps=23 format=3 uid="uid://dhkgoijv3xved"]
 
 [ext_resource type="Script" path="res://GUI/HUD/PlayerHUD.gd" id="1_akot3"]
 [ext_resource type="Texture2D" uid="uid://cdprmn3jtpvhx" path="res://GUI/HUD/RobotNormalL1.png" id="2_fxos4"]
@@ -34,6 +34,13 @@ frame_4/texture = ExtResource("6_3goee")
 frame_4/duration = 0.5
 frame_5/texture = ExtResource("7_wxijs")
 frame_5/duration = 0.5
+
+[sub_resource type="InputEventKey" id="InputEventKey_sh7s5"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_w5g1o"]
+events = [SubResource("InputEventKey_sh7s5")]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_akot3")
@@ -131,12 +138,12 @@ offset_left = -8.0
 offset_bottom = 8.0
 grow_horizontal = 0
 theme = ExtResource("18_whn8r")
+shortcut = SubResource("Shortcut_w5g1o")
 text = "Settings"
 
 [node name="PopupMenu" type="PopupPanel" parent="SettingsButton"]
 initial_position = 1
 size = Vector2i(381, 463)
-visible = true
 
 [node name="CenterContainer" type="CenterContainer" parent="SettingsButton/PopupMenu"]
 offset_left = 4.0

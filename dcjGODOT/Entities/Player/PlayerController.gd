@@ -1,14 +1,25 @@
 extends Node3D
 var direction = 0
+var prev_direction = 0
 var directions = ["N", "W", "S", "E"]
+var actions_to_queue = ["turn_left", "turn_right", "move_forwards", "move_backwards", "move_left", "move_right"]
+	
 var step_distance = 2.0
 
-var moving = false
+var moving : bool = false
+var rotating : bool = false
+var rotation_lerp : float = 0.0
+var rotation_speed : float = 4.0
+
 var in_melee_combat : bool = false
 var action_queue : Array = []
-var tween_duration = 0.15
+var tween_duration = 0.25
 
 @onready var hud = $HUD
+
+var last_polling_time : int = 0
+var polling_interval : int = 250 # msec
+
 
 signal died
 signal finished_level
@@ -20,15 +31,25 @@ func _enter_tree():
 	$movetimer.set_wait_time(tween_duration + 0.05)
 
 
-func _process(_delta):
-	pass # moved to _unhandled_input()
+func _process(delta):
+	
+	if rotating:
+		rotation_lerp += rotation_speed * delta
+		if rotation_lerp > 1.0:
+			rotation_lerp = 1.0
 
+		var prevRot = prev_direction * 0.5 * PI
+		var desiredRot = direction * 0.5 * PI
+		rotation.y = lerp_angle(prevRot, desiredRot, rotation_lerp )
+		if rotation_lerp == 1.0:
+			rotating = false
+			rotation_lerp = 0.0
+		
 
 func _unhandled_input(_event):
 	if in_melee_combat: # no moving until combat is resolved
 		return
 		
-	var actions_to_queue = ["turn_left", "turn_right", "move_forwards", "move_backwards", "move_left", "move_right"]
 	for actionName in actions_to_queue:
 		if Input.is_action_just_pressed(actionName):
 			if action_queue.size() == 0 and $movetimer.is_stopped():
@@ -42,19 +63,19 @@ func _unhandled_input(_event):
 		else:
 			$Camera3D.current = true
 
-func change_direction(action_name):
-	if action_name == "turn_left":
-		direction += 1
-	elif action_name == "turn_right":
-		direction -= 1
-	#direction = direction % 4 # wrap to 0 # not needed.. causes rotating artifact when it loops.
 
-	if Global.user_prefs["move_instantly"] == true:
-		self.rotation_degrees.y = (direction * 90)
-	else:
-		var tween = create_tween()
+func change_direction(action_name):
+	if !rotating:
+		if action_name == "turn_left":
+			prev_direction = direction
+			direction += 1
+		elif action_name == "turn_right":
+			prev_direction = direction
+			direction -= 1
+		#direction = direction % 4 # wrap to 0 # not needed.. causes rotating artifact when it loops.
+
+		rotating = true
 		
-		tween.tween_property(self, "rotation_degrees", Vector3(0,direction * 90,0), tween_duration)
 
 
 func take_action(action_name):
@@ -116,7 +137,7 @@ func move(action_name):
 		self.position += dirVector
 	else:
 		var tween = self.create_tween()
-		tween.set_ease(Tween.EASE_OUT)
+		tween.set_ease(Tween.EASE_IN_OUT)
 		#tween.set_trans(Tween.TRANS_CUBIC)
 		
 		tween.tween_property(self, "position", position + (dirVector), tween_duration)
@@ -150,8 +171,25 @@ func _on_hit_box_area_entered(area):
 			finished_level.emit()
 			$HitBox.monitoring = false # don't send repeat signals, don't take anymore damage
 
+func relocate_to_center_of_square():
+	# This shouldn't be necessary..
+	# attempt to solve bug where player sometimes ends up out of position
+	global_position.x = floor(global_position.x)
+	global_position.y = floor(global_position.y)
 
 
 func _on_movetimer_timeout():
 	if action_queue.size() > 0:
 		take_action(action_queue.pop_front())
+	else:
+		var key_held :bool = false
+		for action_name in ["move_forwards", "move_backwards", "move_left", "move_right"]:
+			# for turning, player has to press manually each 90deg unit.
+			if Input.is_action_pressed(action_name):
+				key_held = true
+				if !Global.user_prefs["move_instantly"]:
+					$movetimer.start()
+				take_action(action_name)
+
+		if !key_held:
+			relocate_to_center_of_square()

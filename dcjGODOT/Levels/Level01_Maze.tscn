@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://cxmfur8buqvu1"]
+[gd_scene load_steps=33 format=3 uid="uid://cxmfur8buqvu1"]
 
 [ext_resource type="PackedScene" uid="uid://dt2jm2p7aa1ln" path="res://Entities/Player/player.tscn" id="1_kam2j"]
 [ext_resource type="Script" path="res://Levels/Level01_Maze.gd" id="1_ky7s6"]
+[ext_resource type="Environment" uid="uid://bcd6oc7dlsffv" path="res://Levels/WorldEnvironments/HighSpec.tres" id="2_i0axn"]
 [ext_resource type="PackedScene" uid="uid://bc8tifgyg8dk6" path="res://Levels/grid_map_01.tscn" id="2_oj0hv"]
 [ext_resource type="MeshLibrary" uid="uid://b1whp0sw7g7bp" path="res://Levels/MeshLibrary02_floors.tres" id="3_is2sv"]
 [ext_resource type="Texture2D" uid="uid://docmno7lohqf2" path="res://Levels/Materials/Amazing1_RoboticDungeon.png" id="3_t48rj"]
@@ -14,30 +15,6 @@
 [ext_resource type="Script" path="res://DesignNotes.gd" id="14_8apfw"]
 [ext_resource type="PackedScene" uid="uid://xovgihdkj5it" path="res://Entities/NPCs/ProphetBot.tscn" id="16_kjgl7"]
 [ext_resource type="PackedScene" uid="uid://dlyqx2p43cq00" path="res://Entities/NPCs/Robot01.tscn" id="17_lknes"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w0y3x"]
-sky_top_color = Color(0.976471, 0.937255, 0.972549, 1)
-sky_horizon_color = Color(0.0862745, 0.0235294, 0.0901961, 1)
-sky_energy_multiplier = 0.25
-
-[sub_resource type="Sky" id="Sky_73wno"]
-sky_material = SubResource("ProceduralSkyMaterial_w0y3x")
-
-[sub_resource type="Environment" id="Environment_utbl0"]
-background_mode = 2
-background_energy_multiplier = 0.67
-sky = SubResource("Sky_73wno")
-ambient_light_source = 1
-ambient_light_sky_contribution = 0.1
-ambient_light_energy = 0.1
-sdfgi_use_occlusion = true
-glow_enabled = true
-glow_bloom = 0.13
-fog_light_color = Color(0.705882, 0.737255, 0.937255, 1)
-fog_density = 0.025
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.15
-volumetric_fog_albedo = Color(1, 0.678431, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tf4sd"]
 resource_name = "Floor"
@@ -282,7 +259,11 @@ material = SubResource("StandardMaterial3D_muju4")
 script = ExtResource("1_ky7s6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_utbl0")
+environment = ExtResource("2_i0axn")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+bounces = 2
+interior = true
 
 [node name="PlayerCamera" parent="." instance=ExtResource("1_kam2j")]
 

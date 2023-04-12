@@ -14,6 +14,7 @@ func change_scene_to_packed(newScene:PackedScene):
 	# play a transition animation and audio event
 	# notify track current scene
 	get_tree().change_scene_to_packed(newScene)
+	
 
 
 func change_scene_to_file(newScenePath : String):
@@ -23,3 +24,5 @@ func change_scene_to_file(newScenePath : String):
 
 func quit():
 	get_tree().quit()
+
+

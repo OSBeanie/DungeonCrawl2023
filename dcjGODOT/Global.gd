@@ -19,7 +19,8 @@ var player_stats := {
 
 var user_prefs = {
 	"move_instantly":false,
-	"difficulty":difficulties.BEGINNER
+	"difficulty":difficulties.BEGINNER,
+	"low_spec":false,
 }
 
 

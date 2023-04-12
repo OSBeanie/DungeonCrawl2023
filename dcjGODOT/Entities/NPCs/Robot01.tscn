@@ -167,6 +167,8 @@ script = ExtResource("1_u4pyn")
 
 [node name="RobotMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.727194, -6.35733e-08, 2.77888e-15, -1.10868e-23, -3.17867e-08, -0.727194, 6.35733e-08, -0.727194, 3.17867e-08, 2.08165e-12, 0.231825, -0.276137)
+gi_mode = 0
+gi_lightmap_scale = 1
 mesh = SubResource("ArrayMesh_7h2k7")
 skeleton = NodePath("")
 

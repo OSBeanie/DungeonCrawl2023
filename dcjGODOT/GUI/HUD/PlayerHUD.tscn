@@ -144,6 +144,7 @@ text = "Settings"
 [node name="PopupMenu" type="PopupPanel" parent="SettingsButton"]
 initial_position = 1
 size = Vector2i(381, 463)
+visible = true
 
 [node name="CenterContainer" type="CenterContainer" parent="SettingsButton/PopupMenu"]
 offset_left = 4.0

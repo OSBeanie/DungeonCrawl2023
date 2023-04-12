@@ -18,19 +18,36 @@ grow_vertical = 2
 alignment = 1
 script = ExtResource("1_1hwrc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="LowSpecGraphic" type="HBoxContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 25
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="LowSpecGraphic"]
 layout_mode = 2
-text = "Instantaneous Movement"
+size_flags_horizontal = 3
+text = "Low-fi graphics"
 
-[node name="MoveInstantlyButton" type="CheckButton" parent="HBoxContainer"]
+[node name="LowSpecButton" type="CheckButton" parent="LowSpecGraphic"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 10
+
+[node name="InstantMove" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="InstantMove"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Instantaneous Movement"
+
+[node name="MoveInstantlyButton" type="CheckButton" parent="InstantMove"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="VolumeLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Volume"
 
 [node name="VolumeMaster" parent="." instance=ExtResource("1_ny56s")]
 layout_mode = 2
@@ -47,4 +64,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 bus_name = "sfx"
 
-[connection signal="toggled" from="HBoxContainer/MoveInstantlyButton" to="." method="_on_move_instantly_button_toggled"]
+[connection signal="toggled" from="LowSpecGraphic/LowSpecButton" to="." method="_on_low_spec_button_toggled"]
+[connection signal="toggled" from="InstantMove/MoveInstantlyButton" to="." method="_on_move_instantly_button_toggled"]

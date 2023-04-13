@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvpt6x3ysux6x"
-path.s3tc="res://.godot/imported/diamongplatealum-pixelart.png-d5c577f0cef59e0fc445dc4e9e70783f.s3tc.ctex"
+path.etc2="res://.godot/imported/diamongplatealum-pixelart.png-d5c577f0cef59e0fc445dc4e9e70783f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Levels/Materials/diamongplatealum-pixelart.png"
-dest_files=["res://.godot/imported/diamongplatealum-pixelart.png-d5c577f0cef59e0fc445dc4e9e70783f.s3tc.ctex"]
+dest_files=["res://.godot/imported/diamongplatealum-pixelart.png-d5c577f0cef59e0fc445dc4e9e70783f.etc2.ctex"]
 
 [params]
 

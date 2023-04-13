@@ -3,9 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7naphju17dl0"
-path.s3tc="res://.godot/imported/Amazing1_RoboticDungeon.png-843313710082e2b844b46f6ec27667b7.s3tc.ctex"
+path.etc2="res://.godot/imported/Amazing1_RoboticDungeon.png-843313710082e2b844b46f6ec27667b7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +13,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Levels/GLTF_Imports/Amazing1_RoboticDungeon.png"
-dest_files=["res://.godot/imported/Amazing1_RoboticDungeon.png-843313710082e2b844b46f6ec27667b7.s3tc.ctex"]
+dest_files=["res://.godot/imported/Amazing1_RoboticDungeon.png-843313710082e2b844b46f6ec27667b7.etc2.ctex"]
 
 [params]
 

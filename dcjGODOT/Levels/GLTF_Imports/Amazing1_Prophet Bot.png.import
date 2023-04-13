@@ -3,9 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dai8b13d7qfmf"
-path.s3tc="res://.godot/imported/Amazing1_Prophet Bot.png-9ec2063649a837d52ae9634985ab76a8.s3tc.ctex"
+path.etc2="res://.godot/imported/Amazing1_Prophet Bot.png-9ec2063649a837d52ae9634985ab76a8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +13,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Levels/GLTF_Imports/Amazing1_Prophet Bot.png"
-dest_files=["res://.godot/imported/Amazing1_Prophet Bot.png-9ec2063649a837d52ae9634985ab76a8.s3tc.ctex"]
+dest_files=["res://.godot/imported/Amazing1_Prophet Bot.png-9ec2063649a837d52ae9634985ab76a8.etc2.ctex"]
 
 [params]
 

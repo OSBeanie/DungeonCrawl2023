@@ -74,7 +74,12 @@ func change_direction(action_name):
 			direction -= 1
 		#direction = direction % 4 # wrap to 0 # not needed.. causes rotating artifact when it loops.
 
-		rotating = true
+
+		rotating = true # this will let _process() handle turning
+		# Another option is to tween the transform.basis as follows:
+		# var tween = self.create_tween()
+		# tween.tween_property(self, "transform:basis", transform.basis.rotated(Vector3.UP, direction * 0.5* PI), tween_duration)
+		# see: https://www.youtube.com/watch?v=Vr-Fsd6M5Tk&t=34s for inspiration
 		
 
 

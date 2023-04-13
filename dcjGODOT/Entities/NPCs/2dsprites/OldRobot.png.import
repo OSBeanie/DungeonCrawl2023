@@ -4,16 +4,15 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bh1luxac1p4vb"
 path.s3tc="res://.godot/imported/OldRobot.png-a2428c2c93f54ca6a4b2b021353a0ff4.s3tc.ctex"
-path.etc2="res://.godot/imported/OldRobot.png-a2428c2c93f54ca6a4b2b021353a0ff4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Entities/NPCs/2dsprites/OldRobot.png"
-dest_files=["res://.godot/imported/OldRobot.png-a2428c2c93f54ca6a4b2b021353a0ff4.s3tc.ctex", "res://.godot/imported/OldRobot.png-a2428c2c93f54ca6a4b2b021353a0ff4.etc2.ctex"]
+dest_files=["res://.godot/imported/OldRobot.png-a2428c2c93f54ca6a4b2b021353a0ff4.s3tc.ctex"]
 
 [params]
 

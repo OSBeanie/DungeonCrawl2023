@@ -153,8 +153,8 @@ shadow_mesh = SubResource("ArrayMesh_hchhd")
 collision_layer = 2
 script = ExtResource("1_a4erc")
 
-[node name="RobotEvil003" type="MeshInstance3D" parent="."]
-transform = Transform3D(0, -0.5, 0, 0, 0, -0.5, 0.5, 0, 0, -0.136656, 0.127081, 0.274165)
+[node name="RobotMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.5, -6.55671e-08, 0, 0, 0, -0.5, 6.55671e-08, -0.5, 0, -0.314105, 0.127081, -0.124101)
 mesh = SubResource("ArrayMesh_t365s")
 skeleton = NodePath("")
 

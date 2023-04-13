@@ -16,8 +16,9 @@ func _on_move_instantly_button_toggled(button_pressed):
 
 func _on_low_spec_button_toggled(button_pressed):
 	Global.user_prefs["low_spec"] = button_pressed
-	if StageManager.current_scene.has_method("change_graphics"):
-		StageManager.current_scene.change_graphics()
+	if StageManager.current_scene != null and is_instance_valid(StageManager.current_scene):
+		if StageManager.current_scene.has_method("change_graphics"):
+			StageManager.current_scene.change_graphics()
 
 
 

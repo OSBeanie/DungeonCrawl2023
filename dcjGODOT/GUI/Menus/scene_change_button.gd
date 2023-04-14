@@ -4,15 +4,13 @@ extends Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
+	# load the next scene when text starts, so it's ready when users press the button
+	if next_scene_packed == null:
+		next_scene_packed = load(next_scene_path)
 
 
 func _on_pressed():
 	$AudioStreamPlayer.start()
 	
-	if next_scene_packed != null:
-		StageManager.change_scene_to_packed(next_scene_packed)
-	elif next_scene_path != "":
-		StageManager.change_scene_to_file(next_scene_path)
+	StageManager.change_scene_to_packed(next_scene_packed)
+	

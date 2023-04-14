@@ -10,6 +10,6 @@ func _ready():
 
 func change_graphics():
 	if Global.user_prefs["low_spec"] == true:
-		$WorldEnvironment.environment = load("res://Levels/WorldEnvironments/LowSpec.tres")
+		$WorldEnvironment.environment = preload("res://Levels/WorldEnvironments/LowSpec.tres")
 	else:
-		$WorldEnvironment.environment = load("res://Levels/WorldEnvironments/HighSpec.tres")
+		$WorldEnvironment.environment = preload("res://Levels/WorldEnvironments/HighSpec.tres")

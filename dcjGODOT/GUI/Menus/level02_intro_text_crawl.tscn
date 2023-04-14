@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bw1yff5q6ahgf"]
+[gd_scene load_steps=8 format=3 uid="uid://bw1yff5q6ahgf"]
 
 [ext_resource type="Theme" uid="uid://di16ft6uelg44" path="res://GUI/Themes/campaign_text_crawl_theme.tres" id="1_mxyrd"]
 [ext_resource type="Script" path="res://GUI/Menus/campaign_text_crawl.gd" id="2_0jgim"]
-[ext_resource type="PackedScene" uid="uid://cxmfur8buqvu1" path="res://Levels/Level01_Maze.tscn" id="3_m3rg8"]
 [ext_resource type="PackedScene" uid="uid://erf5h7d5cysq" path="res://Levels/Level02_DataCenter.tscn" id="3_pslp5"]
 [ext_resource type="PackedScene" uid="uid://286itvr8itw6" path="res://GUI/Menus/text_crawl.tscn" id="4_1fduu"]
 [ext_resource type="PackedScene" uid="uid://d25efuelumf6x" path="res://GUI/Menus/scene_change_button.tscn" id="5_owgy8"]
@@ -92,7 +91,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Skip to the Action
 "
-next_scene_packed = ExtResource("3_m3rg8")
+next_scene_path = "res://Levels/Level02_DataCenter.tscn"
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_3dlp8")

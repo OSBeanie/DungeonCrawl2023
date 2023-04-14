@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cvpt6x3ysux6x" path="res://Levels/Materials/diamongplatealum-pixelart.png" id="1_5us60"]
 [ext_resource type="Texture2D" uid="uid://d3ol67he6cmcs" path="res://Levels/GLTF_Imports/floor_tiles_diamondPlateAlum.png" id="1_fanet"]
 [ext_resource type="Material" uid="uid://dw4iogemd4sw6" path="res://Levels/Materials/PurpleWallMaterial.tres" id="3_p8p5n"]
-[ext_resource type="Material" path="res://Levels/Materials/floor.tres" id="4_hb1wu"]
+[ext_resource type="Material" uid="uid://kecgvio1mo85" path="res://Levels/Materials/floor.tres" id="4_hb1wu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4dff"]
 resource_name = "diamondPlate.001"

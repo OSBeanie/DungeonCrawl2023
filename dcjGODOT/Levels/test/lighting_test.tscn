@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6u1nuondll0b"]
+
+[ext_resource type="PackedScene" uid="uid://dlyqx2p43cq00" path="res://Entities/NPCs/Robot01.tscn" id="1_xdtd8"]
+[ext_resource type="PackedScene" uid="uid://dt2jm2p7aa1ln" path="res://Entities/Player/player.tscn" id="2_3823y"]
+[ext_resource type="PackedScene" uid="uid://dsmbqavi7y0fh" path="res://Levels/ceiling_light.tscn" id="3_2sedr"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_frbqi"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.5, 2.08165e-12)
+mesh = SubResource("PlaneMesh_frbqi")
+
+[node name="Robot01" parent="." instance=ExtResource("1_xdtd8")]
+
+[node name="Player" parent="." instance=ExtResource("2_3823y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="OmniLight3D" parent="Player" index="5"]
+visible = true
+
+[node name="SpotLight3D" parent="Player" index="8"]
+visible = false
+
+[node name="CeilingLight" parent="." instance=ExtResource("3_2sedr")]
+
+[editable path="Player"]

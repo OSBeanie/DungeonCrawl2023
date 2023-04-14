@@ -60,8 +60,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00465184, 0.627403, 0.0030
 visible = false
 light_energy = 0.3
 light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
 light_size = 10.0
 light_specular = 0.338
+distance_fade_enabled = true
+distance_fade_begin = 20.0
 omni_range = 3.0
 omni_attenuation = 0.31864
 
@@ -74,10 +77,12 @@ stream = ExtResource("5_l1kg3")
 volume_db = -7.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.436595)
+transform = Transform3D(1, 0, 0, 0, 0.994842, 0.101438, 0, -0.101438, 0.994842, 0, 0.561513, 0.436595)
 light_color = Color(0.756863, 0.890196, 0.890196, 1)
-light_energy = 6.0
+light_energy = 5.0
+light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+shadow_enabled = true
 spot_range = 8.0
 spot_angle = 43.4657
 

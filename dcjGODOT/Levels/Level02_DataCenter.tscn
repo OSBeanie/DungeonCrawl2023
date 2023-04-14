@@ -1,9 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://erf5h7d5cysq"]
+[gd_scene load_steps=23 format=3 uid="uid://erf5h7d5cysq"]
 
 [ext_resource type="Script" path="res://Levels/Level02_DataCenter.gd" id="1_l2ktx"]
 [ext_resource type="PackedScene" uid="uid://dt2jm2p7aa1ln" path="res://Entities/Player/player.tscn" id="1_t2arl"]
 [ext_resource type="PackedScene" uid="uid://bc8tifgyg8dk6" path="res://Levels/grid_map_01.tscn" id="2_bu3lj"]
-[ext_resource type="Shader" uid="uid://ci711oiokrhtk" path="res://Levels/Materials/light_shader.tres" id="4_acjsf"]
+[ext_resource type="PackedScene" uid="uid://dsmbqavi7y0fh" path="res://Levels/ceiling_light.tscn" id="4_5v4x1"]
 [ext_resource type="Script" path="res://DesignNotes.gd" id="5_x2ig0"]
 [ext_resource type="PackedScene" uid="uid://xovgihdkj5it" path="res://Entities/NPCs/ProphetBot.tscn" id="6_nptwp"]
 [ext_resource type="PackedScene" uid="uid://dlyqx2p43cq00" path="res://Entities/NPCs/Robot01.tscn" id="7_ctgii"]
@@ -63,14 +63,6 @@ albedo_texture = SubResource("NoiseTexture2D_v6uvq")
 [sub_resource type="PlaneMesh" id="PlaneMesh_ffbh7"]
 material = SubResource("StandardMaterial3D_bs0e4")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjewu"]
-render_priority = 0
-shader = ExtResource("4_acjsf")
-shader_parameter/Emission = Color(1, 0.121569, 0.133333, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_el76r"]
-material = SubResource("ShaderMaterial_xjewu")
-
 [node name="DataCenter" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00212097, -0.0098877, 0.0561714)
 script = ExtResource("1_l2ktx")
@@ -104,19 +96,34 @@ mesh = SubResource("PlaneMesh_ffbh7")
 skeleton = NodePath("../..")
 
 [node name="CeilingLighting" type="Node3D" parent="Level01"]
-visible = false
 
-[node name="SimpleLightBox" type="MeshInstance3D" parent="Level01/CeilingLighting"]
-transform = Transform3D(-0.3, 5.24537e-09, 0, -2.62268e-08, -0.06, 0, 0, 0, 1, 0, 2, -4)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_el76r")
-skeleton = NodePath("../..")
+[node name="CeilingLight" parent="Level01/CeilingLighting" instance=ExtResource("4_5v4x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Level01/CeilingLighting/SimpleLightBox"]
-transform = Transform3D(-1, -3.89414e-07, 0, 3.89414e-07, -1, 0, 0, 0, 1, 0, 0, 0)
-light_color = Color(1, 0.368627, 0.305882, 1)
-light_energy = 0.6
-omni_range = 4.0
+[node name="CeilingLight2" parent="Level01/CeilingLighting" instance=ExtResource("4_5v4x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -4)
+
+[node name="CeilingLight5" parent="Level01/CeilingLighting" instance=ExtResource("4_5v4x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -30)
+light_color = Color(0, 0, 1, 1)
+
+[node name="CeilingLight6" parent="Level01/CeilingLighting" instance=ExtResource("4_5v4x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -30)
+light_color = Color(0, 0, 1, 1)
+
+[node name="CeilingLight7" parent="Level01/CeilingLighting" instance=ExtResource("4_5v4x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2, -32)
+
+[node name="CeilingLight8" parent="Level01/CeilingLighting" instance=ExtResource("4_5v4x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2, -26)
+
+[node name="CeilingLight3" parent="Level01/CeilingLighting" instance=ExtResource("4_5v4x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 2, -4)
+light_color = Color(0, 0, 1, 1)
+
+[node name="CeilingLight4" parent="Level01/CeilingLighting" instance=ExtResource("4_5v4x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 2, -4)
+light_color = Color(0, 0, 1, 1)
 
 [node name="DesignNotes" type="Node" parent="."]
 script = ExtResource("5_x2ig0")

@@ -258,12 +258,21 @@ material = SubResource("StandardMaterial3D_muju4")
 [node name="Maze" type="Node3D"]
 script = ExtResource("1_ky7s6")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 22, 28, -30)
+light_energy = 0.33
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_blur = 0.03
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_i0axn")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
-bounces = 2
+bounces = 1
+directional = true
 interior = true
+bias = 0.03
 
 [node name="PlayerCamera" parent="." instance=ExtResource("1_kam2j")]
 
@@ -305,12 +314,22 @@ skeleton = NodePath("")
 [node name="CeilingLighting" type="Node3D" parent="Level01"]
 
 [node name="CeilingLight" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -6)
+transform = Transform3D(-1.1722e-08, -1, 0, 0.268168, -4.37114e-08, 0, 0, 0, 5.88239, -4.98421, 1.74415, -6.15235)
 light_color = Color(1, 0, 0, 1)
 
-[node name="CeilingLight9" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -6)
+[node name="OmniLight3D" parent="Level01/CeilingLighting/CeilingLight" index="0"]
+transform = Transform3D(2.36926, -7.10543e-15, 0, 4.50003e-15, 1, 0, 0, 0, 1, 0, -0.316805, 0)
 light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
+
+[node name="CeilingLight9" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
+transform = Transform3D(-8.94108e-09, 1, 0, -0.204548, -4.37114e-08, 0, 0, 0, 3.70632, 4.91294, 1.76333, -8.92194)
+light_color = Color(1, 0, 0, 1)
+
+[node name="OmniLight3D" parent="Level01/CeilingLighting/CeilingLight9" index="0"]
+transform = Transform3D(2.17974, 7.10543e-15, 0, -9.47312e-16, 1, 0, 0, 0, 1, 7.15256e-07, -0.316805, 0)
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
 
 [node name="CeilingLight2" parent="Level01/CeilingLighting" instance=ExtResource("6_r25as")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -13)
@@ -489,3 +508,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0)
 
 [node name="Pickable6" parent="Collectibles" instance=ExtResource("11_6af5s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, 0)
+
+[editable path="Level01/CeilingLighting/CeilingLight"]
+[editable path="Level01/CeilingLighting/CeilingLight9"]
